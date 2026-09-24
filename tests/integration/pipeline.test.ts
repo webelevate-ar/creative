@@ -288,4 +288,51 @@ describe('matching safety (docs/19 §8)', () => {
     expect(rows[1]!.flags).not.toContain('check_match'); // shares "disco", "corte", "tyrolit", "inox"
     expect(rows[1]!.decision).toBe('apply');
   });
+  it('never auto-applies a price across codes that differ only in punctuation or spaces (docs/20 §8)', async () => {
+    const XLSX = await import('xlsx');
+    const sid = createSupplier(db, orgId, supplierFormSchema.parse({ name: 'Bulonera' }), 40);
+    // The store carries "15.12" and "UN25CCE" but not "1.5.12" / "UN2.5CCE", which come FIRST in the list.
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'T1', description: 'TCA AUTOF.SAE 1/2', supplier_id: String(sid), supplier_code: '15.12', cost: '100', price: '160' }), 30000);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'C25', description: 'CABLE UNIP. 25 MM2 CELESTE', supplier_id: String(sid), supplier_code: 'UN25CCE', cost: '8000', price: '12000' }), 30000);
+    // Typed by the store without the supplier's punctuation, no other candidate: a loose suggestion only.
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'K1', description: 'Coaxil RG58', supplier_id: String(sid), supplier_code: 'CC58UE', cost: '100', price: '160' }), 30000);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.aoa_to_sheet([
+        ['Código', 'Descripción', 'Precio'],
+        ['1.5.12', 'BULON HEX GR.2 3/16 x 1/2', 105],
+        ['15.12', 'TCA AUTOF.SAE 1/2', 110],
+        ['UN2.5CCE', 'CABLE UNIP. 2,50 MM2 CELESTE', 830],
+        ['UN25CCE', 'CABLE UNIP. 25 MM2 CELESTE', 8800],
+        ['CC 58UE', 'CABLE COAXIAL RG 58', 105],
+      ]),
+      'Lista',
+    );
+    const up = await createImport(db, orgId, userId, sid, 'b.xlsx', XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer);
+    const imp = getImport(db, orgId, up.importId)!;
+    await confirmMapping(db, orgId, up.importId, imp.sheet_name, JSON.parse(imp.mapping_json!));
+    const rows = listRows(db, orgId, up.importId, {}).rows;
+    const by = (c: string) => rows.find((r) => r.raw_code === c)!;
+    expect(by('1.5.12').product_id).toBeNull(); // different product: no match at all (ambiguous loose key in this list)
+    expect(by('UN2.5CCE').product_id).toBeNull();
+    expect(by('15.12').product_code).toBe('T1');
+    expect(by('15.12').flags).not.toContain('dup');
+    expect(by('15.12').decision).toBe('apply');
+    expect(by('UN25CCE').product_code).toBe('C25');
+    expect(by('UN25CCE').decision).toBe('apply');
+    expect(by('CC 58UE').product_code).toBe('K1'); // suggested...
+    expect(by('CC 58UE').flags).toContain('check_match'); // ...but held for review
+    expect(by('CC 58UE').decision).toBe('skip');
+    recomputeImport(db, orgId, up.importId);
+    expect(listRows(db, orgId, up.importId, {}).rows.find((r) => r.raw_code === 'CC 58UE')!.flags).toContain('check_match');
+    // A manual link is exact from then on: the next list matches "CC 58UE" without holding it.
+    linkRow(db, orgId, up.importId, by('CC 58UE').id, by('CC 58UE').product_id!);
+    applyImport(db, orgId, up.importId, 30000);
+    const up2 = await createImport(db, orgId, userId, sid, 'b2.xlsx', XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer);
+    await confirmMapping(db, orgId, up2.importId, 'Lista', JSON.parse(getImport(db, orgId, up2.importId)!.mapping_json!));
+    const again = listRows(db, orgId, up2.importId, {}).rows.find((r) => r.raw_code === 'CC 58UE')!;
+    expect(again.match_type).toBe('link');
+    expect(again.flags).not.toContain('check_match');
+  });
 });

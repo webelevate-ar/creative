@@ -5,7 +5,7 @@
  */
 import type { DB } from '../db/index.js';
 import { applySavedMapping, detectColumns, extractRows, toSavedMapping, type ColumnMapping, type Detection } from '../lib/detect.js';
-import { normalizeCode, normalizeSearch } from '../lib/match.js';
+import { looseCode, normalizeCode, normalizeSearch } from '../lib/match.js';
 import { computeCost, computeSalePrice, marginOnPrice, roundUpTo } from '../lib/pricing.js';
 import { type Cell, type Workbook } from '../lib/sheet.js';
 import { parseFile } from '../lib/parse.js';
@@ -274,34 +274,56 @@ function defaultDecision(product: ProductLite | null, flags: string[], newCost: 
 }
 
 function loadMatchers(db: DB, orgId: number, supplierId: number) {
+  // Exact keys (see normalizeCode) may match automatically; loose keys only suggest a match (held for review).
   const links = new Map<string, number>();
-  for (const r of db.prepare('SELECT supplier_code_norm, product_id FROM code_links WHERE org_id = ? AND supplier_id = ?').all(orgId, supplierId) as { supplier_code_norm: string; product_id: number }[])
-    links.set(r.supplier_code_norm, r.product_id);
   const bySupplierCode = new Map<string, number>();
-  for (const r of db
-    .prepare('SELECT supplier_code_norm, id FROM products WHERE org_id = ? AND supplier_id = ? AND supplier_code_norm IS NOT NULL')
-    .all(orgId, supplierId) as { supplier_code_norm: string; id: number }[])
-    if (!bySupplierCode.has(r.supplier_code_norm)) bySupplierCode.set(r.supplier_code_norm, r.id);
   const byOwnCode = new Map<string, number>();
+  // Loose key → product, or null when two different products share the loose key.
+  const loose = { link: new Map<string, number | null>(), supplier: new Map<string, number | null>(), own: new Map<string, number | null>() };
+  const addLoose = (m: Map<string, number | null>, code: string, id: number) => {
+    const k = looseCode(code);
+    if (k) m.set(k, m.has(k) && m.get(k) !== id ? null : id);
+  };
+  for (const r of db.prepare('SELECT supplier_code_norm, product_id FROM code_links WHERE org_id = ? AND supplier_id = ?').all(orgId, supplierId) as { supplier_code_norm: string; product_id: number }[]) {
+    links.set(r.supplier_code_norm, r.product_id);
+    addLoose(loose.link, r.supplier_code_norm, r.product_id);
+  }
   for (const r of db
-    .prepare('SELECT code_norm, id FROM products WHERE org_id = ? AND (supplier_id IS NULL OR supplier_id = ?)')
-    .all(orgId, supplierId) as { code_norm: string; id: number }[])
+    .prepare('SELECT supplier_code, supplier_code_norm, id FROM products WHERE org_id = ? AND supplier_id = ? AND supplier_code_norm IS NOT NULL')
+    .all(orgId, supplierId) as { supplier_code: string; supplier_code_norm: string; id: number }[]) {
+    if (!bySupplierCode.has(r.supplier_code_norm)) bySupplierCode.set(r.supplier_code_norm, r.id);
+    addLoose(loose.supplier, r.supplier_code, r.id);
+  }
+  for (const r of db
+    .prepare('SELECT code, code_norm, id FROM products WHERE org_id = ? AND (supplier_id IS NULL OR supplier_id = ?)')
+    .all(orgId, supplierId) as { code: string; code_norm: string; id: number }[]) {
     if (!byOwnCode.has(r.code_norm)) byOwnCode.set(r.code_norm, r.id);
+    addLoose(loose.own, r.code, r.id);
+  }
   const products = new Map<number, ProductLite | null>();
   const getProduct = db.prepare('SELECT id, cost_cents, price_cents, markup_pct, iva_rate, supplier_id, description FROM products WHERE id = ? AND org_id = ?');
   const product = (id: number): ProductLite | null => {
     if (!products.has(id)) products.set(id, (getProduct.get(id, orgId) as ProductLite | undefined) ?? null);
     return products.get(id) ?? null;
   };
+  type Match = { productId: number | null; type: ImportRow['match_type']; loose: boolean };
   return {
-    match(codeNorm: string): { productId: number | null; type: ImportRow['match_type'] } {
-      const l = links.get(codeNorm);
-      if (l != null) return { productId: l, type: 'link' };
-      const s = bySupplierCode.get(codeNorm);
-      if (s != null) return { productId: s, type: 'supplier_code' };
-      const o = byOwnCode.get(codeNorm);
-      if (o != null) return { productId: o, type: 'own_code' };
-      return { productId: null, type: 'none' };
+    /** `looseKey` is null when the loose key is ambiguous in the list itself: then only exact matches count. */
+    match(codeNorm: string, looseKey: string | null): Match {
+      const exact: [Map<string, number>, ImportRow['match_type']][] = [[links, 'link'], [bySupplierCode, 'supplier_code'], [byOwnCode, 'own_code']];
+      for (const [m, type] of exact) {
+        const id = m.get(codeNorm);
+        if (id != null) return { productId: id, type, loose: false };
+      }
+      if (looseKey) {
+        const approx: [Map<string, number | null>, ImportRow['match_type']][] = [[loose.link, 'link'], [loose.supplier, 'supplier_code'], [loose.own, 'own_code']];
+        for (const [m, type] of approx) {
+          const id = m.get(looseKey);
+          if (id != null) return { productId: id, type, loose: true };
+          if (m.has(looseKey)) break; // ambiguous: several products share it
+        }
+      }
+      return { productId: null, type: 'none', loose: false };
     },
     product,
   };
@@ -317,6 +339,15 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
   if (!items.length) throw new ImportError('No encontramos productos con esas columnas. Revisá cuál es el código y cuál el precio.');
   const matchers = loadMatchers(db, orgId, supplier.id);
   const seen = new Set<string>();
+  // A loose key shared by different codes of this same list ("1.5.12" and "15.12") is ambiguous.
+  const looseOwner = new Map<string, string>();
+  const ambiguousLoose = new Set<string>();
+  for (const it of items) {
+    const k = looseCode(it.code);
+    const e = normalizeCode(it.code);
+    if (looseOwner.has(k) && looseOwner.get(k) !== e) ambiguousLoose.add(k);
+    else looseOwner.set(k, e);
+  }
 
   db.transaction(() => {
     db.prepare('DELETE FROM import_rows WHERE import_id = ? AND org_id = ?').run(importId, orgId);
@@ -330,10 +361,11 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
       const codeNorm = normalizeCode(it.code) || it.code.toUpperCase();
       const dup = seen.has(codeNorm);
       seen.add(codeNorm);
-      const m = dup ? { productId: null, type: 'none' as const } : matchers.match(codeNorm);
+      const looseKey = looseCode(it.code);
+      const m = dup ? { productId: null, type: 'none' as const, loose: false } : matchers.match(codeNorm, ambiguousLoose.has(looseKey) ? null : looseKey);
       const product = m.productId != null ? matchers.product(m.productId) : null;
       const priced = priceItem(it.price, it.pack, product, supplier, settings);
-      const flags = flagsFor(priced, product, dup, supplier, settings, weakOwnCodeMatch(m.type, it.description, product));
+      const flags = flagsFor(priced, product, dup, supplier, settings, m.loose || weakOwnCodeMatch(m.type, it.description, product));
       insert.run({
         import_id: importId,
         org_id: orgId,
@@ -381,7 +413,9 @@ export function recomputeImport(db: DB, orgId: number, importId: number): Import
     for (const r of rows) {
       const product = r.product_id != null ? matchers.product(r.product_id) : null;
       const priced = priceItem(r.list_price, r.pack_qty, product, supplier, settings);
-      const flags = flagsFor(priced, product, r.flags.includes(' dup '), supplier, settings, weakOwnCodeMatch(r.match_type, r.description, product));
+      // A loose-code match stays held (check_match) until the user links it manually.
+      const weak = (r.match_type !== 'manual' && r.flags.includes(' check_match ')) || weakOwnCodeMatch(r.match_type, r.description, product);
+      const flags = flagsFor(priced, product, r.flags.includes(' dup '), supplier, settings, weak);
       const decision = r.decision === 'create' && !product ? 'create' : defaultDecision(product, flags, priced.newCost, priced.newPrice);
       upd.run({
         id: r.id,

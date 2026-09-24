@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { applySavedMapping, detectColumns, extractRows, toSavedMapping } from '../../src/lib/detect.js';
 import { detectDelimiter, parseCsv, readWorkbook, zipUncompressedSize } from '../../src/lib/sheet.js';
-import { normalizeCode } from '../../src/lib/match.js';
+import { looseCode, normalizeCode } from '../../src/lib/match.js';
 import { hardwareItems, headerlessXlsx, mayoristaPdf, nextVersion, simplePdf, tornilloXlsx } from '../../scripts/make-fixtures.js';
 
 const fx = (name: string) => readFileSync(join(__dirname, '..', 'fixtures', name));
@@ -130,12 +130,24 @@ describe('csv helpers', () => {
   });
 });
 
-describe('normalizeCode', () => {
-  it('ignores case, punctuation, spaces and leading zeros', () => {
-    expect(normalizeCode('tor-0001')).toBe('TOR0001');
+describe('code keys', () => {
+  it('normalizeCode (exact, may auto-match) ignores case, accents, extra spaces and leading zeros of numeric codes', () => {
+    expect(normalizeCode(' tor-0001 ')).toBe('TOR-0001');
     expect(normalizeCode(' 00123 ')).toBe('123');
     expect(normalizeCode(123)).toBe('123');
     expect(normalizeCode('0')).toBe('0');
-    expect(normalizeCode('Ñ-12/b')).toBe('N12B');
+    expect(normalizeCode('Ñ-12/b')).toBe('N-12/B');
+    expect(normalizeCode('EGU10020B   bl')).toBe('EGU10020B BL');
+  });
+  it('keeps apart real codes of different products that differ only in punctuation or spaces (docs/20 §8)', () => {
+    for (const [a, b] of [['1.5.12', '15.12'], ['UN2.5CCE', 'UN25CCE'], ['INT050234', 'INT 050234'], ['AL150', 'AL-150'], ['F103801', 'F/1038-01']]) {
+      expect(normalizeCode(a!)).not.toBe(normalizeCode(b!));
+      expect(looseCode(a!)).toBe(looseCode(b!));
+    }
+  });
+  it('looseCode ignores punctuation, spaces and leading zeros', () => {
+    expect(looseCode('tor-0001')).toBe('TOR0001');
+    expect(looseCode(' 00123 ')).toBe('123');
+    expect(looseCode('Ñ-12/b')).toBe('N12B');
   });
 });
