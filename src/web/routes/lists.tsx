@@ -192,6 +192,7 @@ function listPriceText(price: number | null, currency: 'ARS' | 'USD', raw: strin
 }
 
 const FLAG_LABEL: Record<string, { text: string; tone: 'up' | 'down' | 'warn' | 'info' | 'neutral'; title: string }> = {
+  currency: { text: 'Otra moneda', tone: 'warn', title: 'La lista mezcla pesos y dólares y esta fila no está en la moneda del proveedor. No se aplica: separá la lista por moneda o cambiá la moneda del proveedor.' },
   suspect: { text: '¿Error en la lista?', tone: 'warn', title: 'El costo cambia más de 5 veces: posible error de decimales, de unidad o de código.' },
   check_match: { text: 'Coincidencia dudosa: verificá', tone: 'warn', title: 'El código coincide solo ignorando puntos, guiones o espacios, o coincide con uno tuyo pero las descripciones no se parecen. No se aplica salvo que lo confirmes.' },
   up_big: { text: 'Subió mucho', tone: 'up', title: 'Supera el umbral de cambio grande de tus ajustes.' },

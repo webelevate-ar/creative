@@ -3,7 +3,7 @@ import { openDb, type DB } from '../../src/db/index.js';
 import { signup } from '../../src/services/auth.js';
 import { createSupplier, supplierFormSchema, updateSupplier, getSupplier } from '../../src/services/suppliers.js';
 import { detectCatalogColumns, importCatalog, listProducts, saveProduct, productFormSchema } from '../../src/services/products.js';
-import { applyImport, bulkDecision, confirmMapping, createImport, getImport, linkRow, listRows, parseStats, recomputeImport, revertImport, discardImport, missingProducts } from '../../src/services/imports.js';
+import { applyImport, bulkDecision, setDecision, confirmMapping, createImport, getImport, linkRow, listRows, parseStats, recomputeImport, revertImport, discardImport, missingProducts } from '../../src/services/imports.js';
 import { readWorkbook } from '../../src/lib/sheet.js';
 import { detectColumns } from '../../src/lib/detect.js';
 import { catalogCsv, hardwareItems, nextVersion, tornilloXlsx } from '../../scripts/make-fixtures.js';
@@ -362,5 +362,21 @@ describe('matching safety (docs/19 §8)', () => {
     expect(rows[2]!.decision).toBe('apply'); // same price twice: the first one is safe
     expect(rows[2]!.flags).not.toContain('dup');
     expect(rows[3]!.flags).toContain('dup');
+  });
+  it('never creates or applies rows priced in another currency when the list mixes pesos and dollars (docs/20 §6)', async () => {
+    const XLSX = await import('xlsx');
+    const sid = createSupplier(db, orgId, supplierFormSchema.parse({ name: 'Electricidad' }), 40);
+    const data: (string | number)[][] = [['Código', 'Descripción', 'Mon', 'Precio']];
+    for (let i = 0; i < 12; i++) data.push([`E${i}`, `Producto ${i}`, i % 3 === 0 ? 'U$S' : '$', i % 3 === 0 ? 1.48 + i : 26000 + i]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(data), 'Hoja1');
+    const up = await createImport(db, orgId, userId, sid, 'm.xls', XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer);
+    await confirmMapping(db, orgId, up.importId, 'Hoja1', JSON.parse(getImport(db, orgId, up.importId)!.mapping_json!));
+    const rows = listRows(db, orgId, up.importId, {}).rows;
+    const usd = rows.filter((r) => r.flags.includes('currency'));
+    expect(usd.map((r) => r.raw_code)).toEqual(['E0', 'E3', 'E6', 'E9']);
+    expect(bulkDecision(db, orgId, up.importId, 'new', 'create')).toBe(8);
+    expect(() => setDecision(db, orgId, up.importId, usd[0]!.id, 'create')).toThrow(/otra moneda/);
+    expect(applyImport(db, orgId, up.importId, 30000).created).toBe(8);
   });
 });

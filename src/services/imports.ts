@@ -244,8 +244,10 @@ function flagsFor(
   supplier: Supplier,
   settings: OrgSettings,
   weakMatch = false,
+  otherCurrency = false,
 ): string[] {
   const flags: string[] = [];
+  if (otherCurrency) flags.push('currency');
   if (weakMatch) flags.push('check_match');
   if (row.newCost == null) flags.push('no_price');
   if (dup) flags.push('dup');
@@ -269,7 +271,7 @@ function flagsFor(
 
 function defaultDecision(product: ProductLite | null, flags: string[], newCost: number | null, newPrice: number | null): ImportRow['decision'] {
   if (!product || newCost == null) return 'skip';
-  if (flags.includes('suspect') || flags.includes('dup') || flags.includes('check_match')) return 'skip';
+  if (flags.includes('suspect') || flags.includes('dup') || flags.includes('check_match') || flags.includes('currency')) return 'skip';
   return newCost !== product.cost_cents || newPrice !== product.price_cents ? 'apply' : 'skip';
 }
 
@@ -329,6 +331,41 @@ function loadMatchers(db: DB, orgId: number, supplierId: number) {
   };
 }
 
+const CURRENCY: [RegExp, Supplier['currency']][] = [
+  [/^(u\$s|us\$|usd|u\$sb?|dolar(es)?|dólar(es)?)$/i, 'USD'],
+  [/^(\$|ars|\$ar|pesos?)$/i, 'ARS'],
+];
+const currencyOf = (v: Cell | undefined): Supplier['currency'] | null => {
+  const t = v == null ? '' : String(v).trim();
+  return CURRENCY.find(([re]) => re.test(t))?.[1] ?? null;
+};
+
+/**
+ * A column that marks each row as pesos or dollars ("$" / "U$S"): real lists mix both (docs/20 §6), while
+ * Remarcá converts with one currency per supplier. Returns the row → currency reader, or null if the list is not mixed.
+ */
+function mixedCurrencyColumn(rows: Cell[][], mapping: ColumnMapping): ((row: Cell[]) => Supplier['currency'] | null) | null {
+  const sample = rows.slice(mapping.headerRow + 1, mapping.headerRow + 3001);
+  const width = Math.max(0, ...sample.map((r) => r.length));
+  for (let c = 0; c < width; c++) {
+    if (c === mapping.code || c === mapping.price || c === mapping.description) continue;
+    let filled = 0;
+    const seen = new Set<string>();
+    let markers = 0;
+    for (const r of sample) {
+      if (r[c] == null || r[c] === '') continue;
+      filled++;
+      const cur = currencyOf(r[c]);
+      if (cur) {
+        markers++;
+        seen.add(cur);
+      }
+    }
+    if (filled >= 10 && markers / filled >= 0.9 && seen.size > 1) return (row) => currencyOf(row[c]);
+  }
+  return null;
+}
+
 export function computeRows(db: DB, orgId: number, importId: number, sheetName: string, rows: Cell[][], mapping: ColumnMapping): ImportStats {
   const imp = getImport(db, orgId, importId);
   if (!imp) throw new ImportError('Importación no encontrada.');
@@ -338,6 +375,7 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
   const { items, skipped } = extractRows(rows, mapping);
   if (!items.length) throw new ImportError('No encontramos productos con esas columnas. Revisá cuál es el código y cuál el precio.');
   const matchers = loadMatchers(db, orgId, supplier.id);
+  const rowCurrency = mixedCurrencyColumn(rows, mapping);
   const seen = new Set<string>();
   // A loose key shared by different codes of this same list ("1.5.12" and "15.12") is ambiguous.
   const looseOwner = new Map<string, string>();
@@ -369,7 +407,9 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
       const m = repeated ? { productId: null, type: 'none' as const, loose: false } : matchers.match(codeNorm, ambiguousLoose.has(looseKey) ? null : looseKey);
       const product = m.productId != null ? matchers.product(m.productId) : null;
       const priced = priceItem(it.price, it.pack, product, supplier, settings);
-      const flags = flagsFor(priced, product, dup, supplier, settings, m.loose || weakOwnCodeMatch(m.type, it.description, product));
+      const cur = rowCurrency?.(rows[it.rowIndex] ?? []);
+      const otherCurrency = cur != null && cur !== supplier.currency;
+      const flags = flagsFor(priced, product, dup, supplier, settings, m.loose || weakOwnCodeMatch(m.type, it.description, product), otherCurrency);
       insert.run({
         import_id: importId,
         org_id: orgId,
@@ -419,7 +459,7 @@ export function recomputeImport(db: DB, orgId: number, importId: number): Import
       const priced = priceItem(r.list_price, r.pack_qty, product, supplier, settings);
       // A loose-code match stays held (check_match) until the user links it manually.
       const weak = (r.match_type !== 'manual' && r.flags.includes(' check_match ')) || weakOwnCodeMatch(r.match_type, r.description, product);
-      const flags = flagsFor(priced, product, r.flags.includes(' dup '), supplier, settings, weak);
+      const flags = flagsFor(priced, product, r.flags.includes(' dup '), supplier, settings, weak, r.flags.includes(' currency '));
       const decision = r.decision === 'create' && !product ? 'create' : defaultDecision(product, flags, priced.newCost, priced.newPrice);
       upd.run({
         id: r.id,
@@ -449,7 +489,7 @@ export function refreshStats(db: DB, orgId: number, importId: number, skippedRow
         SUM(product_id IS NOT NULL AND new_cost_cents > old_cost_cents) up,
         SUM(product_id IS NOT NULL AND new_cost_cents < old_cost_cents) down,
         SUM(product_id IS NOT NULL AND new_cost_cents = old_cost_cents) same,
-        SUM(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% check_match %') flagged,
+        SUM(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% check_match %' OR flags LIKE '% currency %') flagged,
         SUM(flags LIKE '% below_cost %') below_cost,
         SUM(decision = 'apply') to_apply,
         SUM(decision = 'create') to_create
@@ -503,7 +543,7 @@ const FILTER_SQL: Record<RowFilter, string> = {
   changed: 'product_id IS NOT NULL AND new_cost_cents IS NOT old_cost_cents',
   up: 'product_id IS NOT NULL AND new_cost_cents > old_cost_cents',
   down: 'product_id IS NOT NULL AND new_cost_cents < old_cost_cents',
-  flagged: "(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% up_big %' OR flags LIKE '% down_big %' OR flags LIKE '% check_match %')",
+  flagged: "(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% up_big %' OR flags LIKE '% down_big %' OR flags LIKE '% check_match %' OR flags LIKE '% currency %')",
   new: 'product_id IS NULL',
   below_cost: "flags LIKE '% below_cost %'",
   skip: "decision = 'skip'",
@@ -550,10 +590,12 @@ function requireReview(db: DB, orgId: number, importId: number): ImportRecord {
 
 export function setDecision(db: DB, orgId: number, importId: number, rowId: number, decision: ImportRow['decision']): void {
   requireReview(db, orgId, importId);
-  const row = db.prepare('SELECT product_id, new_cost_cents FROM import_rows WHERE id = ? AND import_id = ? AND org_id = ?').get(rowId, importId, orgId) as
-    | { product_id: number | null; new_cost_cents: number | null }
+  const row = db.prepare('SELECT product_id, new_cost_cents, flags FROM import_rows WHERE id = ? AND import_id = ? AND org_id = ?').get(rowId, importId, orgId) as
+    | { product_id: number | null; new_cost_cents: number | null; flags: string }
     | undefined;
   if (!row) throw new ImportError('Fila no encontrada.');
+  if (decision !== 'skip' && row.flags.includes(' currency '))
+    throw new ImportError('Esta fila está en otra moneda que la del proveedor. Separá la lista por moneda o cambiá la moneda del proveedor.');
   if (decision === 'apply' && (row.product_id == null || row.new_cost_cents == null)) throw new ImportError('Esta fila no tiene un producto asociado o un precio válido.');
   if (decision === 'create' && (row.product_id != null || row.new_cost_cents == null)) throw new ImportError('Solo se pueden crear productos nuevos con precio.');
   db.prepare('UPDATE import_rows SET decision = ? WHERE id = ? AND org_id = ?').run(decision, rowId, orgId);
@@ -565,8 +607,8 @@ export function bulkDecision(db: DB, orgId: number, importId: number, filter: Ro
   requireReview(db, orgId, importId);
   const cond = FILTER_SQL[filter];
   let validity = '1=1';
-  if (decision === 'apply') validity = "product_id IS NOT NULL AND new_cost_cents IS NOT NULL AND flags NOT LIKE '% dup %'";
-  if (decision === 'create') validity = "product_id IS NULL AND new_cost_cents IS NOT NULL AND flags NOT LIKE '% dup %'";
+  if (decision === 'apply') validity = "product_id IS NOT NULL AND new_cost_cents IS NOT NULL AND flags NOT LIKE '% dup %' AND flags NOT LIKE '% currency %'";
+  if (decision === 'create') validity = "product_id IS NULL AND new_cost_cents IS NOT NULL AND flags NOT LIKE '% dup %' AND flags NOT LIKE '% currency %'";
   const r = db.prepare(`UPDATE import_rows SET decision = ? WHERE import_id = ? AND org_id = ? AND (${cond}) AND ${validity}`).run(decision, importId, orgId);
   refreshStats(db, orgId, importId);
   return r.changes;
@@ -584,7 +626,7 @@ export function linkRow(db: DB, orgId: number, importId: number, rowId: number, 
   const supplier = getSupplier(db, orgId, imp.supplier_id)!;
   const settings = getSettings(db, orgId);
   const priced = priceItem(row.list_price, row.pack_qty, product, supplier, settings);
-  const flags = flagsFor(priced, product, row.flags.includes(' dup '), supplier, settings);
+  const flags = flagsFor(priced, product, row.flags.includes(' dup '), supplier, settings, false, row.flags.includes(' currency '));
   db.prepare(
     `UPDATE import_rows SET product_id = ?, match_type = 'manual', old_cost_cents = ?, new_cost_cents = ?, old_price_cents = ?, new_price_cents = ?, flags = ?, decision = ?
      WHERE id = ? AND org_id = ?`,
