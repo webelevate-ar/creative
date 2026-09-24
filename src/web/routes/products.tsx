@@ -21,7 +21,8 @@ import { listSuppliers } from '../../services/suppliers.js';
 import { buildExport, catalogRows, exportFileName } from '../../services/exports.js';
 import { getSettings } from '../../services/settings.js';
 import { changeRatio, formatDate, formatDateTime, formatInt } from '../../lib/money.js';
-import { FileFormatError, readWorkbook, type Cell } from '../../lib/sheet.js';
+import { FileFormatError, type Cell } from '../../lib/sheet.js';
+import { parseFile } from '../../lib/parse.js';
 import { track } from '../../lib/events.js';
 import { ImportError } from '../../services/imports.js';
 
@@ -282,7 +283,7 @@ productRoutes.post('/importar', async (c) => {
   }
   const buf = Buffer.from(await file.arrayBuffer());
   try {
-    const wb = await readWorkbook(file.name, buf);
+    const wb = await parseFile(file.name, buf);
     if (wb.kind === 'pdf') throw new FileFormatError('Para tus productos usá Excel o CSV (el PDF es para listas de proveedores).');
   } catch (err) {
     if (err instanceof FileFormatError) {
@@ -304,7 +305,7 @@ async function loadCatalogUpload(c: Parameters<typeof requireUser>[0]) {
     | { id: number; file_name: string; file_blob: Buffer }
     | undefined;
   if (!row) return null;
-  const wb = await readWorkbook(row.file_name, row.file_blob);
+  const wb = await parseFile(row.file_name, row.file_blob);
   const sheetName = c.req.query('hoja');
   const sheet = wb.sheets.find((s) => s.name === sheetName) ?? wb.sheets.reduce((a, b) => (b.rows.length > a.rows.length ? b : a));
   return { row, wb, sheet };

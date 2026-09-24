@@ -131,8 +131,28 @@ tbody tr:hover { background: #fafbfa; }
 th.r, td.r { text-align: right; }
 .row--muted td { color: var(--muted); }
 .row--bad td { background: #fff7f6; }
-table.review td:nth-child(2) { min-width: 220px; }
-.rowaction { display: flex; flex-direction: column; gap: 4px; min-width: 150px; }
+table.review td:nth-child(2) { min-width: 200px; }
+table.review td .small { font-weight: 400; }
+.flags:empty { display: none; }
+.flags { margin-bottom: 4px; }
+.rowaction { display: flex; flex-direction: column; gap: 4px; min-width: 140px; max-width: 200px; }
+/* Review rows become cards on phones: every value visible without horizontal scroll. */
+@media (max-width: 720px) {
+  table.review thead { display: none; }
+  table.review, table.review tbody, table.review tr, table.review td { display: block; width: 100%; }
+  table.review tr { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; padding: 6px 4px; background: var(--surface); }
+  table.review td { border: 0; padding: 4px 8px; text-align: left; display: flex; justify-content: space-between; gap: 12px; min-width: 0; }
+  table.review td > * { text-align: right; }
+  table.review td::before { content: attr(data-label); font-weight: 600; color: var(--muted); font-size: 0.8rem; flex: 0 0 auto; }
+  table.review td[data-label='Descripción'] { display: block; }
+  table.review td[data-label='Descripción']::before { display: block; }
+  table.review td[data-label='Descripción'] > * { text-align: left; }
+  table.review td.r { text-align: left; }
+  table.review td:last-child { display: block; }
+  table.review td:last-child::before { display: block; margin-bottom: 4px; }
+  table.review td:last-child > * { text-align: left; }
+  .rowaction { max-width: none; }
+}
 .rowaction select { min-height: 32px; padding: 4px 6px; font-size: 0.86rem; }
 .preview th.hl, .preview td.hl { background: #fff8db; }
 .hl__tag { display: block; font-size: 0.7rem; color: var(--brand); text-transform: none; }
@@ -166,6 +186,7 @@ a.stat:hover { border-color: var(--brand); color: var(--text); }
 .appnav a { padding: 8px 10px; border-radius: 6px; text-decoration: none; color: var(--muted); font-weight: 600; white-space: nowrap; }
 .appnav a[aria-current='page'] { background: #e5f1ef; color: var(--brand); }
 .appbar__user { display: flex; gap: 12px; align-items: center; font-size: 0.9rem; margin-left: auto; }
+.appbar__user form { margin: 0; display: flex; }
 .appbar__org { color: var(--text); text-decoration: none; font-weight: 600; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar__nav { display: flex; gap: 14px; align-items: center; margin-left: auto; flex-wrap: wrap; }
 .topbar__nav a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 600; }

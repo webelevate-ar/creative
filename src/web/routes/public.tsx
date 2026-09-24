@@ -26,7 +26,6 @@ const DemoTable = () => (
           <tr>
             <th>Código</th>
             <th>Descripción</th>
-            <th class="r">Costo nuevo</th>
             <th class="r">Var.</th>
             <th class="r">Precio nuevo</th>
             <th>Alertas</th>
@@ -38,7 +37,6 @@ const DemoTable = () => (
               <code>TOR-0112</code>
             </td>
             <td>Tornillo autoperforante 8x1/2 (x100)</td>
-            <td class="r num">$ 3.166,45</td>
             <td class="r">
               <span class="change change--up num">+7,2 %</span>
             </td>
@@ -50,7 +48,6 @@ const DemoTable = () => (
               <code>LLA-0040</code>
             </td>
             <td>Llave combinada 13mm</td>
-            <td class="r num">$ 9.870,00</td>
             <td class="r">
               <span class="change change--up num">+18,0 %</span>
             </td>
@@ -64,11 +61,10 @@ const DemoTable = () => (
               <code>CIN-0007</code>
             </td>
             <td>Cinta aisladora 20m</td>
-            <td class="r num">$ 1.254.300,00</td>
             <td class="r">
               <span class="change change--up num">+99.900,0 %</span>
             </td>
-            <td class="r num strong">—</td>
+            <td class="r num muted">$ 2.137.910,00</td>
             <td>
               <span class="badge badge--warn">¿Error en la lista?</span>
             </td>

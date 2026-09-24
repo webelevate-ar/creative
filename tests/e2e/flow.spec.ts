@@ -2,9 +2,9 @@ import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { hardwareItems, nextVersion, tornilloXlsx } from '../../src/services/sample-data.js';
 
-const shot = async (page: Page, name: string) => {
+const shot = async (page: Page, name: string, fullPage = false) => {
   const project = test.info().project.name;
-  await page.screenshot({ path: `docs/screenshots/${project}-${name}.png`, fullPage: true });
+  await page.screenshot({ path: `docs/screenshots/${project}-${name}.png`, fullPage });
 };
 
 async function signup(page: Page, email: string) {
@@ -25,7 +25,7 @@ test('landing explains the product without fake social proof', async ({ page }) 
   // No horizontal page scroll at this viewport.
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
-  await shot(page, 'landing');
+  await shot(page, 'landing', true);
 });
 
 test('signup validation shows field errors', async ({ page }) => {
@@ -71,6 +71,8 @@ test('full flow: demo data → upload list → map → review → apply → expo
   await expect(toApply).toBeEnabled();
   await expect(page.locator('.stat--bad')).toBeVisible(); // some products are sold below the new cost
   await shot(page, 'review');
+  await page.locator('table.review').scrollIntoViewIfNeeded();
+  await shot(page, 'review-table');
 
   // Look at the new products and create them.
   await page.getByRole('link', { name: 'Nuevos' }).click();

@@ -7,7 +7,8 @@ import type { DB } from '../db/index.js';
 import { applySavedMapping, detectColumns, extractRows, toSavedMapping, type ColumnMapping, type Detection } from '../lib/detect.js';
 import { normalizeCode, normalizeSearch } from '../lib/match.js';
 import { computeCost, computeSalePrice, marginOnPrice, roundUpTo } from '../lib/pricing.js';
-import { readWorkbook, type Cell, type Workbook } from '../lib/sheet.js';
+import { type Cell, type Workbook } from '../lib/sheet.js';
+import { parseFile } from '../lib/parse.js';
 import { toCents } from '../lib/money.js';
 import { getSupplier, priceModeFor, rulesFor, saveSupplierMapping, type Supplier } from './suppliers.js';
 import { getSettings, type OrgSettings } from './settings.js';
@@ -113,7 +114,7 @@ export async function loadWorkbook(db: DB, imp: ImportRecord): Promise<Workbook>
   if (cached) return cached;
   const row = db.prepare('SELECT file_blob FROM imports WHERE id = ? AND org_id = ?').get(imp.id, imp.org_id) as { file_blob: Buffer | null } | undefined;
   if (!row?.file_blob) throw new ImportError('El archivo original ya no está disponible.');
-  const wb = await readWorkbook(imp.file_name, row.file_blob);
+  const wb = await parseFile(imp.file_name, row.file_blob);
   cacheWorkbook(imp.id, wb);
   return wb;
 }
@@ -147,7 +148,7 @@ export async function createImport(
 ): Promise<{ importId: number; autoMapped: boolean }> {
   const supplier = getSupplier(db, orgId, supplierId);
   if (!supplier || supplier.archived) throw new ImportError('Elegí un proveedor válido.');
-  const wb = await readWorkbook(fileName, buf); // throws FileFormatError with a friendly message
+  const wb = await parseFile(fileName, buf); // throws FileFormatError with a friendly message
   if (!wb.sheets.some((s) => s.rows.length > 0)) throw new ImportError('No encontramos datos en el archivo.');
   const saved = supplier.mapping_json ? (JSON.parse(supplier.mapping_json) as ReturnType<typeof toSavedMapping>) : null;
   const sheet = bestSheet(wb, saved?.sheetName);

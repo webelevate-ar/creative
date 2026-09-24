@@ -18,6 +18,39 @@ export const MAX_FILE_BYTES = 12 * 1024 * 1024;
 
 export class FileFormatError extends Error {}
 
+/** Max total uncompressed size of an xlsx/ods (zip) file. Real 60k-row lists are far below this. */
+export const MAX_UNZIPPED_BYTES = 250 * 1024 * 1024;
+
+/**
+ * Reads the zip central directory and returns the declared total uncompressed size,
+ * so a small "zip bomb" is rejected before the spreadsheet parser inflates it.
+ * Returns null when the directory cannot be read (the parser will then fail on its own).
+ */
+export function zipUncompressedSize(buf: Uint8Array): { total: number; entries: number; zip64: boolean } | null {
+  const view = new DataView(buf.buffer, buf.byteOffset, buf.byteLength);
+  const min = Math.max(0, buf.byteLength - 22 - 0xffff);
+  let eocd = -1;
+  for (let i = buf.byteLength - 22; i >= min; i--) {
+    if (view.getUint32(i, true) === 0x06054b50) {
+      eocd = i;
+      break;
+    }
+  }
+  if (eocd < 0) return null;
+  const count = view.getUint16(eocd + 10, true);
+  let offset = view.getUint32(eocd + 16, true);
+  if (count === 0xffff || offset === 0xffffffff) return { total: Infinity, entries: count, zip64: true };
+  let total = 0;
+  for (let n = 0; n < count; n++) {
+    if (offset + 46 > buf.byteLength || view.getUint32(offset, true) !== 0x02014b50) return null;
+    const size = view.getUint32(offset + 24, true);
+    if (size === 0xffffffff) return { total: Infinity, entries: count, zip64: true };
+    total += size;
+    offset += 46 + view.getUint16(offset + 28, true) + view.getUint16(offset + 30, true) + view.getUint16(offset + 32, true);
+  }
+  return { total, entries: count, zip64: false };
+}
+
 type Kind = Workbook['kind'];
 
 export function detectKind(fileName: string, buf: Uint8Array): Kind | null {
@@ -141,6 +174,12 @@ function readCsv(buf: Uint8Array): Workbook {
 }
 
 function readSpreadsheet(buf: Uint8Array, kind: Kind): Workbook {
+  if (kind === 'xlsx' || kind === 'ods') {
+    const z = zipUncompressedSize(buf);
+    if (z && (z.total > MAX_UNZIPPED_BYTES || z.entries > 5000)) {
+      throw new FileFormatError('El archivo es demasiado grande una vez descomprimido. Si es una lista real, dividila en partes o escribinos.');
+    }
+  }
   let wb: XLSX.WorkBook;
   try {
     wb = XLSX.read(buf, { type: 'buffer', cellDates: false, cellFormula: false, cellHTML: false, sheetRows: MAX_ROWS + 1 });

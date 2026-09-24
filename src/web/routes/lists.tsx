@@ -185,6 +185,12 @@ function loadImport(c: Ctx): ImportRecord | null {
   return id ? getImport(c.var.deps.db, requireUser(c).orgId, id) : null;
 }
 
+const LIST_NUM = new Intl.NumberFormat('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+function listPriceText(price: number | null, currency: 'ARS' | 'USD', raw: string): string {
+  if (price == null) return raw || '—';
+  return `${currency === 'USD' ? 'US$' : '$'} ${LIST_NUM.format(price)}`;
+}
+
 const FLAG_LABEL: Record<string, { text: string; tone: 'up' | 'down' | 'warn' | 'info' | 'neutral'; title: string }> = {
   suspect: { text: '¿Error en la lista?', tone: 'warn', title: 'El costo cambia más de 5 veces: posible error de decimales, de unidad o de código.' },
   up_big: { text: 'Subió mucho', tone: 'up', title: 'Supera el umbral de cambio grande de tus ajustes.' },
@@ -338,7 +344,7 @@ listRoutes.get('/:id', async (c) => {
   const filter: RowFilter = isRowFilter(filterQ) ? filterQ : 'apply';
   const q = (c.req.query('q') ?? '').slice(0, 80);
   const page = intParam(c.req.query('page')) ?? 1;
-  const rows = listRows(db, user.orgId, imp.id, { filter, q, page, pageSize: 100 });
+  const rows = listRows(db, user.orgId, imp.id, { filter, q, page, pageSize: 50 });
   const base = `/app/listas/${imp.id}`;
   const params = { ver: filter, q };
   const here = pageHref(base, params, page);
@@ -477,44 +483,46 @@ listRoutes.get('/:id', async (c) => {
                     <tr>
                       <th>Código prov.</th>
                       <th>Descripción</th>
-                      <th class="r">Precio lista</th>
-                      <th class="r">Costo actual</th>
-                      <th class="r">Costo nuevo</th>
+                      <th class="r">Costo</th>
                       <th class="r">Var.</th>
-                      <th class="r">Precio actual</th>
-                      <th class="r">Precio nuevo</th>
-                      <th>Alertas</th>
-                      <th>{review ? 'Acción' : 'Estado'}</th>
+                      <th class="r">Precio de venta</th>
+                      <th>{review ? 'Alertas y acción' : 'Alertas y estado'}</th>
                     </tr>
                   </thead>
                   <tbody>
                     {rows.rows.map((r) => (
                       <tr class={r.decision === 'skip' ? 'row--muted' : ''}>
-                        <td>
+                        <td data-label="Código">
                           <code>{r.raw_code}</code>
-                          {r.product_code && r.product_code !== r.raw_code ? <div class="small muted">Tu código: {r.product_code}</div> : null}
+                          {r.product_code && r.product_code !== r.raw_code ? <div class="small muted">Tuyo: {r.product_code}</div> : null}
                         </td>
-                        <td>{r.description || r.product_description}</td>
-                        <td class="r num">{r.raw_price}</td>
-                        <td class="r">
-                          <Money cents={r.old_cost_cents} />
+                        <td data-label="Descripción">
+                          {r.description || r.product_description}
+                          <div class="small muted">Lista: {listPriceText(r.list_price, supplier.currency, r.raw_price)}</div>
                         </td>
-                        <td class="r">
+                        <td class="r" data-label="Costo">
                           <Money cents={r.new_cost_cents} />
+                          <div class="small muted">
+                            antes <Money cents={r.old_cost_cents} />
+                          </div>
                         </td>
-                        <td class="r">
+                        <td class="r" data-label="Variación">
                           <Change ratio={changeRatio(r.old_cost_cents, r.new_cost_cents)} />
                         </td>
-                        <td class="r">
-                          <Money cents={r.old_price_cents} />
+                        <td class="r" data-label="Precio">
+                          <span class="strong">
+                            <Money cents={r.new_price_cents} />
+                          </span>
+                          <div class="small muted">
+                            antes <Money cents={r.old_price_cents} />
+                          </div>
                         </td>
-                        <td class="r strong">
-                          <Money cents={r.new_price_cents} />
+                        <td data-label={review ? 'Acción' : 'Estado'}>
+                          <div class="flags">
+                            <Flags flags={r.flags} />
+                          </div>
+                          {review ? <RowAction base={base} csrf={user.csrf} row={r} back={here} /> : <DecisionText row={r} />}
                         </td>
-                        <td>
-                          <Flags flags={r.flags} />
-                        </td>
-                        <td>{review ? <RowAction base={base} csrf={user.csrf} row={r} back={here} /> : <DecisionText row={r} />}</td>
                       </tr>
                     ))}
                   </tbody>

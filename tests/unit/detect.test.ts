@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { applySavedMapping, detectColumns, extractRows, toSavedMapping } from '../../src/lib/detect.js';
-import { detectDelimiter, parseCsv, readWorkbook } from '../../src/lib/sheet.js';
+import { detectDelimiter, parseCsv, readWorkbook, zipUncompressedSize } from '../../src/lib/sheet.js';
 import { normalizeCode } from '../../src/lib/match.js';
 import { hardwareItems, headerlessXlsx, mayoristaPdf, nextVersion, simplePdf, tornilloXlsx } from '../../scripts/make-fixtures.js';
 
@@ -101,6 +101,23 @@ describe('readWorkbook + detectColumns on realistic supplier files', () => {
     const { items } = extractRows(rows, detectColumns(rows));
     expect(items).toHaveLength(v2.length);
     expect(items.find((i) => i.code === 'TOR-9001')).toBeTruthy();
+  });
+});
+
+describe('zip bomb protection', () => {
+  it('reads the declared uncompressed size of a real xlsx', () => {
+    const z = zipUncompressedSize(tornilloXlsx(hardwareItems(50)))!;
+    expect(z.zip64).toBe(false);
+    expect(z.total).toBeGreaterThan(1000);
+    expect(z.total).toBeLessThan(5_000_000);
+  });
+
+  it('rejects a small file that declares a huge uncompressed size', async () => {
+    const buf = Buffer.from(tornilloXlsx(hardwareItems(5)));
+    // Patch the first central directory entry to claim 1 GB uncompressed.
+    const cd = buf.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+    buf.writeUInt32LE(1024 * 1024 * 1024, cd + 24);
+    await expect(readWorkbook('bomb.xlsx', buf)).rejects.toThrow(/demasiado grande una vez descomprimido/);
   });
 });
 
