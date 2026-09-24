@@ -1,0 +1,12 @@
+node_modules/
+dist/
+data/
+*.sqlite
+*.sqlite-*
+.env
+.env.*
+!.env.example
+test-results/
+playwright-report/
+coverage/
+.e2e-data/
