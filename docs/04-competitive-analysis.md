@@ -43,3 +43,12 @@
   but they start from a clean catalog; the upstream list processing is our same core. Keep as expansion.
 - **#13 Installer quotes:** construction/quote tools exist; buyer fragmented; depends on price data we'd
   have anyway. Later adjacency.
+
+## 5. Counter-evidence check after building (rule 21)
+Searched again for a neutral "update prices from supplier lists without changing your system" tool:
+- Found more ERPs advertising supplier-tariff import (Flexxus, Multiplo/Daemon4, Galdón and Verial — the last two Spanish) and
+  **"POS Ferretería — Software POS para ferreterías con IA"** ([posferreteria.com](https://posferreteria.com/)); its site returned
+  HTTP 503 when fetched, so its capabilities are **UNVERIFIED**. It is a POS (replacement), not a neutral add-on.
+- Multilistas' own description confirms its model: "cargás las listas Excel cada vez que recibís una actualización" inside its system.
+- **Conclusion:** still no neutral, multi-format (PDF included) add-on found; but "POS + AI import" is appearing, which raises
+  R3 (incumbents catch up). The window is real but time-limited → speed of validation matters more than more features.

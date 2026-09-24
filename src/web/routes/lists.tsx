@@ -439,10 +439,17 @@ listRoutes.get('/:id', async (c) => {
                   dólar) o la columna de precio elegida.
                 </Alert>
               ) : null}
-              {stats.matched === 0 ? (
+              {stats.matched === 0 && stats.unmatched > 0 ? (
                 <Alert kind="warn">
-                  Ningún producto de la lista coincide con tu catálogo. Si tus productos tienen el código del proveedor cargado, revisá que la columna de código sea la
-                  correcta. Si no, vinculalos desde la pestaña "Nuevos" o crealos.
+                  <p>
+                    Ningún producto de esta lista está en tu catálogo todavía. Si ya cargaste tus productos con el código del proveedor, revisá que la columna de código
+                    sea la correcta.
+                  </p>
+                  <p>
+                    <strong>¿Primera lista de este proveedor?</strong> Creá tus productos a partir de ella (con tu margen general). Desde la próxima lista, Remarcá te
+                    muestra qué cambió y cuánto.
+                  </p>
+                  <BulkButton base={base} csrf={user.csrf} filter="new" decision="create" label={`Crear los ${formatInt(stats.unmatched)} productos desde esta lista`} back={pageHref(base, { ver: 'apply' }, 1)} />
                 </Alert>
               ) : null}
             </section>
@@ -697,7 +704,9 @@ listRoutes.post('/:id/aplicar', async (c) => {
   track(db, 'list_applied', user.orgId, user.userId, { updated: r.updated, created: r.created });
   setFlash(c, {
     kind: r.limitReached ? 'warn' : 'ok',
-    text: `Precios actualizados: ${formatInt(r.updated)} productos${r.created ? `, ${formatInt(r.created)} creados` : ''}.${r.limitReached ? ' Algunos no se crearon por el límite de tu plan.' : ''}`,
+    text: `${
+      r.updated ? `Precios actualizados: ${formatInt(r.updated)} productos${r.created ? `, ${formatInt(r.created)} creados` : ''}.` : `Se crearon ${formatInt(r.created)} productos.`
+    }${r.limitReached ? ' Algunos no se crearon por el límite de tu plan.' : ''}`,
   });
   return c.redirect(`/app/listas/${imp.id}`);
 });

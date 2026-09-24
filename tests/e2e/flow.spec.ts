@@ -151,3 +151,23 @@ test('bad file shows a friendly error and nothing breaks', async ({ page }) => {
   await page.getByRole('button', { name: 'Subir y analizar' }).click();
   await expect(page.getByText('No pudimos leer el archivo')).toBeVisible();
 });
+
+test('no catalog yet: create products from the first list, then the next list shows changes', async ({ page }) => {
+  await signup(page, `e2e-nocat-${test.info().project.name}-${Date.now()}@example.com`);
+  await page.goto('/app/proveedores/nuevo');
+  await page.getByLabel('Nombre del proveedor').fill('Distribuidora Nueva');
+  await page.getByRole('button', { name: 'Crear proveedor' }).click();
+  const v1 = hardwareItems(40, 21);
+  await page.getByLabel('Archivo de la lista').setInputFiles({ name: 'anterior.xlsx', mimeType: 'application/octet-stream', buffer: tornilloXlsx(v1) });
+  await page.getByRole('button', { name: 'Subir y analizar' }).click();
+  await page.getByRole('button', { name: 'Confirmar columnas y calcular' }).click();
+  await page.getByRole('button', { name: 'Crear los 40 productos desde esta lista' }).click();
+  page.once('dialog', (d) => d.accept());
+  await page.getByRole('button', { name: 'Aplicar 40 cambios' }).click();
+  await expect(page.getByText('Se crearon 40 productos.')).toBeVisible();
+  await page.goto('/app/listas/nueva');
+  await page.getByLabel('Archivo de la lista').setInputFiles({ name: 'nueva.xlsx', mimeType: 'application/octet-stream', buffer: tornilloXlsx(nextVersion(v1)) });
+  await page.getByRole('button', { name: 'Subir y analizar' }).click();
+  await expect(page.getByText('Reconocimos el formato de este proveedor')).toBeVisible();
+  await expect(page.locator('.stat--up .stat__value')).not.toHaveText('0');
+});
