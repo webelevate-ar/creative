@@ -60,6 +60,17 @@ describe('readWorkbook + detectColumns on realistic supplier files', () => {
     expect(extractRows(wb.sheets[0]!.rows, d).items).toHaveLength(60);
   });
 
+  it('does not take a description column as the code because its header says "Artículo" (real PDF, docs/20 §5)', () => {
+    const rows = [
+      [null, 'Artículo', 'Precio'],
+      ['0127280', 'RETEN BANCADA ORIG 90X110X7 306-405', '22.890,00'],
+      ['0127450', 'RETEN BANCADA 90X10X7', '27.512,47'],
+      ['0127490O', 'RETEN CIGUEÑAL 85X105-88 DV6', '26.993,37'],
+      ['0137020', 'SOPORTE ELASTICO COLECTOR DE MOTOR DW8', '2.778,35'],
+      ['0203740', 'RETEN ARBOL LEVAS ORIG ECS 39X50-92 207/307', '19.466,37'],
+    ];
+    expect(detectColumns(rows)).toMatchObject({ headerRow: 0, code: 0, description: 1, price: 2 });
+  });
   it('re-applies a saved mapping when the supplier moves columns', async () => {
     const v1 = (await readWorkbook('a.xlsx', tornilloXlsx(hardwareItems(50)))).sheets[0]!.rows;
     const saved = toSavedMapping(detectColumns(v1), v1);

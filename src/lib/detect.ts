@@ -189,7 +189,10 @@ export function detectColumns(rows: Cell[][]): Detection {
     const uniqueness = st.unique / st.nonEmpty;
     if (st.avgLen > 30 || uniqueness < 0.85) return -1;
     let s = uniqueness * 2 + (st.withDigit / st.nonEmpty) - st.withSpace / st.nonEmpty;
-    if (rolesByHeader[c]!.has('code')) s += 3;
+    // Long texts with spaces are descriptions even under a code-like header ("Artículo" printed above the
+    // description column in a real PDF list, docs/20 §5).
+    const descriptionLike = st.withSpace / st.nonEmpty > 0.5 && st.avgLen > 20;
+    if (rolesByHeader[c]!.has('code') && !descriptionLike) s += 3;
     if (rolesByHeader[c]!.has('description') && !rolesByHeader[c]!.has('code')) s -= 2;
     return s;
   };
