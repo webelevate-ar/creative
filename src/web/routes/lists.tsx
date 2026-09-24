@@ -441,6 +441,12 @@ listRoutes.get('/:id', async (c) => {
                   dólar) o la columna de precio elegida.
                 </Alert>
               ) : null}
+              {stats.skippedRows > 0 ? (
+                <Alert kind="info">
+                  {formatInt(stats.skippedRows)} filas del archivo no se leyeron porque no tienen código en la columna elegida (títulos, notas o productos sin código).
+                  Si son productos, descartá esta lista y subila de nuevo eligiendo otra columna de código.
+                </Alert>
+              ) : null}
               {stats.matched === 0 && stats.unmatched > 0 ? (
                 <Alert kind="warn">
                   <p>

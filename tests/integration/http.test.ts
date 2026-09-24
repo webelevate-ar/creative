@@ -404,3 +404,14 @@ describe('team invitations', () => {
     expect(db.prepare('SELECT COUNT(*) FROM users WHERE id = ?').pluck().get(aId)).toBe(1);
   });
 });
+
+describe('list review', () => {
+  it('tells the user how many file rows were not read (rows without a code, docs/20 §5)', async () => {
+    const a = new Agent();
+    const { importId } = await setupStoreWithAppliedList(a, 'skipped@test.com');
+    const skipped = JSON.parse(db.prepare('SELECT stats_json FROM imports WHERE id = ?').pluck().get(importId) as string).skippedRows as number;
+    expect(skipped).toBeGreaterThan(0); // the fixture has category titles and a footer
+    const html = await (await a.req(`/app/listas/${importId}`)).text();
+    expect(html).toContain(`${skipped} filas del archivo no se leyeron`);
+  });
+});
