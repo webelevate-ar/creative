@@ -1,5 +1,24 @@
 # 18 — Final Report: Remarcá
 
+> ## Status update after the real-world benchmark (2026-09-24) — read [`20-real-world-benchmark.md`](20-real-world-benchmark.md)
+> Measured on public Argentine supplier price lists: 48,262 spreadsheet rows and 42 supplier PDFs, 6 sources, checked
+> against an independent reader and manual labels.
+> - **Spreadsheets:** 7/7 imported correctly; 1 needs the user to pick the code column.
+> - **PDFs:** 1/6 lists correct. The "PDF too" differentiator is **not supported** for real layouts.
+> - **Per-row currency and IVA** exist in 2 of 3 electrical sources. Remarcá has one currency and one IVA rate per
+>   supplier:
+>   - dollar rows are now held instead of being created 1,535× too cheap;
+>   - 10.5% IVA items are still priced 9.5% too high, silently.
+> - **Matching:**
+>   - reliable when the next list of the same supplier keeps its codes: 10,229/10,229, 0 wrong;
+>   - across suppliers only through a shared manufacturer code: 1 incorrect and 5 ambiguous in 170;
+>   - not by description.
+> - **Six errors found on real data were fixed** with regression tests (20, table at the top), including code
+>   collisions that applied a price to the wrong product.
+>
+> The verdict below and in 19 does **not** improve. The product works on clean spreadsheets with codes; the narrower
+> promise for any pilot is "spreadsheets with codes, one currency". Test count is now 91 unit/integration + 13 E2E.
+
 > ## ⚠️ Status update after the commercial red team (2026-09-24) — read [`19-commercial-red-team.md`](19-commercial-red-team.md)
 > New evidence **changes the conclusions below**:
 > - The core capability is **not unique**: Multilistas (AR, same vertical) already imports supplier Excel "tal como te lo manda el proveedor", recognizes columns, previews and recalculates prices.

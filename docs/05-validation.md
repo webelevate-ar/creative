@@ -34,6 +34,7 @@ These are the founder's first tasks; the product was built so the tests use a wo
 - **Pass:** ≥3 of 5 pay, ≥2 renew at list price in month 2. **Kill:** <2 pay.
 
 ### Test C — Format coverage
+- **Partially run with public lists instead of store files (2026-09-24): see [`20-real-world-benchmark.md`](20-real-world-benchmark.md).** Spreadsheets 7/7; PDFs 1/6. Test C with files from real stores is still pending.
 - Collect 30+ real supplier files (with permission). Measure auto-detection success (header + code +
   price column correct with no manual mapping). Target ≥80% for Excel/CSV; report PDF separately.
 

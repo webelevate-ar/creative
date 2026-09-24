@@ -1,0 +1,605 @@
+{
+ "description": "Gold standard (manual labels) for docs/20 §7/§9: Bulonera Camba, Sábana 30-08-2026. Same supplier code in the current list (Sheet1) and in the \"Codigos Viejos\" sheet, description changed. Question: is it still the same product? 100 random codes (seed 20260924) of 2,445 with a changed description. Labels by reading both descriptions (non-expert reviewer); AMBIGUOUS = a specification in the text changed.",
+ "codes": [
+  {
+   "n": 0,
+   "code": "1.9.125",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 1,
+   "code": "187.28.165",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 2,
+   "code": "102.16.140",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 3,
+   "code": "201.8.90",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 4,
+   "code": "315.22.90",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 5,
+   "code": "101.9.16",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 6,
+   "code": "24.9.50",
+   "label": "AMBIGUOUS",
+   "note": "head size differs (C34 vs CAB.35)"
+  },
+  {
+   "n": 7,
+   "code": "22.6.12",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 8,
+   "code": "92.8.45",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 9,
+   "code": "235.14.63",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (WTH vs UNC)"
+  },
+  {
+   "n": 10,
+   "code": "22.10.170",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 11,
+   "code": "6.12.55",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 12,
+   "code": "9.5.76",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 13,
+   "code": "235.12.90",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (WTH vs UNC)"
+  },
+  {
+   "n": 14,
+   "code": "22.8.120.TR",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 15,
+   "code": "21.22.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 16,
+   "code": "101.9.32",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 17,
+   "code": "19.14.150.110",
+   "label": "AMBIGUOUS",
+   "note": "pitch family differs (MB fine vs MA coarse)"
+  },
+  {
+   "n": 18,
+   "code": "20.19.250",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 19,
+   "code": "19.16.150.55",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 20,
+   "code": "1.19.110",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 21,
+   "code": "101.22.155",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 22,
+   "code": "22.10.90.ZP",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 23,
+   "code": "92.8.100",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 24,
+   "code": "341.10.25",
+   "label": "AMBIGUOUS",
+   "note": "head type wording differs (flange vs silo)"
+  },
+  {
+   "n": 25,
+   "code": "6.6.55",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 26,
+   "code": "101.16.56",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 27,
+   "code": "19.12.125.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 28,
+   "code": "292.18.250",
+   "label": "AMBIGUOUS",
+   "note": "finish differs (NAT vs OX)"
+  },
+  {
+   "n": 29,
+   "code": "21.6.16",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 30,
+   "code": "315.16.44",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 31,
+   "code": "290.32.G",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 32,
+   "code": "241.16.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 33,
+   "code": "241.8.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 34,
+   "code": "235.8.38",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (WTH vs UNC)"
+  },
+  {
+   "n": 35,
+   "code": "235.16.100",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (WTH vs UNC)"
+  },
+  {
+   "n": 36,
+   "code": "22.5.25",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 37,
+   "code": "1.22.63",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 38,
+   "code": "201.6.25",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 39,
+   "code": "16.10.150",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 40,
+   "code": "22.27.170",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 41,
+   "code": "95.8.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 42,
+   "code": "90.16.63",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 43,
+   "code": "2.16.225",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 44,
+   "code": "315.25.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 45,
+   "code": "19.20.150.65",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 46,
+   "code": "20.6.90",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 47,
+   "code": "241.12.45",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 48,
+   "code": "322.22.70",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 49,
+   "code": "201.16.56",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 50,
+   "code": "24.6.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 51,
+   "code": "315.12.100",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 52,
+   "code": "21.16.100",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 53,
+   "code": "1.12.90",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (USS vs BSW)"
+  },
+  {
+   "n": 54,
+   "code": "22.10.150.TR",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 55,
+   "code": "21.8.16",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 56,
+   "code": "22.12.30.ZP",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 57,
+   "code": "22.12.30",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 58,
+   "code": "90.19.63",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 59,
+   "code": "2.9.155",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 60,
+   "code": "102.8.125",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 61,
+   "code": "102.12.44",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (unstated vs BSW)"
+  },
+  {
+   "n": 62,
+   "code": "1.12.200",
+   "label": "AMBIGUOUS",
+   "note": "thread standard and length differ (1/2x8 vs 1/2 x 7.1/2\")"
+  },
+  {
+   "n": 63,
+   "code": "1.9.63",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 64,
+   "code": "22.20.40",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 65,
+   "code": "90.12.25",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (unstated vs BSW)"
+  },
+  {
+   "n": 66,
+   "code": "20.13.82",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 67,
+   "code": "92.12.100",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 68,
+   "code": "22.33.200",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 69,
+   "code": "9.8.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 70,
+   "code": "201.6.19",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 71,
+   "code": "22.8.60.TR",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 72,
+   "code": "20.12.155",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 73,
+   "code": "322.16.76",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 74,
+   "code": "21.6.12",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 75,
+   "code": "92.10.100",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 76,
+   "code": "101.9.82",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 77,
+   "code": "92.20.55",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 78,
+   "code": "22.18.55",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 79,
+   "code": "92.12.60",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 80,
+   "code": "201.8.76",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 81,
+   "code": "1.12.38",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (USS vs BSW)"
+  },
+  {
+   "n": 82,
+   "code": "2.11.140",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 83,
+   "code": "21.25.90",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (SAE vs UNS)"
+  },
+  {
+   "n": 84,
+   "code": "315.22.76",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 85,
+   "code": "22.22.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 86,
+   "code": "90.6.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 87,
+   "code": "92.10.35",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 88,
+   "code": "315.9.125",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 89,
+   "code": "1.5.12",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 90,
+   "code": "11.38",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 91,
+   "code": "22.14.25",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 92,
+   "code": "1.12.70",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (USS vs BSW)"
+  },
+  {
+   "n": 93,
+   "code": "2.6.100",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 94,
+   "code": "22.12.20",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 95,
+   "code": "20.25.50",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 96,
+   "code": "2.12.63",
+   "label": "AMBIGUOUS",
+   "note": "thread standard differs (unstated vs BSW)"
+  },
+  {
+   "n": 97,
+   "code": "22.10.90.TR",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 98,
+   "code": "102.9.175",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  },
+  {
+   "n": 99,
+   "code": "101.9.90",
+   "label": "CORRECT",
+   "note": "same product, description rewritten (type, size and finish agree)"
+  }
+ ]
+}

@@ -1,0 +1,1597 @@
+{
+ "description": "Gold standard (manual labels) for docs/20 §7: AS Electricidad \"Cód.Alter\" vs Electricidad Juan B. Justo \"Código\", lists of Sep-2026. Labels assigned by reading both descriptions (non-expert reviewer). Sample: 170 random pairs with identical codes (seed 20260924, of 1254) + all 29 pairs equal only after ignoring punctuation/spaces.",
+ "pairs": [
+  {
+   "n": 0,
+   "as_alt_code": "KL04515N",
+   "jb_code": "KL04515N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 1,
+   "as_alt_code": "KL04044N",
+   "jb_code": "KL04044N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 2,
+   "as_alt_code": "KL04070N",
+   "jb_code": "KL04070N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 3,
+   "as_alt_code": "KL04073N",
+   "jb_code": "KL04073N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 4,
+   "as_alt_code": "KL04261N",
+   "jb_code": "KL04261N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 5,
+   "as_alt_code": "KL04105N",
+   "jb_code": "KL04105N",
+   "codes": "identical",
+   "label": "AMBIGUOUS",
+   "note": "same manufacturer code, descriptions contradict: \"acople recto\" vs \"codo interno\""
+  },
+  {
+   "n": 6,
+   "as_alt_code": "KL04295N",
+   "jb_code": "KL04295N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 7,
+   "as_alt_code": "KL04292N",
+   "jb_code": "KL04292N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 8,
+   "as_alt_code": "KL04294N",
+   "jb_code": "KL04294N",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 9,
+   "as_alt_code": "KL40582",
+   "jb_code": "KL40582",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 10,
+   "as_alt_code": "KL48042",
+   "jb_code": "KL48042",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 11,
+   "as_alt_code": "KL04002",
+   "jb_code": "KL04002",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 12,
+   "as_alt_code": "KL04283",
+   "jb_code": "KL04283",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 13,
+   "as_alt_code": "KL48886",
+   "jb_code": "KL48886",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 14,
+   "as_alt_code": "KD44600",
+   "jb_code": "KD44600",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 15,
+   "as_alt_code": "KDN44184",
+   "jb_code": "KDN44184",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 16,
+   "as_alt_code": "KS44201",
+   "jb_code": "KS44201",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 17,
+   "as_alt_code": "KDN44251",
+   "jb_code": "KDN44251",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 18,
+   "as_alt_code": "KS44620",
+   "jb_code": "KS44620",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 19,
+   "as_alt_code": "KS39650",
+   "jb_code": "KS39650",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 20,
+   "as_alt_code": "KS39655",
+   "jb_code": "KS39655",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 21,
+   "as_alt_code": "KL41607T",
+   "jb_code": "KL41607T",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 22,
+   "as_alt_code": "KL41629T",
+   "jb_code": "KL41629T",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 23,
+   "as_alt_code": "KL40127",
+   "jb_code": "KL40127",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 24,
+   "as_alt_code": "KL40180",
+   "jb_code": "KL40180",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 25,
+   "as_alt_code": "KD40100",
+   "jb_code": "KD40100",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 26,
+   "as_alt_code": "KD40101",
+   "jb_code": "KD40101",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 27,
+   "as_alt_code": "KL40123P",
+   "jb_code": "KL40123P",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 28,
+   "as_alt_code": "KS40339",
+   "jb_code": "KS40339",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 29,
+   "as_alt_code": "KD40252",
+   "jb_code": "KD40252",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 30,
+   "as_alt_code": "KD40246",
+   "jb_code": "KD40246",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 31,
+   "as_alt_code": "KS40248",
+   "jb_code": "KS40248",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 32,
+   "as_alt_code": "KL40240",
+   "jb_code": "KL40240",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 33,
+   "as_alt_code": "KL04517",
+   "jb_code": "KL04517",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 34,
+   "as_alt_code": "KD40710",
+   "jb_code": "KD40710",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 35,
+   "as_alt_code": "KS40760",
+   "jb_code": "KS40760",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 36,
+   "as_alt_code": "KS41566",
+   "jb_code": "KS41566",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 37,
+   "as_alt_code": "KS41533",
+   "jb_code": "KS41533",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 38,
+   "as_alt_code": "KS41530",
+   "jb_code": "KS41530",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 39,
+   "as_alt_code": "40103N/1",
+   "jb_code": "40103N/1",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 40,
+   "as_alt_code": "20003N/1",
+   "jb_code": "20003N/1",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 41,
+   "as_alt_code": "204R",
+   "jb_code": "204R",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 42,
+   "as_alt_code": "203U",
+   "jb_code": "203U",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 43,
+   "as_alt_code": "TRS25",
+   "jb_code": "TRS25",
+   "codes": "identical",
+   "label": "AMBIGUOUS",
+   "note": "second list names a colour variant (TRS25N) the first does not"
+  },
+  {
+   "n": 44,
+   "as_alt_code": "AR5010-01",
+   "jb_code": "AR5010-01",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 45,
+   "as_alt_code": "M8002-13",
+   "jb_code": "M8002-13",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 46,
+   "as_alt_code": "LR5100-01",
+   "jb_code": "LR5100-01",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 47,
+   "as_alt_code": "LR8120-02",
+   "jb_code": "LR8120-02",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 48,
+   "as_alt_code": "LR8120-28",
+   "jb_code": "LR8120-28",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 49,
+   "as_alt_code": "DR19022-13",
+   "jb_code": "DR19022-13",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 50,
+   "as_alt_code": "RG6320-02",
+   "jb_code": "RG6320-02",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 51,
+   "as_alt_code": "16320-11",
+   "jb_code": "16320-11",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 52,
+   "as_alt_code": "MC6611-08",
+   "jb_code": "MC6611-08",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 53,
+   "as_alt_code": "MC6612-16",
+   "jb_code": "MC6612-16",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 54,
+   "as_alt_code": "MC6612-02",
+   "jb_code": "MC6612-02",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 55,
+   "as_alt_code": "CC6611-28",
+   "jb_code": "CC6611-28",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 56,
+   "as_alt_code": "CC6612-26",
+   "jb_code": "CC6612-26",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 57,
+   "as_alt_code": "OS6810-52",
+   "jb_code": "OS6810-52",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 58,
+   "as_alt_code": "CR6302-72",
+   "jb_code": "CR6302-72",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 59,
+   "as_alt_code": "CJ6683-10",
+   "jb_code": "CJ6683-10",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 60,
+   "as_alt_code": "CJ6681-10",
+   "jb_code": "CJ6681-10",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 61,
+   "as_alt_code": "OS8910-52",
+   "jb_code": "OS8910-52",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 62,
+   "as_alt_code": "CR8802-37-56",
+   "jb_code": "CR8802-37-56",
+   "codes": "identical",
+   "label": "AMBIGUOUS",
+   "note": "descriptions contradict: floor lamp vs table lamp"
+  },
+  {
+   "n": 63,
+   "as_alt_code": "G6324-02",
+   "jb_code": "G6324-02",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 64,
+   "as_alt_code": "G6420-02",
+   "jb_code": "G6420-02",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 65,
+   "as_alt_code": "G6105-13",
+   "jb_code": "G6105-13",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 66,
+   "as_alt_code": "G6175-11",
+   "jb_code": "G6175-11",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 67,
+   "as_alt_code": "CR8822-13-41",
+   "jb_code": "CR8822-13-41",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 68,
+   "as_alt_code": "CR8822-13-42",
+   "jb_code": "CR8822-13-42",
+   "codes": "identical",
+   "label": "AMBIGUOUS",
+   "note": "descriptions contradict on shade colour (R vs NG)"
+  },
+  {
+   "n": 69,
+   "as_alt_code": "LR8800-02",
+   "jb_code": "LR8800-02",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 70,
+   "as_alt_code": "LR8800-30",
+   "jb_code": "LR8800-30",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 71,
+   "as_alt_code": "LR8700-28",
+   "jb_code": "LR8700-28",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 72,
+   "as_alt_code": "LR8700-26",
+   "jb_code": "LR8700-26",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 73,
+   "as_alt_code": "B21",
+   "jb_code": "B21",
+   "codes": "identical",
+   "label": "INCORRECT",
+   "note": "short generic code shared by two brands: adapter vs insulated terminal"
+  },
+  {
+   "n": 74,
+   "as_alt_code": "3SCQ-8-12-6",
+   "jb_code": "3SCQ-8-12-6",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 75,
+   "as_alt_code": "3SCQ-8-12-10",
+   "jb_code": "3SCQ-8-12-10",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 76,
+   "as_alt_code": "RT16-03",
+   "jb_code": "RT16-03",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 77,
+   "as_alt_code": "RU-16",
+   "jb_code": "RU-16",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 78,
+   "as_alt_code": "3SC8-115",
+   "jb_code": "3SC8-115",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 79,
+   "as_alt_code": "3SC8-150380",
+   "jb_code": "3SC8-150380",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 80,
+   "as_alt_code": "3SC8-225",
+   "jb_code": "3SC8-225",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 81,
+   "as_alt_code": "3SC8-3224",
+   "jb_code": "3SC8-3224",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 82,
+   "as_alt_code": "3SC8-40380",
+   "jb_code": "3SC8-40380",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 83,
+   "as_alt_code": "XH220CPZ",
+   "jb_code": "XH220CPZ",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 84,
+   "as_alt_code": "FT-16",
+   "jb_code": "FT-16",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 85,
+   "as_alt_code": "FE-06",
+   "jb_code": "FE-06",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 86,
+   "as_alt_code": "RT16-000100",
+   "jb_code": "RT16-000100",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 87,
+   "as_alt_code": "RT16-00050",
+   "jb_code": "RT16-00050",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 88,
+   "as_alt_code": "RT16-00063",
+   "jb_code": "RT16-00063",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 89,
+   "as_alt_code": "3SMD8-07",
+   "jb_code": "3SMD8-07",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 90,
+   "as_alt_code": "HS-313",
+   "jb_code": "HS-313",
+   "codes": "identical",
+   "label": "AMBIGUOUS",
+   "note": "crimping tool, stated ranges differ (0.25-6 vs 1-2.5)"
+  },
+  {
+   "n": 91,
+   "as_alt_code": "TSM8-4P 80",
+   "jb_code": "TSM8-4P 80",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 92,
+   "as_alt_code": "TS-MG3",
+   "jb_code": "TS-MG3",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 93,
+   "as_alt_code": "A60-SMD-5Y",
+   "jb_code": "A60-SMD-5Y",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 94,
+   "as_alt_code": "3SJK8-12-220",
+   "jb_code": "3SJK8-12-220",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 95,
+   "as_alt_code": "CPU-25",
+   "jb_code": "CPU-25",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 96,
+   "as_alt_code": "AD-22R",
+   "jb_code": "AD-22R",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 97,
+   "as_alt_code": "AD-22G",
+   "jb_code": "AD-22G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 98,
+   "as_alt_code": "BM-801",
+   "jb_code": "BM-801",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 99,
+   "as_alt_code": "DT201FT",
+   "jb_code": "DT201FT",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 100,
+   "as_alt_code": "HS05-16PZ",
+   "jb_code": "HS05-16PZ",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 101,
+   "as_alt_code": "SBN020-W-E",
+   "jb_code": "SBN020-W-E",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 102,
+   "as_alt_code": "SA-BA21",
+   "jb_code": "SA-BA21",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 103,
+   "as_alt_code": "SA-BA42",
+   "jb_code": "SA-BA42",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 104,
+   "as_alt_code": "MK3P-12VCC",
+   "jb_code": "MK3P-12VCC",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 105,
+   "as_alt_code": "MK3P-24VCA",
+   "jb_code": "MK3P-24VCA",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 106,
+   "as_alt_code": "MK3P-24VCC",
+   "jb_code": "MK3P-24VCC",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 107,
+   "as_alt_code": "MY4N-12VCA",
+   "jb_code": "MY4N-12VCA",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 108,
+   "as_alt_code": "3SR8-23-36",
+   "jb_code": "3SR8-23-36",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 109,
+   "as_alt_code": "3SR8-13-13",
+   "jb_code": "3SR8-13-13",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 110,
+   "as_alt_code": "RT18-20X",
+   "jb_code": "RT18-20X",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 111,
+   "as_alt_code": "RT18-32X",
+   "jb_code": "RT18-32X",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 112,
+   "as_alt_code": "SB-BG21",
+   "jb_code": "SB-BG21",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 113,
+   "as_alt_code": "COLORADO",
+   "jb_code": "COLORADO",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": "the \"code\" is a colour word (COLORADO); descriptions agree (25 mm ferrule)"
+  },
+  {
+   "n": 114,
+   "as_alt_code": "VERDE",
+   "jb_code": "VERDE",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": "the \"code\" is a colour word (VERDE); descriptions agree (6 mm ferrule)"
+  },
+  {
+   "n": 115,
+   "as_alt_code": "AD22DS-YVS",
+   "jb_code": "AD22DS-YVS",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 116,
+   "as_alt_code": "AD22-22M/R24",
+   "jb_code": "AD22-22M/R24",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 117,
+   "as_alt_code": "RU-10",
+   "jb_code": "RU-10",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 118,
+   "as_alt_code": "R4-11",
+   "jb_code": "R4-11",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 119,
+   "as_alt_code": "XP-RD12",
+   "jb_code": "XP-RD12",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 120,
+   "as_alt_code": "XP-RA15G",
+   "jb_code": "XP-RA15G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 121,
+   "as_alt_code": "PR4003",
+   "jb_code": "PR4003",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 122,
+   "as_alt_code": "PR816",
+   "jb_code": "PR816",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 123,
+   "as_alt_code": "PR995/67",
+   "jb_code": "PR995/67",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 124,
+   "as_alt_code": "PR1002/110",
+   "jb_code": "PR1002/110",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 125,
+   "as_alt_code": "PR1002/50",
+   "jb_code": "PR1002/50",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 126,
+   "as_alt_code": "PR1002/67",
+   "jb_code": "PR1002/67",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 127,
+   "as_alt_code": "PR1008/100",
+   "jb_code": "PR1008/100",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 128,
+   "as_alt_code": "PR1010/136",
+   "jb_code": "PR1010/136",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 129,
+   "as_alt_code": "PR997/75",
+   "jb_code": "PR997/75",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 130,
+   "as_alt_code": "PRG354",
+   "jb_code": "PRG354",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 131,
+   "as_alt_code": "PC4813",
+   "jb_code": "PC4813",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 132,
+   "as_alt_code": "PC7517",
+   "jb_code": "PC7517",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 133,
+   "as_alt_code": "CD-1515-8",
+   "jb_code": "CD-1515-8",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": "same box, dimensions in mm vs cm (150x150x80 vs 15x15x8)"
+  },
+  {
+   "n": 134,
+   "as_alt_code": "CD-2020-10",
+   "jb_code": "CD-2020-10",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": "same box, dimensions in mm vs cm"
+  },
+  {
+   "n": 135,
+   "as_alt_code": "CDE-4",
+   "jb_code": "CDE-4",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 136,
+   "as_alt_code": "CDE-6",
+   "jb_code": "CDE-6",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 137,
+   "as_alt_code": "PX10 2200",
+   "jb_code": "PX10 2200",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 138,
+   "as_alt_code": "LV300",
+   "jb_code": "LV300",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 139,
+   "as_alt_code": "G95-14-E27-WW",
+   "jb_code": "G95-14-E27-WW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 140,
+   "as_alt_code": "KG45-6-E27-WW",
+   "jb_code": "KG45-6-E27-WW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 141,
+   "as_alt_code": "KBL-15CW",
+   "jb_code": "KBL-15CW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 142,
+   "as_alt_code": "KBL-7CW",
+   "jb_code": "KBL-7CW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 143,
+   "as_alt_code": "LT-120",
+   "jb_code": "LT-120",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 144,
+   "as_alt_code": "EML-90",
+   "jb_code": "EML-90",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 145,
+   "as_alt_code": "PL-E27-PU",
+   "jb_code": "PL-E27-PU",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 146,
+   "as_alt_code": "KFL50-CW",
+   "jb_code": "KFL50-CW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 147,
+   "as_alt_code": "TPL-T8240-48-CW",
+   "jb_code": "TPL-T8240-48-CW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 148,
+   "as_alt_code": "TL-T8060WW",
+   "jb_code": "TL-T8060WW",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 149,
+   "as_alt_code": "02218PG",
+   "jb_code": "02218PG",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 150,
+   "as_alt_code": "22111106B",
+   "jb_code": "22111106B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 151,
+   "as_alt_code": "22111606B",
+   "jb_code": "22111606B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 152,
+   "as_alt_code": "22161611G",
+   "jb_code": "22161611G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 153,
+   "as_alt_code": "22161606G",
+   "jb_code": "22161606G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 154,
+   "as_alt_code": "22162111G",
+   "jb_code": "22162111G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 155,
+   "as_alt_code": "22162106B",
+   "jb_code": "22162106B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 156,
+   "as_alt_code": "22162108B",
+   "jb_code": "22162108B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 157,
+   "as_alt_code": "22212113B",
+   "jb_code": "22212113B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 158,
+   "as_alt_code": "22313113B",
+   "jb_code": "22313113B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 159,
+   "as_alt_code": "02216PN",
+   "jb_code": "02216PN",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 160,
+   "as_alt_code": "02215PB",
+   "jb_code": "02215PB",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 161,
+   "as_alt_code": "045004B",
+   "jb_code": "045004B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 162,
+   "as_alt_code": "045005G",
+   "jb_code": "045005G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 163,
+   "as_alt_code": "161225G",
+   "jb_code": "161225G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 164,
+   "as_alt_code": "162400G",
+   "jb_code": "162400G",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 165,
+   "as_alt_code": "154252300T",
+   "jb_code": "154252300T",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 166,
+   "as_alt_code": "155264500T",
+   "jb_code": "155264500T",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 167,
+   "as_alt_code": "JLJC1015",
+   "jb_code": "JLJC1015",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 168,
+   "as_alt_code": "141201B",
+   "jb_code": "141201B",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 169,
+   "as_alt_code": "M-16",
+   "jb_code": "M-16",
+   "codes": "identical",
+   "label": "CORRECT",
+   "note": ""
+  },
+  {
+   "n": 170,
+   "as_alt_code": "C-03",
+   "jb_code": "C03",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "water heater vs ring terminal"
+  },
+  {
+   "n": 171,
+   "as_alt_code": "C-05",
+   "jb_code": "C05",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "water heater vs ring terminal"
+  },
+  {
+   "n": 172,
+   "as_alt_code": "C-07",
+   "jb_code": "C07",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "water heater vs ring terminal"
+  },
+  {
+   "n": 173,
+   "as_alt_code": "C-02",
+   "jb_code": "C02",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "water heater vs ring terminal"
+  },
+  {
+   "n": 174,
+   "as_alt_code": "C-04",
+   "jb_code": "C04",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "water heater vs ring terminal"
+  },
+  {
+   "n": 175,
+   "as_alt_code": "E- 04",
+   "jb_code": "E-04",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "stove vs copper splice"
+  },
+  {
+   "n": 176,
+   "as_alt_code": "E- 06",
+   "jb_code": "E-06",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "stove vs copper splice"
+  },
+  {
+   "n": 177,
+   "as_alt_code": "A 02",
+   "jb_code": "A02",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "scaffold vs ring terminal"
+  },
+  {
+   "n": 178,
+   "as_alt_code": "B-11",
+   "jb_code": "B11",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "switch vs fork terminal"
+  },
+  {
+   "n": 179,
+   "as_alt_code": "B-21",
+   "jb_code": "B21",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "switch vs female spade terminal"
+  },
+  {
+   "n": 180,
+   "as_alt_code": "17125A",
+   "jb_code": "1-7-125A",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "same brand and part (busbar, 7 connections), code written 17125A vs 1-7-125A"
+  },
+  {
+   "n": 181,
+   "as_alt_code": "3SR8-13-2.5",
+   "jb_code": "3SR8-13-25",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "thermal relay 1.6-2.5A vs 17-25A: \"2.5\" vs \"25\""
+  },
+  {
+   "n": 182,
+   "as_alt_code": "3SR8-13-25",
+   "jb_code": "3SR8-13-2.5",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "thermal relay 17-25A vs 1.6-2.5A: \"25\" vs \"2.5\""
+  },
+  {
+   "n": 183,
+   "as_alt_code": "PF-2.5",
+   "jb_code": "PF2.5",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "earth terminal vs heat-shrink tube"
+  },
+  {
+   "n": 184,
+   "as_alt_code": "PF-10",
+   "jb_code": "PF1.0",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "earth terminal vs heat-shrink tube"
+  },
+  {
+   "n": 185,
+   "as_alt_code": "201 B",
+   "jb_code": "201B",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "knob vs buzzer"
+  },
+  {
+   "n": 186,
+   "as_alt_code": "203P",
+   "jb_code": "203/P",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "socket support vs bipolar switch"
+  },
+  {
+   "n": 187,
+   "as_alt_code": "FT 32",
+   "jb_code": "FT-32",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "galvanized connector vs fuse"
+  },
+  {
+   "n": 188,
+   "as_alt_code": "CC58UE",
+   "jb_code": "CC 58UE",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "RG58 coax, code with/without space"
+  },
+  {
+   "n": 189,
+   "as_alt_code": "CXFB5950",
+   "jb_code": "CXF B5950",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "RG59 coax, code with/without space"
+  },
+  {
+   "n": 190,
+   "as_alt_code": "TI001150",
+   "jb_code": "TI 001150",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "11-pair telephone cable, code with/without space"
+  },
+  {
+   "n": 191,
+   "as_alt_code": "TE000250",
+   "jb_code": "TE 000250",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "2-pair telephone cable, code with/without space"
+  },
+  {
+   "n": 192,
+   "as_alt_code": "G9-12WW",
+   "jb_code": "G9-12-WW",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "AMBIGUOUS",
+   "note": "code says warm white (WW) but one description says 6000K"
+  },
+  {
+   "n": 193,
+   "as_alt_code": "G9-12CW",
+   "jb_code": "G9-12-CW",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "AMBIGUOUS",
+   "note": "code says cool white (CW) but one description says 2700K"
+  },
+  {
+   "n": 194,
+   "as_alt_code": "BTF-1.8-14WW",
+   "jb_code": "BTF-1.8-14-WW",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "same bulb, code with/without hyphen"
+  },
+  {
+   "n": 195,
+   "as_alt_code": "BTF-1.8-14CW",
+   "jb_code": "BTF-1.8-14-CW",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "CORRECT",
+   "note": "same bulb, code with/without hyphen"
+  },
+  {
+   "n": 196,
+   "as_alt_code": "A-6",
+   "jb_code": "A6",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "soil gel vs ring terminal"
+  },
+  {
+   "n": 197,
+   "as_alt_code": "7538",
+   "jb_code": "753-8",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "LED downlight vs thermal relay"
+  },
+  {
+   "n": 198,
+   "as_alt_code": "CP21",
+   "jb_code": "CP-2.1",
+   "codes": "equal_only_ignoring_punctuation",
+   "label": "INCORRECT",
+   "note": "parallel cable vs cable clamp"
+  }
+ ]
+}

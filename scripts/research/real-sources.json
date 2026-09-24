@@ -1,0 +1,73 @@
+{
+  "description": "Public price lists used in docs/20 (real-world benchmark). Retrieved 2026-09-24 from the cloud container. Files are third-party content and are NOT committed: fetch them with scripts/research/fetch-real-lists.sh (checks SHA-256). None of these companies is a Remarcá customer; they are public sources only.",
+  "retrieved": "2026-09-24",
+  "sources": [
+    {
+      "company": "Bulonera Camba",
+      "sector": "bulonería (fasteners)",
+      "page": "https://buloneracamba.com.ar/bulones/listas-de-precios/",
+      "files": [
+        { "local": "camba_sabana_20260830.zip", "url": "https://www.buloneracamba.com.ar/pag/clientes/listas/excel/Sabana_30_08_2026.zip", "format": "ZIP → XLSX (2 sheets: list + 'Codigos Viejos')", "bytes": 1085547, "last_modified": "2026-09-02T13:39:06Z", "list_date": "2026-08-30", "sha256": "74f7501e7ea1485cd8e0a68bec5ff026a3e147bc1aaec5a8aa9ea4da7e498bc4" },
+        { "local": "camba_lista_20260830.zip", "url": "https://www.buloneracamba.com.ar/pag/clientes/listas/excel/Lista_de_precios_30-08-2026.zip", "format": "ZIP → 37 text PDFs (one per product family)", "bytes": 8220282, "last_modified": "2026-09-02T13:37:42Z", "list_date": "2026-08-30", "sha256": "deaad7dd3d2efb134ebe505a937ebfefb0c17a439c546422fdb8a0a98d41b0d2" }
+      ]
+    },
+    {
+      "company": "AS Electricidad",
+      "sector": "electricidad (distributor)",
+      "page": "https://aselectricidad.com.ar/lista-de-precios/",
+      "files": [
+        { "local": "aselec_listado.xls", "url": "https://aselectricidad.com.ar/descarga/ListadoPrecios.xls", "format": "XLS (BIFF, 2 sheets)", "bytes": 9305088, "last_modified": "2026-09-22T18:36:06Z", "sha256": "74660aa47676d5b50087daba5a602b5075324d5e36f859d2a5b38acfe2837835" }
+      ]
+    },
+    {
+      "company": "Electricidad Juan B. Justo (TECSUP SRL)",
+      "sector": "electricidad (store/distributor; the XLS header says 'Lista publico')",
+      "page": "https://www.electricidadjuanbjusto.com.ar/es/lista-de-precios",
+      "files": [
+        { "local": "jbjusto_electricidad_sep2026.xls", "url": "https://www.electricidadjuanbjusto.com.ar/archivos0/files/xls/electricidad_20_Septiembre_2026%20Pagina.xls", "format": "XLS (2 sheets: tabular + printed side-by-side layout)", "bytes": 10051072, "last_modified": "2026-09-21T13:26:28Z", "sha256": "9c5263a775d5832fd3091160c4d691d6217ace39a740e62cc24e59b0d3b29329" },
+        { "local": "jbjusto_lista_sep2026.pdf", "url": "https://www.electricidadjuanbjusto.com.ar/archivos0/files/pdf/electricidadjuanbjsuto%20lista%20septiembre%202026.pdf", "format": "text PDF, 2 products per line", "bytes": 1211107, "last_modified": "2026-09-21T13:40:25Z", "sha256": "5ab505bc97178cfe8c15c3572784d8fd30acca26af3c84bd009ee0f58762feda" }
+      ]
+    },
+    {
+      "company": "ALMA Repuestos",
+      "sector": "autopartes",
+      "page": "https://almarepuestos.com.ar/listas/",
+      "files": [
+        { "local": "alma_vth_20260904.xlsx", "url": "https://almarepuestos.com.ar/wp-content/uploads/2026/09/VTH_LISTA-DE-PRECIOS-04092026.xlsx", "format": "XLSX (sheets MODELO and CORRELATIVA)", "bytes": 468048, "last_modified": "2026-09-07T16:39:00Z", "list_date": "2026-09-04", "sha256": "f66d52f1c80920557da5e0a1fcb40324ec93a5d937d08080dd83e72f45b5707e" },
+        { "local": "alma_peugeot_20260901.xls", "url": "https://almarepuestos.com.ar/wp-content/uploads/2026/09/lista-peugeot-01092026.xls", "format": "XLS", "bytes": 354304, "last_modified": "2026-09-01T17:22:21Z", "list_date": "2026-09-01", "sha256": "0110e9454c2bfc26727c59b1bd62dbf4b9942064e76f73b8418a27e4e7cf5c02" },
+        { "local": "alma_lista1.pdf", "url": "https://almarepuestos.com.ar/wp-content/uploads/2026/02/Lista-de-Precios-1.pdf", "format": "text PDF, 10 pages", "bytes": 108141, "last_modified": "2026-02-03T14:29:54Z", "sha256": "6d786b7c8606da54adbbb18ff61a01605d69da4dea619998a3ac0d2d76e2ba2e" }
+      ]
+    },
+    {
+      "company": "Manufacturers' lists linked from ACCME (accmelec.com.ar) — Cambre, Jeluz, Roker, Strada",
+      "sector": "material eléctrico (manufacturers)",
+      "page": "https://accmelec.com.ar/lista-de-precios/",
+      "files": [
+        { "local": "accme_cambre_A.xlsx", "url": "https://docs.google.com/spreadsheets/d/16uZ3Din9RB_2CD6VGeTwYXEtzcYQDJqd/export?format=xlsx", "format": "Google Sheets export → XLSX", "bytes": 70031, "last_modified": "UNKNOWN (export has no date)", "sha256": "09a3bbc3ac091f23d68512b52b49574b88e7a0714c23a922e5bfc67c120a433b" },
+        { "local": "accme_cambre_B.xlsx", "url": "https://docs.google.com/spreadsheets/d/16ybWaRdP_6C3Fnh7wzHaiuGeS4Z0C5wq/export?format=xlsx", "format": "Google Sheets export → XLSX", "bytes": 71743, "last_modified": "UNKNOWN (export has no date)", "sha256": "8e36beb253cd9002e39dca59c307cb6cca847c292eed2878c0768f8ecc1cd0ac" },
+        { "local": "accme_jeluz.pdf", "url": "https://drive.google.com/uc?export=download&id=18XYwZwKbl3E18ruiHpSUWTRdfTuwop14", "format": "catalogue-style text PDF, 37 pages", "bytes": 7019565, "last_modified": "UNKNOWN", "sha256": "3d6f2a43ea29504366685ffdcd66135c88cb11617322db173a7c86ae4c06d9ad" },
+        { "local": "accme_roker.pdf", "url": "https://drive.google.com/uc?export=download&id=1730E14Xwozlg0MduclTFuulSjma9enLd", "format": "catalogue-style text PDF, 39 pages", "bytes": 3648344, "last_modified": "UNKNOWN", "sha256": "812837d81a8047480a9c6d8fcb350ba2ec98b981c2edcd3f5976cd2624528580" },
+        { "local": "accme_strada.pdf", "url": "https://drive.google.com/uc?export=download&id=1FJHNQ7E1vSCX_rzjCagBOcPTMgED7dYY", "format": "text PDF with several tables", "bytes": 305080, "last_modified": "UNKNOWN", "sha256": "d2cae32252ffdca2c3bd7e09af295294195f7219692885ce29d3d185ac6b30dc" }
+      ]
+    },
+    {
+      "company": "Ministerio de Salud de la Nación — precios de referencia de medicamentos (control: public price list WITHOUT product codes; not a supplier list)",
+      "sector": "control",
+      "page": "https://www.argentina.gob.ar/salud/informes-y-seguimiento-de-precios/precios-de-referencia/ano-2026",
+      "files": [
+        { "local": "med_2026_08.xlsx", "url": "https://www.argentina.gob.ar/sites/default/files/2025/12/2026_08_03_precios_de_referencia_mes_de_agosto_2026.xlsx", "format": "XLSX", "bytes": 53410, "last_modified": "2026-08-03T17:51:13Z", "sha256": "f076cbd61d0c47a0d9a669a69646f6de0405cd4338f72c5913e58f7cbcdafba6" },
+        { "local": "med_2026_09.xlsx", "url": "https://www.argentina.gob.ar/sites/default/files/2025/12/2026-09-01_precios_de_referencia_mes_de_septiembre_2026.xlsx", "format": "XLSX", "bytes": 47625, "last_modified": "2026-09-02T18:17:29Z", "sha256": "693b17014008873c2f5e0cd23944872aea0232d90127e30339715d1319bd9344" },
+        { "local": "med_2026_09.pdf", "url": "https://www.argentina.gob.ar/sites/default/files/2025/12/2026-09-01_precios_de_referencia_mes_de_septiembre_2026.pdf", "format": "text PDF", "bytes": 93680, "last_modified": "2026-09-02T18:17:29Z", "sha256": "d0ff90c9702983f90fdcd24be36c4ed471ef4b9cc4b8e828d96bf4060f99152d" }
+      ]
+    }
+  ],
+  "excluded": [
+    { "company": "Digilio Distribuciones", "url": "https://www.dropbox.com/s/ww2o6txumjtlvwx/LISTA%20DE%20PRECIOS.xlsx?dl=1", "reason": "Dropbox returned an HTML page / 403 from this environment; no file obtained" },
+    { "company": "Dfer", "url": "https://dfer.com.ar/?dfer_descarga=lista-excel", "reason": "redirects to a login page (not public)" },
+    { "company": "Madeva (via ACCME)", "url": "https://docs.google.com/spreadsheets/d/12dkHxVPitLkvv9dUraa_1cz2NnkPXOo6/export?format=xlsx", "reason": "HTTP 400 on export" },
+    { "company": "AS Electricidad (second file)", "url": "https://aselectricidad.com.ar/descarga/ASElectricidad-lista-de-precios.xls", "reason": "HTTP 404" },
+    { "company": "Electricidad Juan B. Justo (previous months)", "url": "https://www.electricidadjuanbjusto.com.ar/archivos0/files/xls/electricidad_20_Agosto_2026%20Pagina.xls", "reason": "URL guessed from the naming pattern; the server returns a 12 KB error page, so no previous version was obtained" },
+    { "company": "Bulonera Camba (previous month)", "url": "https://www.buloneracamba.com.ar/pag/clientes/listas/excel/Sabana_30_07_2026.zip", "reason": "URL guessed; not available" },
+    { "company": "Wayback Machine (older versions of any list)", "url": "https://web.archive.org/", "reason": "unreachable from this environment (proxy tunnel closed)" }
+  ]
+}
