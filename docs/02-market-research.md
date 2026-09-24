@@ -10,7 +10,8 @@ cloud container. No customer interviews were possible from this environment (see
 | Monthly CPI Aug-2026 | 1.7% (Jul-2026: 2.1%) | [Bloomberg Línea](https://www.bloomberglinea.com/latinoamerica/argentina/cuanto-dio-la-inflacion-de-agosto-2026-en-argentina-segun-el-indec/), [finarg](https://finarg.net/indices/inflacion) | FACT |
 | YoY CPI Aug-2026 | 33.5% | same | FACT |
 | USD/ARS BNA 24-Sep-2026 | ~1,540 sell | [La Nación](https://www.lanacion.com.ar/dolar-hoy/), [Infobae](https://www.infobae.com/economia/2026/09/23/el-dolar-volvio-a-aumentar-y-marco-un-nuevo-record-nominal/) | FACT |
-| Ferreterías in Argentina | 14,000–15,000; 66% have ≤5 employees | [Rosario3/Ecos365](https://www.rosario3.com/ecos365/noticias/dia-del-ferretero-121-anos-de-historia-en-medio-de-la-peor-caida-de-ventas-del-sector-20260903-0004.html), [CAFARA](https://cafara.org.ar/) | FACT (as reported) |
+| Ferreterías in Argentina | 14,000–15,000 (as reported by the press) | [Rosario3/Ecos365](https://www.rosario3.com/ecos365/noticias/dia-del-ferretero-121-anos-de-historia-en-medio-de-la-peor-caida-de-ventas-del-sector-20260903-0004.html), [CAFARA](https://cafara.org.ar/) | FACT (as reported) |
+| ~~66% have ≤5 employees~~ | **Correction (docs/19):** this is the composition of the 47 respondents of a CAFARA 2026 training survey, not a sector statistic | [Revista Ferreteros](https://revistaferreteros.com.ar/en/encuesta-de-capacitacion-ferretera-2026/) | EVIDENCE (n=47, not representative) |
 | Ferretería sector state | "peor caída de ventas del sector" (Sep-2026); 2025 closed with "márgenes presionados" | Rosario3, [Diario Huarpe](https://www.diariohuarpe.com/nota/ferreterias-arrancan-2026-con-ventas-ajustadas-y-presion-de-costos-2026186021) | FACT |
 
 **Implication:** prices still move ~2%/month on average, with individual supplier lists jumping more.

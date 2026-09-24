@@ -1,5 +1,7 @@
 # 05 — Validation
 
+> Updated assessment of these hypotheses and the new experiment design: [`19-commercial-red-team.md`](19-commercial-red-team.md) §3–§4 and §14–§15.
+
 ## 1. What is validated (desk research, this session)
 
 | Hypothesis | Status | Evidence |

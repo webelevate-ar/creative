@@ -262,3 +262,30 @@ describe('messy real-world lists', () => {
     expect(rows[1]!.decision).toBe('skip');
   });
 });
+
+describe('matching safety (docs/19 §8)', () => {
+  it('holds own-code matches whose descriptions share no word (numeric code collisions)', async () => {
+    const XLSX = await import('xlsx');
+    const sid = createSupplier(db, orgId, supplierFormSchema.parse({ name: 'Numéricos SA' }), 40);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: '1009', description: 'LLAVE COMB. 13 BAHCO', cost: '100', price: '200' }), 30000);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: '1016', description: 'DISCO CORTE 4 1/2 INOX TYROLIT', cost: '100', price: '200' }), 30000);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.aoa_to_sheet([
+        ['Código', 'Descripción', 'Precio'],
+        ['1009', 'Mecha Widia 8mm Bosch', 120],
+        ['1016', 'Disco de Corte 115x1mm Tyrolit Inox', 120],
+      ]),
+      'Lista',
+    );
+    const up = await createImport(db, orgId, userId, sid, 'n.xlsx', XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer);
+    const imp = getImport(db, orgId, up.importId)!;
+    await confirmMapping(db, orgId, up.importId, imp.sheet_name, JSON.parse(imp.mapping_json!));
+    const rows = listRows(db, orgId, up.importId, {}).rows;
+    expect(rows[0]!.flags).toContain('check_match'); // drill ≠ wrench: held for review
+    expect(rows[0]!.decision).toBe('skip');
+    expect(rows[1]!.flags).not.toContain('check_match'); // shares "disco", "corte", "tyrolit", "inox"
+    expect(rows[1]!.decision).toBe('apply');
+  });
+});

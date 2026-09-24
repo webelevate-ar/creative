@@ -1,12 +1,14 @@
 # 15 — Go-To-Market: the first 10 customers
 
+> **Superseded in part by [`19-commercial-red-team.md`](19-commercial-red-team.md) §10 and §14** (2026-09-24): the next experiment is a screening + concierge-service test, not SaaS pilots.
+
 Principle: channels the founder can run personally, this month, with ~zero budget, measured weekly.
 The product was built so every sales conversation ends with the prospect's **own supplier file** running
 through Remarcá — the demo is the pitch.
 
 ## 1. Who (in order)
 1. **Ferreterías, casas de electricidad, sanitarios, pinturerías** in the founder's own city/area (dense, walk-in-able,
-   many suppliers, prices change monthly). 14–15k ferreterías nationally; 66% have ≤5 employees (F, 02).
+   many suppliers, prices change monthly). 14–15k ferreterías nationally (F, 02). *(The "66% ≤5 employees" figure previously cited here is only the profile of a 47-respondent survey — see docs/19.)*
 2. **Autopartes/motopartes and librerías comerciales** (many SKUs, many lists).
 3. **Distribuidoras/mayoristas** that build their own client lists from manufacturer lists (higher ticket; test in month 2).
 

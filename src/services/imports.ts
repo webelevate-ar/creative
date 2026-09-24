@@ -190,6 +190,30 @@ interface ProductLite {
   markup_pct: number | null;
   iva_rate: number | null;
   supplier_id: number | null;
+  description: string;
+}
+
+const WORD_STOP = new Set(['de', 'del', 'con', 'para', 'por', 'caja', 'unidad', 'x', 'c', 'p', 'the']);
+function meaningfulWords(s: string): Set<string> {
+  return new Set(
+    normalizeSearch(s)
+      .split(/[^a-z0-9]+/)
+      .filter((w) => w.length >= 3 && !/^\d+$/.test(w) && !WORD_STOP.has(w)),
+  );
+}
+
+/**
+ * A match only through the store's OWN code (not the supplier's) is weak: supplier and store numbering are
+ * different namespaces and numeric codes collide (research: docs/19 §8). If both descriptions exist and share
+ * no meaningful word, the match must be confirmed by the user instead of applied.
+ */
+function weakOwnCodeMatch(type: ImportRow['match_type'], listDescription: string, product: ProductLite | null): boolean {
+  if (type !== 'own_code' || !product || !listDescription.trim() || !product.description.trim()) return false;
+  const a = meaningfulWords(listDescription);
+  const b = meaningfulWords(product.description);
+  if (!a.size || !b.size) return false;
+  for (const w of a) if (b.has(w)) return false;
+  return true;
 }
 
 /** Differences of a cent come from rounding in the store's old data, not from the supplier: not a change. */
@@ -213,8 +237,16 @@ function priceItem(listPrice: number | null, packQty: number | null, product: Pr
   return { newCost, newPrice };
 }
 
-function flagsFor(row: { newCost: number | null; newPrice: number | null }, product: ProductLite | null, dup: boolean, supplier: Supplier, settings: OrgSettings): string[] {
+function flagsFor(
+  row: { newCost: number | null; newPrice: number | null },
+  product: ProductLite | null,
+  dup: boolean,
+  supplier: Supplier,
+  settings: OrgSettings,
+  weakMatch = false,
+): string[] {
   const flags: string[] = [];
+  if (weakMatch) flags.push('check_match');
   if (row.newCost == null) flags.push('no_price');
   if (dup) flags.push('dup');
   if (!product) {
@@ -237,7 +269,7 @@ function flagsFor(row: { newCost: number | null; newPrice: number | null }, prod
 
 function defaultDecision(product: ProductLite | null, flags: string[], newCost: number | null, newPrice: number | null): ImportRow['decision'] {
   if (!product || newCost == null) return 'skip';
-  if (flags.includes('suspect') || flags.includes('dup')) return 'skip';
+  if (flags.includes('suspect') || flags.includes('dup') || flags.includes('check_match')) return 'skip';
   return newCost !== product.cost_cents || newPrice !== product.price_cents ? 'apply' : 'skip';
 }
 
@@ -256,7 +288,7 @@ function loadMatchers(db: DB, orgId: number, supplierId: number) {
     .all(orgId, supplierId) as { code_norm: string; id: number }[])
     if (!byOwnCode.has(r.code_norm)) byOwnCode.set(r.code_norm, r.id);
   const products = new Map<number, ProductLite | null>();
-  const getProduct = db.prepare('SELECT id, cost_cents, price_cents, markup_pct, iva_rate, supplier_id FROM products WHERE id = ? AND org_id = ?');
+  const getProduct = db.prepare('SELECT id, cost_cents, price_cents, markup_pct, iva_rate, supplier_id, description FROM products WHERE id = ? AND org_id = ?');
   const product = (id: number): ProductLite | null => {
     if (!products.has(id)) products.set(id, (getProduct.get(id, orgId) as ProductLite | undefined) ?? null);
     return products.get(id) ?? null;
@@ -301,7 +333,7 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
       const m = dup ? { productId: null, type: 'none' as const } : matchers.match(codeNorm);
       const product = m.productId != null ? matchers.product(m.productId) : null;
       const priced = priceItem(it.price, it.pack, product, supplier, settings);
-      const flags = flagsFor(priced, product, dup, supplier, settings);
+      const flags = flagsFor(priced, product, dup, supplier, settings, weakOwnCodeMatch(m.type, it.description, product));
       insert.run({
         import_id: importId,
         org_id: orgId,
@@ -349,7 +381,7 @@ export function recomputeImport(db: DB, orgId: number, importId: number): Import
     for (const r of rows) {
       const product = r.product_id != null ? matchers.product(r.product_id) : null;
       const priced = priceItem(r.list_price, r.pack_qty, product, supplier, settings);
-      const flags = flagsFor(priced, product, r.flags.includes(' dup '), supplier, settings);
+      const flags = flagsFor(priced, product, r.flags.includes(' dup '), supplier, settings, weakOwnCodeMatch(r.match_type, r.description, product));
       const decision = r.decision === 'create' && !product ? 'create' : defaultDecision(product, flags, priced.newCost, priced.newPrice);
       upd.run({
         id: r.id,
@@ -379,7 +411,7 @@ export function refreshStats(db: DB, orgId: number, importId: number, skippedRow
         SUM(product_id IS NOT NULL AND new_cost_cents > old_cost_cents) up,
         SUM(product_id IS NOT NULL AND new_cost_cents < old_cost_cents) down,
         SUM(product_id IS NOT NULL AND new_cost_cents = old_cost_cents) same,
-        SUM(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %') flagged,
+        SUM(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% check_match %') flagged,
         SUM(flags LIKE '% below_cost %') below_cost,
         SUM(decision = 'apply') to_apply,
         SUM(decision = 'create') to_create
@@ -433,7 +465,7 @@ const FILTER_SQL: Record<RowFilter, string> = {
   changed: 'product_id IS NOT NULL AND new_cost_cents IS NOT old_cost_cents',
   up: 'product_id IS NOT NULL AND new_cost_cents > old_cost_cents',
   down: 'product_id IS NOT NULL AND new_cost_cents < old_cost_cents',
-  flagged: "(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% up_big %' OR flags LIKE '% down_big %')",
+  flagged: "(flags LIKE '% suspect %' OR flags LIKE '% no_price %' OR flags LIKE '% dup %' OR flags LIKE '% up_big %' OR flags LIKE '% down_big %' OR flags LIKE '% check_match %')",
   new: 'product_id IS NULL',
   below_cost: "flags LIKE '% below_cost %'",
   skip: "decision = 'skip'",
@@ -505,7 +537,7 @@ export function bulkDecision(db: DB, orgId: number, importId: number, filter: Ro
 /** Manually links a list row to an existing product; remembered for next lists of this supplier on apply. */
 export function linkRow(db: DB, orgId: number, importId: number, rowId: number, productId: number): void {
   const imp = requireReview(db, orgId, importId);
-  const product = db.prepare('SELECT id, cost_cents, price_cents, markup_pct, iva_rate, supplier_id FROM products WHERE id = ? AND org_id = ?').get(productId, orgId) as
+  const product = db.prepare('SELECT id, cost_cents, price_cents, markup_pct, iva_rate, supplier_id, description FROM products WHERE id = ? AND org_id = ?').get(productId, orgId) as
     | ProductLite
     | undefined;
   if (!product) throw new ImportError('Producto no encontrado.');

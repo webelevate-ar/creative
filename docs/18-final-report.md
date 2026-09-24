@@ -1,5 +1,16 @@
 # 18 — Final Report: Remarcá
 
+> ## ⚠️ Status update after the commercial red team (2026-09-24) — read [`19-commercial-red-team.md`](19-commercial-red-team.md)
+> New evidence **changes the conclusions below**:
+> - The core capability is **not unique**: Multilistas (AR, same vertical) already imports supplier Excel "tal como te lo manda el proveedor", recognizes columns, previews and recalculates prices.
+> - **AI substitution shipped in 2026** (Tiendanube Admin MCP with Claude/ChatGPT for bulk price edits; Matrixify + Claude on supplier PDFs; Excel Agent Mode on M365 Personal/Family).
+> - Adjacent tools cost **USD 7–50/month**; the only buyer survey found (CAFARA, n=47) does not rank pricing among top needs.
+> - Matching is safe on codes but expensive without them; a code-collision bug that could apply wrong prices was found and fixed.
+> - The "66% of ferreterías have ≤5 employees" figure was a 47-respondent survey profile, not a sector fact (corrected).
+>
+> **Revised verdict:** the problem is real; **Remarcá as a self-serve SaaS is not validated and its differentiation is weak.** Development is frozen.
+> **Revised next step:** 1 week of screening (30 stores) + 3 weeks of paid concierge-vs-self-serve pilots, with behavioral GO / PIVOT / NO-GO criteria (19 §14–§15). The "Next 10 Actions" and "Recommended Next Experiment" at the end of this report are **superseded** by 19 §19–§20.
+
 Date: 2026-09-24 · Branch: `claude/gallant-ramanujan-tbccbs` · Labels: FACT / ASSUMPTION / ESTIMATE / UNKNOWN.
 
 ## Executive Summary
@@ -102,7 +113,7 @@ founder time for distribution (R10).
 benchmark script, admin CLI, README, `.env.example`.
 
 ## What Was Tested (FACT, commands run in this session)
-`npm run typecheck` ✔ · `npm test` → 82/82 ✔ · `npm run test:e2e` → 13 passed, 1 skipped ✔ · `npm audit` → 0 ✔ ·
+`npm run typecheck` ✔ · `npm test` → 82/82 ✔ (83/83 after the red-team safety fix) · `npm run test:e2e` → 13 passed, 1 skipped ✔ · `npm audit` → 0 ✔ ·
 production build smoke test ✔ · benchmark ✔ · admin CLI on a copy of E2E data ✔.
 
 ## Known Limitations
@@ -120,7 +131,7 @@ production build smoke test ✔ · benchmark ✔ · admin CLI on a copy of E2E d
 4. H8 — Founder can get ≥1 received file per 2 hours of outreach.
 5. Retention — ≥60% of paying accounts apply lists on 2+ different days per month.
 
-## Next 10 Actions
+## Next 10 Actions *(superseded by 19 §19–§20: screening and concierge test first; deploy only for the self-serve arm)*
 1. Register the domain; deploy on a VPS with Caddy (README §Deploy); set `TRUST_PROXY=1`.
 2. Configure backups (Litestream or nightly `.backup` off-server) and do one restore drill.
 3. Create a Resend account and DNS records; set `RESEND_API_KEY`, `CONTACT_WHATSAPP`, `LEGAL_ENTITY`.
@@ -132,7 +143,7 @@ production build smoke test ✔ · benchmark ✔ · admin CLI on a copy of E2E d
 9. Pitch 3 local distributors on forwarding Remarcá to their retailer clients.
 10. Every Friday: `npm run admin -- funnel` + the funnel sheet; apply the week-4 kill/pivot rule (17).
 
-## Recommended Next Experiment
+## Recommended Next Experiment *(superseded by 19 §14)*
 **"Tu lista, tus números, en 3 minutos" — 15 in-person demos in 2 weeks.** For each qualified store, process their own
 supplier list(s) live (two versions if no catalog), then offer the ARS 15,000 pilot. Success = ≥30% of conversations
 send a file and ≥3 stores pay. Failure (<2 paying) triggers the pivot review: distributors ("lista viva") or a
