@@ -179,7 +179,7 @@ export function detectColumns(rows: Cell[][]): Detection {
     if (/bulto|caja|pack/.test(h)) score -= 1;
     return score;
   };
-  const price = priceCandidates.length ? [...priceCandidates].sort((a, b) => pricePref(b) - pricePref(a) || a - b)[0]! : null;
+  let price = priceCandidates.length ? [...priceCandidates].sort((a, b) => pricePref(b) - pricePref(a) || a - b)[0]! : null;
   if (price != null) taken.add(price);
 
   // Code: short, mostly unique values. Header match first, then content.
@@ -207,6 +207,18 @@ export function detectColumns(rows: Cell[][]): Detection {
     }
   }
   if (code != null) taken.add(code);
+
+  // Side-by-side blocks ("Cód | Precio | Cód | Precio" in one header row): the code's price is the one right
+  // after it, never the previous block's (a real PDF list got plausible prices of sibling products, docs/20 §5).
+  const blocks = (role: Role) => rolesByHeader.filter((r) => r.has(role)).length;
+  if (code != null && price != null && price < code && blocks('code') >= 2 && blocks('price') >= 2) {
+    const right = priceCandidates.filter((c) => c > code!).sort((a, b) => a - b)[0];
+    if (right != null) {
+      taken.delete(price);
+      price = right;
+      taken.add(price);
+    }
+  }
 
   // Description: the longest mostly-text column; header match gives a bonus.
   let description: number | null = null;

@@ -71,6 +71,19 @@ describe('readWorkbook + detectColumns on realistic supplier files', () => {
     ];
     expect(detectColumns(rows)).toMatchObject({ headerRow: 0, code: 0, description: 1, price: 2 });
   });
+  it('pairs the code with the price on its right when blocks repeat "Cód | Precio" (docs/20 §5)', () => {
+    // Shape of a real PDF page (Bulonera Camba, Hoja 4): one block per finish; "-" where a finish does not exist.
+    const rows: string[][] = [['Medida', 'Cód', 'Precio', 'Cód', 'Precio']];
+    const sizes = ['3/16"', '1/4"', '5/16"', '3/8"', '7/16"', '1/2"', '9/16"', '5/8"', '3/4"', '7/8"'];
+    sizes.forEach((m, i) => {
+      const pulida = i % 5 < 3; // some sizes have no polished version
+      rows.push([m, pulida ? `12.${i + 5}` : '-', pulida ? `${14 + i},${859 + i}` : '-', `212.${i + 5}`, `${17 + i},${88 + i}`]);
+    });
+    const d = detectColumns(rows);
+    expect(d.code).toBe(3);
+    expect(d.price).toBe(4); // was 2: the price of the polished version, a plausible but wrong price
+    expect(extractRows(rows, d).items[0]).toMatchObject({ code: '212.5', rawPrice: '17,88' });
+  });
   it('re-applies a saved mapping when the supplier moves columns', async () => {
     const v1 = (await readWorkbook('a.xlsx', tornilloXlsx(hardwareItems(50)))).sheets[0]!.rows;
     const saved = toSavedMapping(detectColumns(v1), v1);
