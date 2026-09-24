@@ -363,3 +363,44 @@ describe('business rules over HTTP', () => {
     expect(await res.text()).toContain('hasta 10 proveedores');
   });
 });
+
+describe('team invitations', () => {
+  it('owner invites by link, invitee joins the same account, seats are enforced, members cannot manage the team', async () => {
+    const owner = new Agent();
+    await owner.signup('boss@test.com');
+    const res = await owner.post('/app/equipo/invitar', { email: 'Empleado@test.com' });
+    const html = await res.text();
+    const link = /value="(http:\/\/localhost:3000\/invitacion\?t=[^"]+)"/.exec(html)![1]!;
+    const path = link.replace('http://localhost:3000', '').replace(/&amp;/g, '&');
+    const emp = new Agent();
+    expect(await (await emp.req(path)).text()).toContain('Unite a Comercio');
+    const join = await emp.req(path, { method: 'POST', form: { name: 'Empleado', password: 'password123' } });
+    expect(join.headers.get('location')).toBe('/app');
+    expect(orgOf('empleado@test.com')).toBe(orgOf('boss@test.com'));
+    // Link is single use.
+    expect((await new Agent().req(path, { method: 'POST', form: { name: 'Otro', password: 'password123' } })).status).toBe(400);
+    // Member cannot invite or remove.
+    await emp.refreshCsrf();
+    expect((await emp.post('/app/equipo/invitar', { email: 'x@test.com' })).status).toBe(403);
+    const bossId = db.prepare('SELECT id FROM users WHERE email = ?').pluck().get('boss@test.com') as number;
+    expect((await emp.post(`/app/equipo/${bossId}/quitar`)).status).toBe(404);
+    // Trial allows 3 users: 2 used + 1 invite OK, the next is refused.
+    expect(await (await owner.post('/app/equipo/invitar', { email: 'tres@test.com' })).text()).toContain('Invitación lista');
+    expect(await (await owner.post('/app/equipo/invitar', { email: 'cuatro@test.com' })).text()).toContain('hasta 3 usuarios');
+    // Owner removes the member → their session stops working.
+    const empId = db.prepare('SELECT id FROM users WHERE email = ?').pluck().get('empleado@test.com') as number;
+    await owner.post(`/app/equipo/${empId}/quitar`);
+    expect((await emp.req('/app')).status).toBe(302);
+  });
+
+  it('an owner of another account cannot remove my users', async () => {
+    const a = new Agent();
+    await a.signup('a-owner@test.com');
+    const b = new Agent();
+    await b.signup('b-owner@test.com');
+    const aId = db.prepare('SELECT id FROM users WHERE email = ?').pluck().get('a-owner@test.com') as number;
+    const r = await b.post(`/app/equipo/${aId}/quitar`);
+    expect(r.headers.get('location')).toBe('/app/equipo');
+    expect(db.prepare('SELECT COUNT(*) FROM users WHERE id = ?').pluck().get(aId)).toBe(1);
+  });
+});

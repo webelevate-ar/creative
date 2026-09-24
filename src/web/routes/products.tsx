@@ -104,7 +104,7 @@ productRoutes.get('/', (c) => {
       ) : (
         <div class="card">
           <p class="muted">{formatInt(res.total)} productos</p>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
             <table>
               <thead>
                 <tr>
@@ -327,7 +327,7 @@ export const PreviewTable = (p: { rows: Cell[][]; headerRow: number; highlight?:
   const slice = p.rows.slice(start, start + 12);
   const cols = Math.min(30, Math.max(0, ...slice.map((r) => r.length)));
   return (
-    <div class="table-wrap preview">
+    <div class="table-wrap preview" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
       <table>
         <thead>
           <tr>
@@ -478,7 +478,7 @@ productRoutes.get('/:id', (c) => {
         {history.length === 0 ? (
           <p class="muted">Sin cambios registrados.</p>
         ) : (
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
             <table>
               <thead>
                 <tr>

@@ -231,3 +231,34 @@ describe('supplier form parsing (AR number formats)', () => {
     expect(supplierFormSchema.safeParse({ name: 'W', markup_pct: 'abc' }).success).toBe(false);
   });
 });
+
+describe('messy real-world lists', () => {
+  it('picks the sheet that contains the list, flags "Consultar" prices and divides pack prices', async () => {
+    const XLSX = await import('xlsx');
+    const sid = createSupplier(db, orgId, supplierFormSchema.parse({ name: 'Bulto SA', price_per_pack: '1' }), 40);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'P1', supplier_id: String(sid), supplier_code: 'A-1', cost: '100', price: '200' }), 30000);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'P2', supplier_id: String(sid), supplier_code: 'A-2', cost: '100', price: '200' }), 30000);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([['CONDICIONES COMERCIALES'], ['Pago a 30 días'], ['Flete a cargo del cliente']]), 'Portada');
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.aoa_to_sheet([
+        ['Artículo', 'Descripción', 'Unidades x bulto', 'Precio bulto'],
+        ['A-1', 'Cinta aisladora x 10', 10, 1200],
+        ['A-2', 'Precinto x 100', 100, 'Consultar'],
+      ]),
+      'Precios',
+    );
+    const buf = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer;
+    const up = await createImport(db, orgId, userId, sid, 'bulto.xlsx', buf);
+    const imp = getImport(db, orgId, up.importId)!;
+    expect(imp.sheet_name).toBe('Precios');
+    const m = JSON.parse(imp.mapping_json!);
+    expect(m).toMatchObject({ code: 0, description: 1, pack: 2, price: 3 });
+    await confirmMapping(db, orgId, up.importId, imp.sheet_name, m);
+    const rows = listRows(db, orgId, up.importId, {}).rows;
+    expect(rows[0]!.new_cost_cents).toBe(12000); // 1200 / 10 units
+    expect(rows[1]!.flags).toContain('no_price');
+    expect(rows[1]!.decision).toBe('skip');
+  });
+});

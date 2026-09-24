@@ -36,7 +36,7 @@ supplierRoutes.get('/', (c) => {
           </p>
         </Empty>
       ) : (
-        <div class="card table-wrap">
+        <div class="card table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
           <table>
             <thead>
               <tr>
@@ -264,7 +264,7 @@ supplierRoutes.get('/:id', (c) => {
         {imports.length === 0 ? (
           <p class="muted">Sin listas todavía.</p>
         ) : (
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
             <table>
               <thead>
                 <tr>

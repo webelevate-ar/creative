@@ -122,7 +122,7 @@ dashboardRoutes.get('/', (c) => {
             <p>Creá uno por cada distribuidora o fábrica que te manda listas de precios.</p>
           </Empty>
         ) : (
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
             <table>
               <thead>
                 <tr>
@@ -163,7 +163,7 @@ dashboardRoutes.get('/', (c) => {
             <h2>Últimas listas</h2>
             <a href="/app/listas">Ver todas</a>
           </div>
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
             <table>
               <thead>
                 <tr>
@@ -283,7 +283,7 @@ dashboardRoutes.get('/cuenta', (c) => {
     <AppLayout title="Tu cuenta" section="" chrome={chrome(c)} flash={takeFlash(c)}>
       <section class="card narrow-left">
         <p>
-          <strong>{user.name}</strong> · {user.email}
+          <strong>{user.name}</strong> · {user.email} · <a href="/app/equipo">Equipo y usuarios</a>
         </p>
         <h2>Cambiar contraseña</h2>
         <form method="post" action="/app/cuenta/password" class="stack">
@@ -335,6 +335,9 @@ function SettingsPage(p: { c: Parameters<typeof chrome>[0]; errors?: Record<stri
     <AppLayout title="Ajustes" section="ajustes" chrome={chrome(p.c)} flash={takeFlash(p.c)}>
       <form method="post" action="/app/ajustes" class="card stack settings">
         <Csrf token={user.csrf} />
+        <p class="muted">
+          ¿Querés sumar a alguien de tu equipo? <a href="/app/equipo">Equipo y usuarios</a>
+        </p>
         <h2>Tu comercio</h2>
         <Field label="Nombre" name="org_name" error={e.org_name}>
           <input id="org_name" name="org_name" required maxlength={100} value={orgName} />

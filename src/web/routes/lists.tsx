@@ -66,7 +66,7 @@ listRoutes.get('/', (c) => {
           </p>
         </Empty>
       ) : (
-        <div class="card table-wrap">
+        <div class="card table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
           <table>
             <thead>
               <tr>
@@ -477,7 +477,7 @@ listRoutes.get('/:id', async (c) => {
             {rows.total === 0 ? (
               <p class="muted">No hay filas en este filtro.</p>
             ) : (
-              <div class="table-wrap">
+              <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
                 <table class="review">
                   <thead>
                     <tr>
@@ -758,7 +758,7 @@ listRoutes.get('/:id/vincular/:rowId', (c) => {
         {results.length === 0 ? (
           <p class="muted">Sin resultados. Probá con otra palabra.</p>
         ) : (
-          <div class="table-wrap">
+          <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
             <table>
               <thead>
                 <tr>
@@ -857,7 +857,7 @@ listRoutes.get('/:id/faltantes', (c) => {
       {missing.length === 0 ? (
         <p>No falta ninguno.</p>
       ) : (
-        <div class="card table-wrap">
+        <div class="card table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
           <table>
             <thead>
               <tr>

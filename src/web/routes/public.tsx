@@ -20,7 +20,7 @@ const DemoTable = () => (
     <div class="demo__bar">
       <strong>Lista de Distribuidora Ejemplo</strong> · 1.248 productos · <span class="change change--up">mediana +6,8 %</span>
     </div>
-    <div class="table-wrap">
+    <div class="table-wrap" tabindex={0} role="region" aria-label="Tabla (se puede desplazar)">
       <table>
         <thead>
           <tr>

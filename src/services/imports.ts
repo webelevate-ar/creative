@@ -131,7 +131,8 @@ function bestSheet(wb: Workbook, preferred?: string): { name: string; rows: Cell
   for (const s of wb.sheets) {
     const detection = detectColumns(s.rows);
     const usable = detection.code != null && detection.price != null;
-    const score = (s.name === preferred ? 1e9 : 0) + (usable ? 1e6 : 0) + s.rows.length;
+    const roles = [detection.code, detection.price, detection.description].filter((x) => x != null).length;
+    const score = (s.name === preferred ? 1e9 : 0) + (usable ? 1e6 : 0) + (detection.headerRow >= 0 ? 1e5 : 0) + roles * 1e4 + s.rows.length;
     if (!best || score > best.score) best = { ...s, detection, score };
   }
   if (!best) throw new ImportError('El archivo no tiene hojas con datos.');

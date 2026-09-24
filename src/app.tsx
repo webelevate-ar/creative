@@ -18,6 +18,7 @@ import { dashboardRoutes } from './web/routes/dashboard.js';
 import { supplierRoutes } from './web/routes/suppliers.js';
 import { productRoutes } from './web/routes/products.js';
 import { listRoutes } from './web/routes/lists.js';
+import { teamRoutes } from './web/routes/team.js';
 
 const PUBLIC_DIR = join(dirname(fileURLToPath(import.meta.url)), 'public');
 const STATIC_FILES: Record<string, string> = {
@@ -145,6 +146,7 @@ export function createApp(input: { db: DB; config: Config; mailer: Mailer; limit
 
   app.route('/', publicRoutes);
   app.route('/', authRoutes);
+  app.route('/', teamRoutes);
   app.route('/app', dashboardRoutes);
   app.route('/app/proveedores', supplierRoutes);
   app.route('/app/productos', productRoutes);

@@ -152,11 +152,13 @@ export function detectColumns(rows: Cell[][]): Detection {
   const rolesByHeader = normHeaders.map((h) => headerRoles(h));
   const taken = new Set<number>();
   const isNumericCol = (c: number) => stats[c]!.nonEmpty > 0 && stats[c]!.numeric / stats[c]!.nonEmpty >= 0.8;
+  // A column titled "Precio" may have "Consultar" / "Sin stock" in some rows: accept it at 50% numeric.
+  const isPriceByHeader = (c: number) => rolesByHeader[c]!.has('price') && stats[c]!.nonEmpty > 0 && stats[c]!.numeric / stats[c]!.nonEmpty >= 0.5;
 
   // Price: numeric column whose header says price. Prefer "lista"/"precio" over "c/iva"/"final" when several.
   const priceCandidates: number[] = [];
   for (let c = 0; c < columnCount; c++) {
-    if (!isNumericCol(c)) continue;
+    if (!isNumericCol(c) && !isPriceByHeader(c)) continue;
     const st = stats[c]!;
     const looksLikeCode = st.integer === st.numeric && st.unique === st.nonEmpty && rolesByHeader[c]!.has('code');
     if (!looksLikeCode && (rolesByHeader[c]!.has('price') || (headerRow < 0 && st.integer < st.numeric))) priceCandidates.push(c);
