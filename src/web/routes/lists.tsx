@@ -198,7 +198,7 @@ const FLAG_LABEL: Record<string, { text: string; tone: 'up' | 'down' | 'warn' | 
   down_big: { text: 'Bajó mucho', tone: 'down', title: 'Supera el umbral de cambio grande de tus ajustes.' },
   below_cost: { text: 'Hoy lo vendés bajo costo', tone: 'warn', title: 'Tu precio actual no cubre el costo nuevo.' },
   no_price: { text: 'Sin precio', tone: 'neutral', title: 'La fila no tiene un precio válido.' },
-  dup: { text: 'Código repetido', tone: 'neutral', title: 'El código aparece más de una vez en la lista; se usa la primera.' },
+  dup: { text: 'Código repetido', tone: 'warn', title: 'El código aparece más de una vez en la lista. Con precios distintos no se aplica ninguna fila sola: elegí cuál corresponde.' },
   new: { text: 'No está en tu catálogo', tone: 'info', title: 'Podés vincularlo a un producto tuyo o crearlo.' },
 };
 

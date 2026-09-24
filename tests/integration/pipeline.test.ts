@@ -335,4 +335,32 @@ describe('matching safety (docs/19 §8)', () => {
     expect(again.match_type).toBe('link');
     expect(again.flags).not.toContain('check_match');
   });
+  it('holds every occurrence of a code listed twice with different prices (docs/20 §9)', async () => {
+    const XLSX = await import('xlsx');
+    const sid = createSupplier(db, orgId, supplierFormSchema.parse({ name: 'Varillas' }), 40);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'V1', description: 'VARILLA ZIN WHIT 3/16', supplier_id: String(sid), supplier_code: '105.5', cost: '700', price: '1100' }), 30000);
+    saveProduct(db, orgId, null, productFormSchema.parse({ code: 'T1', description: 'TCA AUTOF.USS 5/16', supplier_id: String(sid), supplier_code: '14.8', cost: '30', price: '50' }), 30000);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(
+      wb,
+      XLSX.utils.aoa_to_sheet([
+        ['Código', 'Descripción', 'Precio'],
+        ['105.5', 'VARILLA ZIN WHIT 2', 762.58],
+        ['105.5', 'VARILLA ZIN WHIT 3/16', 740],
+        ['14.8', 'TCA AUTOF.USS 5/16', 34.79],
+        ['14.8', '[14.8] TCA AUTOF.USS 5/16', 34.79],
+      ]),
+      'Lista',
+    );
+    const up = await createImport(db, orgId, userId, sid, 'v.xlsx', XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' }) as Buffer);
+    await confirmMapping(db, orgId, up.importId, 'Lista', { headerRow: 0, code: 0, description: 1, price: 2, pack: null, decimal: ',' });
+    const rows = listRows(db, orgId, up.importId, {}).rows;
+    expect(rows[0]!.product_code).toBe('V1'); // still shown next to the product...
+    expect(rows[0]!.flags).toContain('dup'); // ...but held: the list contradicts itself
+    expect(rows[0]!.decision).toBe('skip');
+    expect(rows[1]!.product_id).toBeNull();
+    expect(rows[2]!.decision).toBe('apply'); // same price twice: the first one is safe
+    expect(rows[2]!.flags).not.toContain('dup');
+    expect(rows[3]!.flags).toContain('dup');
+  });
 });

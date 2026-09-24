@@ -342,11 +342,14 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
   // A loose key shared by different codes of this same list ("1.5.12" and "15.12") is ambiguous.
   const looseOwner = new Map<string, string>();
   const ambiguousLoose = new Set<string>();
+  // The same code listed twice with different prices: which one is right is unknown, so every occurrence is held.
+  const pricesByCode = new Map<string, Set<number | null>>();
   for (const it of items) {
     const k = looseCode(it.code);
-    const e = normalizeCode(it.code);
+    const e = normalizeCode(it.code) || it.code.toUpperCase();
     if (looseOwner.has(k) && looseOwner.get(k) !== e) ambiguousLoose.add(k);
     else looseOwner.set(k, e);
+    pricesByCode.set(e, (pricesByCode.get(e) ?? new Set()).add(it.price));
   }
 
   db.transaction(() => {
@@ -359,10 +362,11 @@ export function computeRows(db: DB, orgId: number, importId: number, sheetName: 
     );
     for (const it of items) {
       const codeNorm = normalizeCode(it.code) || it.code.toUpperCase();
-      const dup = seen.has(codeNorm);
+      const repeated = seen.has(codeNorm);
+      const dup = repeated || pricesByCode.get(codeNorm)!.size > 1;
       seen.add(codeNorm);
       const looseKey = looseCode(it.code);
-      const m = dup ? { productId: null, type: 'none' as const, loose: false } : matchers.match(codeNorm, ambiguousLoose.has(looseKey) ? null : looseKey);
+      const m = repeated ? { productId: null, type: 'none' as const, loose: false } : matchers.match(codeNorm, ambiguousLoose.has(looseKey) ? null : looseKey);
       const product = m.productId != null ? matchers.product(m.productId) : null;
       const priced = priceItem(it.price, it.pack, product, supplier, settings);
       const flags = flagsFor(priced, product, dup, supplier, settings, m.loose || weakOwnCodeMatch(m.type, it.description, product));
