@@ -1,5 +1,26 @@
 # 18 — Final Report: Remarcá
 
+> ## Status update after the business simulation (2026-09-25) — read [`21-business-model-simulation.md`](21-business-model-simulation.md)
+> A simulator built on the benchmark results is still **not validation**: synthetic stores, ASSUMPTION human times,
+> no customers. It **narrows** the conclusions below.
+> - **What is automated is already cheap.** 84–90% of the human hours left for medium and large stores come from
+>   inputs Remarcá does not support: unreadable or partial PDFs, and lists without codes.
+> - **Service:** profitable only in a narrow zone:
+>   - spreadsheet lists with codes;
+>   - ≤ ~3,000 SKUs;
+>   - a price ≥ ARS 50–75 k/month;
+>   - stores that update by hand today.
+>
+>   Against an Excel-competent store the value barely exceeds our cost. PDF-heavy or large stores lose money at every
+>   tested price (≤ ARS 100 k). One founder serves ≈ 30–76 clients: a small business.
+> - **SaaS:** cheap for us to run. But the store keeps the review hours and the onboarding (3–93 h), substitutes are
+>   strong, and acquisition dominates our hours. **It should not be the first test.**
+> - **Next:** public-data tests first (revealed payment for the job, input-quality census, price-change dispersion).
+>   Then the store pilot with service at 50 k and 75 k against self-serve at 30 k, paid upfront, logging minutes
+>   (21 §17).
+>
+> Still no build.
+
 > ## Status update after the real-world benchmark (2026-09-24) — read [`20-real-world-benchmark.md`](20-real-world-benchmark.md)
 > Measured on public Argentine supplier price lists: 48,262 spreadsheet rows and 42 supplier PDFs, 6 sources, checked
 > against an independent reader and manual labels.

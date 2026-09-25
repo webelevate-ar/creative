@@ -64,5 +64,5 @@ src/services/   business logic: auth, suppliers, products, imports (upload→app
 src/web/        HTTP routes and server-rendered pages
 src/db/         SQLite connection and SQL migrations
 tests/          unit, integration (incl. adversarial HTTP) and e2e
-docs/           research, decision, strategy, QA, security, economics, GTM, roadmap, risks, final report, red team, real-list benchmark
+docs/           research, decision, strategy, QA, security, economics, GTM, roadmap, risks, final report, red team, real-list benchmark, business simulation
 ```
