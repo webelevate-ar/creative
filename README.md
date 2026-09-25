@@ -1,5 +1,9 @@
 # Remarcá
 
+> **Status (2026-09-25): ABANDONED AS BUSINESS HYPOTHESIS — TECHNICALLY FUNCTIONAL BUT COMMERCIAL EVIDENCE
+> INSUFFICIENT.** Kept for its reusable components. Read [`docs/23-remarca-postmortem.md`](docs/23-remarca-postmortem.md)
+> first (reusable assets: §12; do not reuse: §13).
+
 **Subís la lista del proveedor, Remarcá te dice qué cambió y te da los precios nuevos listos para tu sistema.**
 
 Web app for Argentine retailers and distributors that receive supplier price lists (Excel, CSV, PDF) in
@@ -8,8 +12,8 @@ price math (cascaded discounts, IVA, USD lists, packs, margins, rounding), flags
 (big increases, probable list errors, **items sold below the new cost**), and — after review — updates
 costs and prices, exports a file for the store's POS and prints shelf labels. Every update can be undone.
 
-Why this product, the research behind it, and its economics: see [`docs/`](docs/) — start with
-[`docs/18-final-report.md`](docs/18-final-report.md).
+Why this product, the research behind it, and why it was abandoned: see [`docs/`](docs/) — start with
+[`docs/23-remarca-postmortem.md`](docs/23-remarca-postmortem.md), then [`docs/18-final-report.md`](docs/18-final-report.md).
 
 ## Quick start
 
@@ -64,5 +68,5 @@ src/services/   business logic: auth, suppliers, products, imports (upload→app
 src/web/        HTTP routes and server-rendered pages
 src/db/         SQLite connection and SQL migrations
 tests/          unit, integration (incl. adversarial HTTP) and e2e
-docs/           research, decision, strategy, QA, security, economics, GTM, roadmap, risks, final report, red team, real-list benchmark, business simulation
+docs/           research, decision, strategy, QA, security, economics, GTM, roadmap, risks, final report, red team, real-list benchmark, business simulation, public validation, post-mortem
 ```

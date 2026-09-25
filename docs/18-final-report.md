@@ -1,5 +1,8 @@
 # 18 — Final Report: Remarcá
 
+> **Final status (2026-09-25): ABANDONED AS BUSINESS HYPOTHESIS — TECHNICALLY FUNCTIONAL BUT COMMERCIAL EVIDENCE
+> INSUFFICIENT.** See [`23-remarca-postmortem.md`](23-remarca-postmortem.md). The status blocks below are kept as history.
+
 > ## ⛔ Status update after the public market validation (2026-09-25) — read [`22-market-validation-from-public-evidence.md`](22-market-validation-from-public-evidence.md)
 > Six experiments from public data only: job postings, 45 public supplier lists, price-change histories and
 > substitutes. **This changes the conclusion below.**
