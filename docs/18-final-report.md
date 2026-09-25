@@ -1,5 +1,28 @@
 # 18 — Final Report: Remarcá
 
+> ## ⛔ Status update after the public market validation (2026-09-25) — read [`22-market-validation-from-public-evidence.md`](22-market-validation-from-public-evidence.md)
+> Six experiments from public data only: job postings, 45 public supplier lists, price-change histories and
+> substitutes. **This changes the conclusion below.**
+> - **The job is paid, but inside salaried roles.**
+>   - 16 Argentine postings in ≈ 8 days name price-list upkeep, at ARS 1.0–1.6 M/month.
+>   - It is always one duty among several.
+>   - No priced Argentine service that updates price lists for others was found.
+> - **The pre-registered input rule fails** (21 §17a). Of 45 public lists:
+>   - 33% are spreadsheets with codes;
+>   - 64% are PDF-only, and Remarcá reads 2 of those 29 correctly;
+>   - the "good zone" (spreadsheet + code + price + recent + one currency) is 18%.
+> - **A blanket % increase depends on the supplier.** It is nearly right for Cámara del Libro and Colihue (Dosos
+>   declares even increases by family). For Neopel it is wrong for 11–49% of items per month.
+> - **Substitutes got cheaper.** Claude for Excel comes with a USD 20 plan. EmberPrice copied the feature set.
+>   Multilistas owns the Argentine pitch.
+> - **Red team:** «un servicio con Remarcá puede ser un negocio pequeño pero rentable» does not survive as stated:
+>   - the input condition fails on public data;
+>   - the software is not what would make a service work.
+>
+> **Decision: abandon Remarcá as a destination for more Claude credits.** No further building or desk research. The
+> only remaining test, counting and pricing the lists that known stores receive privately (22 §15), costs founder
+> time and 0 credits. It is optional, with a 3-week stop date. This supersedes the "Next" line of the block below.
+
 > ## Status update after the business simulation (2026-09-25) — read [`21-business-model-simulation.md`](21-business-model-simulation.md)
 > A simulator built on the benchmark results is still **not validation**: synthetic stores, ASSUMPTION human times,
 > no customers. It **narrows** the conclusions below.

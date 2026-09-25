@@ -1,0 +1,473 @@
+{
+ "description": "docs/22 Experiment 1: public evidence that someone is paid to do supplier price-list work. It is evidence that the WORK is paid, not that anyone would pay for Remarcá. Pages were read on 2026-09-25; no employer or freelancer was contacted.",
+ "retrieved": "2026-09-25",
+ "computrabajo_scan": {
+  "method": "Three public Computrabajo Argentina search pages (trabajo-de-listas-de-precios, trabajo-de-actualizacion-de-precios, trabajo-de-ferreterias) fetched once; every offer linked from them (56 unique) fetched and searched for price-list duties. One snapshot, not 30 days.",
+  "offers_scanned": 56,
+  "offers_mentioning_price_list_work": 16,
+  "offers_from_the_ferreterias_search_mentioning_it": 0,
+  "note": "Dates are Computrabajo's 'actualizada' labels (17–25 Sep 2026), not original posting dates. In every offer the price-list duty is one bullet among several; none is a dedicated price-list role and none asks for an outside service."
+ },
+ "job_postings": [
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-824si-administrativoa-de-ventas-segmento-farma-zona-tortuguitas-en-malvinas-argentinas-3F81A8BC2CBE072F61373E686DCF3405",
+   "title": "824SI Administrativo/a. de Ventas Segmento Farma. Zona Tortuguitas en Malvinas Argentinas, Buenos Aires-GBA",
+   "employer_as_described": "farmacéutica (fabricante)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 3 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Actualizar listas de precios según indicaciones de la Gerencia de Ventas."
+   ],
+   "tools_mentioned": [
+    "bejerman"
+   ],
+   "price_list_side": "own_sales_list",
+   "overlap_with_remarca": "low",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-824si-analista-administrativoa-facturacion-y-ventas-tortuguitas-en-tortuguitas-178318479123188561373E686DCF3405",
+   "title": "824SI Analista Administrativo/a. Facturación y Ventas - Tortuguitas en Tortuguitas, Buenos Aires-GBA",
+   "employer_as_described": "farmacéutica (fabricante)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 3 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Actualizar listas de precios según indicaciones de la Gerencia de Ventas."
+   ],
+   "tools_mentioned": [
+    "bejerman",
+    "excel"
+   ],
+   "price_list_side": "own_sales_list",
+   "overlap_with_remarca": "low",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-administrativo-de-compras-en-resistencia-C455CCCDE23D245861373E686DCF3405",
+   "title": "Administrativo de Compras en Resistencia, Chaco",
+   "employer_as_described": "\"importante empresa\" comercial/industrial, Resistencia",
+   "salary_as_published": "$ 3.000,00 (Mensual) (placeholder value as published)",
+   "updated_as_shown_on_2026-09-25": "Ayer (actualizada)",
+   "country": "AR",
+   "quote": [
+    "• Mantener actualizada la base de datos de proveedores y listas de precios.",
+    "• Control de listas de precios."
+   ],
+   "tools_mentioned": [
+    "erp",
+    "excel",
+    "google sheets"
+   ],
+   "price_list_side": "supplier_lists",
+   "overlap_with_remarca": "high",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-administrativoa-comercial-y-contable-con-experiencia-presencial-en-parque-patricios-6A3F9F0750120C9661373E686DCF3405",
+   "title": "Administrativo/a Comercial y Contable - Con experiencia. Presencial en Parque Patricios, Capital Federal",
+   "employer_as_described": "bazar, venta mayorista y minorista",
+   "salary_as_published": "$ 1.600.000,00 (Mensual)",
+   "updated_as_shown_on_2026-09-25": "Ayer (actualizada)",
+   "country": "AR",
+   "quote": [
+    "- Gestionar la relación con proveedores: pedidos, listas de precios, seguimiento de entregas y reclamos.",
+    "- Actualizar precios de venta."
+   ],
+   "tools_mentioned": [
+    "excel",
+    "google sheets",
+    "sistema de gestión",
+    "zeus"
+   ],
+   "price_list_side": "supplier_lists_and_sale_prices",
+   "overlap_with_remarca": "high",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-administrativoa-contable-con-experiencia-en-villa-martelli-FF1348074A4D630161373E686DCF3405",
+   "title": "Administrativo/a Contable - con experiencia en Villa Martelli, Buenos Aires-GBA",
+   "employer_as_described": "droguería (distribuidora)",
+   "salary_as_published": "$ 1.500.000,00 (Mensual)",
+   "updated_as_shown_on_2026-09-25": "Hace 2 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "• Administrar listas de precios y colaborar en el análisis de costos y márgenes."
+   ],
+   "tools_mentioned": [
+    "erp",
+    "excel"
+   ],
+   "price_list_side": "ambiguous",
+   "overlap_with_remarca": "medium",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-administrativoa-de-ventas-req211588-eventual-en-cordoba-943AB3834817285861373E686DCF3405",
+   "title": "Administrativo/a de ventas (req211588) Eventual en Córdoba, Córdoba",
+   "employer_as_described": "fabricante de mobiliario urbano",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 2 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Gestionar listas de precios, notas de pedido y remitos."
+   ],
+   "tools_mentioned": [
+    "excel",
+    "sistema de gestión"
+   ],
+   "price_list_side": "own_sales_list",
+   "overlap_with_remarca": "low",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-comercial-en-acassuso-F5ADAC08064EE8AE61373E686DCF3405",
+   "title": "Analista comercial en Acassuso, Buenos Aires-GBA",
+   "employer_as_described": "empresa comercializadora",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 13 horas (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Ejecutar la confección y actualización estratégica de listas de precios."
+   ],
+   "tools_mentioned": [
+    "excel",
+    "sistema de gestión"
+   ],
+   "price_list_side": "own_sales_list",
+   "overlap_with_remarca": "low",
+   "found_via_search": [
+    "listas-de-precios",
+    "actualizacion-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-comercial-en-rosario-153376C95BF9621761373E686DCF3405",
+   "title": "Analista Comercial en Rosario, Santa Fe",
+   "employer_as_described": "industria (Rosario)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 2 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Controlar listas de precios, descuentos y acciones comerciales vigentes."
+   ],
+   "tools_mentioned": [
+    "erp"
+   ],
+   "price_list_side": "own_sales_list",
+   "overlap_with_remarca": "low",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-analista-de-marketing-en-sauce-viejo-D58B626227BCC70861373E686DCF3405",
+   "title": "Analista de Marketing en Sauce Viejo, Santa Fe",
+   "employer_as_described": "aberturas (marketing)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "17 de septiembre (actualizada)",
+   "country": "AR",
+   "quote": [
+    "• Creación de flyers, placas, catálogos, listas de precios y material promocional."
+   ],
+   "tools_mentioned": [],
+   "price_list_side": "designs_price_list_material",
+   "overlap_with_remarca": "none",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-asistente-administrativo-de-logistica-en-san-justo-599FB5680312562661373E686DCF3405",
+   "title": "Asistente Administrativo de Logistica en San Justo, Buenos Aires-GBA",
+   "employer_as_described": "empresa autopartista",
+   "salary_as_published": "$ 1.350.000,00 (Mensual)",
+   "updated_as_shown_on_2026-09-25": "Ayer (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Carga de precios."
+   ],
+   "tools_mentioned": [
+    "excel",
+    "tango"
+   ],
+   "price_list_side": "ambiguous",
+   "overlap_with_remarca": "medium",
+   "found_via_search": [
+    "actualizacion-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-asistente-comercial-en-agronomia-AEEDEEE73880BC3461373E686DCF3405",
+   "title": "Asistente Comercial en Agronomía, Capital Federal",
+   "employer_as_described": "\"importante empresa del sector\"",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Ayer (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Carga y actualización de listas de precios, promociones, productos y condiciones comerciales."
+   ],
+   "tools_mentioned": [
+    "excel"
+   ],
+   "price_list_side": "ambiguous",
+   "overlap_with_remarca": "medium",
+   "found_via_search": [
+    "listas-de-precios",
+    "actualizacion-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-auxiliar-de-compras-part-time-en-monserrat-A3E90DE560D20E4561373E686DCF3405",
+   "title": "Auxiliar de compras Part Time en Monserrat, Capital Federal",
+   "employer_as_described": "cadena hotelera (compras)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 7 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "* Gestión y actualización de proveedores y precios en el sistema de gestión."
+   ],
+   "tools_mentioned": [
+    "excel",
+    "sistema de gestión"
+   ],
+   "price_list_side": "supplier_prices_in_system",
+   "overlap_with_remarca": "medium",
+   "found_via_search": [
+    "actualizacion-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-auxuliar-comercial-tecnico-rosario-en-rosario-3FA66473533349F661373E686DCF3405",
+   "title": "Auxuliar comercial técnico - Rosario en Rosario, Santa Fe",
+   "employer_as_described": "industria metalmecánica",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 3 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Gestión comercial: Elaborar presupuestos según las listas de precios, realizar el seguimiento de las cotizaciones enviadas y cargar los datos de forma precisa en el sistema de gestión."
+   ],
+   "tools_mentioned": [
+    "erp",
+    "excel",
+    "sistema de gestión"
+   ],
+   "price_list_side": "uses_price_lists_for_quotes",
+   "overlap_with_remarca": "none",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-comprador-industrial-en-lomas-del-mirador-87705E260300AA2961373E686DCF3405",
+   "title": "Comprador - Industrial en Lomas del Mirador, Buenos Aires-GBA",
+   "employer_as_described": "fábrica de químicos de limpieza (compras)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Hace 2 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Mantener actualizados los registros, listas de precios y bases de proveedores."
+   ],
+   "tools_mentioned": [
+    "tango"
+   ],
+   "price_list_side": "supplier_lists",
+   "overlap_with_remarca": "medium",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-compradora-rubro-seguridad-electronica-en-flores-72F3DE7DD5BDC1A261373E686DCF3405",
+   "title": "Comprador/a – Rubro Seguridad Electrónica en Flores, Capital Federal",
+   "employer_as_described": "seguridad electrónica (compras)",
+   "salary_as_published": null,
+   "updated_as_shown_on_2026-09-25": "Ayer (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Actualización de listas de precios en control de stock"
+   ],
+   "tools_mentioned": [],
+   "price_list_side": "supplier_lists_into_stock_system",
+   "overlap_with_remarca": "high",
+   "found_via_search": [
+    "listas-de-precios",
+    "actualizacion-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  },
+  {
+   "source": "Computrabajo Argentina",
+   "url": "https://ar.computrabajo.com/ofertas-de-trabajo/oferta-de-trabajo-de-responsable-compras-comercio-mayorista-quimica-limpieza-zona-oeste-moron-con-experiencia-en-moron-A693074AA6EE26B361373E686DCF3405",
+   "title": "Responsable Compras Comercio mayorista quimica limpieza zona oeste morón - con experiencia en Morón, Buenos Aires-GBA",
+   "employer_as_described": "mayorista de química y limpieza (compras)",
+   "salary_as_published": "$ 1.000.000,00 (Mensual)",
+   "updated_as_shown_on_2026-09-25": "Hace 3 días (actualizada)",
+   "country": "AR",
+   "quote": [
+    "Mantener actualizada la información de proveedores, listas de precios y condiciones comerciales."
+   ],
+   "tools_mentioned": [
+    "excel"
+   ],
+   "price_list_side": "supplier_lists",
+   "overlap_with_remarca": "high",
+   "found_via_search": [
+    "listas-de-precios"
+   ],
+   "verification": "primary page fetched 2026-09-25"
+  }
+ ],
+ "freelance_and_services": [
+  {
+   "source": "Freelancer.com",
+   "url": "https://www.freelancer.com/projects/data-processing-data-entry/vendor-price-list-excel-macros.1042346",
+   "date": "posted over 14 years ago (≈2012)",
+   "country": "UNKNOWN",
+   "client": "online retailer with 100+ vendors",
+   "task": "one Excel macro per vendor to turn each vendor's price sheet ('in their own format') into the website inventory format",
+   "frequency": "recurring (implied: vendors resend sheets)",
+   "tool": "Excel VBA",
+   "excel_erp_pdf": "Excel",
+   "codes": "not stated",
+   "pay": "USD 30–250, paid per vendor macro",
+   "overlap": "high (same job), but old and outside Argentina",
+   "verification": "primary page fetched"
+  },
+  {
+   "source": "Freelancer.com",
+   "url": "https://www.freelancer.com/projects/data-management/website-price-list-data-entry.html",
+   "date": "posted ≈9 months before 2026-09-25; status Completed",
+   "country": "UNKNOWN (budget in AUD)",
+   "client": "company with an ordering system",
+   "task": "copy ≈2,000 product prices (name, category, SKU, price) from its own public website into one Excel workbook",
+   "frequency": "one-off",
+   "tool": "Excel",
+   "excel_erp_pdf": "Excel",
+   "codes": "SKU if shown",
+   "pay": "AUD 250–750 (75 proposals)",
+   "overlap": "low (one-off extraction, not a supplier update)",
+   "verification": "primary page fetched"
+  },
+  {
+   "source": "Freelancer.com (search results)",
+   "url": "https://www.freelancer.com/",
+   "date": "UNKNOWN",
+   "country": "UNKNOWN",
+   "client": "UNKNOWN",
+   "task": "'Excel E-Commerce Pricing Reports' (supplier cost + markup + change report); 'Update price in InDesign catalogue' (1,300 items); 'Product Data Entry from Excel' (USD 15–25/h)",
+   "pay": "USD 15–25/h (last one)",
+   "overlap": "medium",
+   "verification": "search-result summary only"
+  },
+  {
+   "source": "Workana",
+   "url": "https://www.workana.com/es/job/actualizacion-de-precios",
+   "date": "UNKNOWN",
+   "country": "UNKNOWN (Spanish)",
+   "client": "admin analyst",
+   "task": "request supplier lists and keep prices updated; intermediate Excel",
+   "pay": "UNKNOWN",
+   "overlap": "high",
+   "verification": "HTTP 403 to our requests; search-result summary only"
+  },
+  {
+   "source": "Workana",
+   "url": "https://www.workana.com/es/job/plantilla-excel-comparacion-de-precios-proveedores-refacciones",
+   "date": "UNKNOWN",
+   "country": "likely Mexico ('refacciones')",
+   "task": "Excel template to compare supplier prices for spare parts",
+   "pay": "UNKNOWN",
+   "overlap": "medium",
+   "verification": "HTTP 403; search-result summary only"
+  },
+  {
+   "source": "Mercado Libre Argentina (service listing MLAU3073961260)",
+   "url": "https://www.mercadolibre.com.ar/carga-de-productos-para-tienda-web-tienda-nube-empretienda/up/MLAU3073961260",
+   "date": "UNKNOWN",
+   "country": "AR",
+   "task": "loading products into Tienda Nube / Empretienda / web stores",
+   "pay": "Básico ARS 1,200 per product (800 above 50); Avanzado ARS 1,800 (1,300 above 50)",
+   "overlap": "low (initial catalog loading, not price updating)",
+   "verification": "login wall; search-result summary only"
+  },
+  {
+   "source": "Fiverr",
+   "url": "https://www.fiverr.com/",
+   "date": "UNKNOWN",
+   "country": "international",
+   "task": "update inventory/barcode prices into Shopify (seller 'hossainzabed', USD 15); bulk CSV product import (seller 'simunarimu', USD 25)",
+   "pay": "USD 15–25 per gig",
+   "overlap": "medium",
+   "verification": "search-result summary only"
+  },
+  {
+   "source": "Mi Asistencia Virtual",
+   "url": "http://www.miasistenciavirtual.com/",
+   "date": "UNKNOWN",
+   "country": "AR",
+   "task": "virtual assistant offering catalog loading and updating for TiendaNube, MercadoShop, Wix, WooCommerce",
+   "pay": "not published",
+   "overlap": "medium",
+   "verification": "search-result summary"
+  },
+  {
+   "source": "Tienda Negocio",
+   "url": "https://tiendanegocio.com/precios",
+   "date": "UNKNOWN",
+   "country": "AR",
+   "task": "bulk product and price loading offered by an e-commerce platform",
+   "pay": "UNKNOWN",
+   "overlap": "low",
+   "verification": "search-result summary"
+  }
+ ],
+ "wage_anchor": {
+  "source": "Perfil, 2026-09-03",
+  "url": "https://www.perfil.com/noticias/economia/dia-ferretero-cuanto-cobran-empleados-sector-segun-escala-septiembre-a35.phtml",
+  "fact": "CCT 130/75 (Comercio) September 2026 scale for ferretería employees: Administrativo A basic ARS 1,196,632 + 100,000 + 20,000 non-remunerative = ARS 1,316,635; Administrativo F total ARS 1,373,514",
+  "verification": "primary page fetched"
+ }
+}

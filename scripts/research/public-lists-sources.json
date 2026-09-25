@@ -1,0 +1,742 @@
+{
+ "description": "Public price lists inspected for docs/22 (retrieved 2026-09-25). Third-party files are NOT committed. None of these companies is a Remarcá customer.",
+ "independent": [
+  {
+   "id": "neopel",
+   "company": "Neopel",
+   "sector": "Papelera / embalaje mayorista",
+   "page": "https://neopel.com.ar/lista-de-precios/",
+   "files": [
+    {
+     "local": "neopel_17.xls",
+     "url": "https://neopel.com.ar/neopel/wp-content/uploads/2026/09/Lista-de-Precios-con-Buscador-17.xls"
+    },
+    {
+     "local": "neopel_20260924.pdf",
+     "url": "https://neopel.com.ar/neopel/wp-content/uploads/2026/09/24-09-2026.pdf"
+    }
+   ]
+  },
+  {
+   "id": "dosos",
+   "company": "Dosos",
+   "sector": "Sanitarios (fusión, riego, roscado, calefacción)",
+   "page": "https://dosos.com.ar/listas-para-descargar/",
+   "files": [
+    {
+     "local": "dosos_0.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/15jm5eFBhiP63IjeQ48baAkhUv4Ywg6kx/export?format=xlsx"
+    },
+    {
+     "local": "dosos_1.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/15z-Ucv9DO09q3CbQAto9kGO4byGwwsot/export?format=xlsx"
+    },
+    {
+     "local": "dosos_2.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/18i1kDlezeZosHia0gBk2RsV7xVSbrycB/export?format=xlsx"
+    },
+    {
+     "local": "dosos_3.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/1EDkTvKAAES5Lf90SiDWXYROl9GYTPMrQ/export?format=xlsx"
+    },
+    {
+     "local": "dosos_4.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/1LEx7DWPkAVSEWMho9C_iinisfZ9YOthB/export?format=xlsx"
+    },
+    {
+     "local": "dosos_5.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/1YlAwGUwKBVFhzi50ks7mzSo604g4sMF7/export?format=xlsx"
+    },
+    {
+     "local": "dosos_6.xlsx",
+     "url": "https://docs.google.com/spreadsheets/d/1gIbF-5clQhEQZyLBrNoDYiGLW6jB1iN4/export?format=xlsx"
+    }
+   ]
+  },
+  {
+   "id": "martini",
+   "company": "Martini S.A.",
+   "sector": "UNKNOWN until inspected",
+   "page": "https://martinisa.com.ar/lista-de-precios/",
+   "files": [
+    {
+     "local": "martini.xls",
+     "url": "https://martini.knu.com.ar/Archivos/lista-de-precios.xls"
+    },
+    {
+     "local": "martini.pdf",
+     "url": "https://martini.knu.com.ar/Archivos/lista-de-precios.pdf"
+    }
+   ]
+  },
+  {
+   "id": "fatima",
+   "company": "Distribuidora Fátima",
+   "sector": "Mayorista (rubro por inspeccionar)",
+   "page": "https://distribuidorafatima.com.ar/lista-de-precios/",
+   "files": [
+    {
+     "local": "fatima.pdf",
+     "url": "https://distribuidorafatima.com.ar/wp-content/uploads/LISTAFATIMA.pdf"
+    }
+   ]
+  },
+  {
+   "id": "colihue",
+   "company": "Ediciones Colihue",
+   "sector": "Editorial (B2B a librerías)",
+   "page": "https://colihue.com.ar/distribuidores/",
+   "files": [
+    {
+     "local": "colihue_202609.xlsx",
+     "url": "https://colihue.com.ar/wp-content/uploads/Lista-de-precios-09-2026-COLIHUE.xlsx"
+    },
+    {
+     "local": "colihue_202609.pdf",
+     "url": "https://colihue.com.ar/wp-content/uploads/Lista-de-precios-09-2026-COLIHUE.pdf"
+    }
+   ]
+  },
+  {
+   "id": "italgrif",
+   "company": "Italgrif",
+   "sector": "Grifería y sanitarios (fabricante)",
+   "page": "https://www.italgrif.com/",
+   "files": [
+    {
+     "local": "italgrif_v05.pdf",
+     "url": "https://www.italgrif.com/Archivos/Otros/Files/Lista%20de%20precio%20ITALGRIF_V05.pdf"
+    },
+    {
+     "local": "italgrif_2023.pdf",
+     "url": "https://www.italgrif.com/Archivos/Otros/Files/AF_Lista-de-precio-Italgrif_2023_V01.pdf"
+    }
+   ]
+  },
+  {
+   "id": "comsa",
+   "company": "COMSA Sanitarios",
+   "sector": "Distribuidora de sanitarios",
+   "page": "https://www.comsasanitarios.com.ar/",
+   "files": [
+    {
+     "local": "comsa.pdf",
+     "url": "https://www.comsasanitarios.com.ar/catalogo.pdf"
+    }
+   ]
+  },
+  {
+   "id": "saladillo",
+   "company": "Industrias Saladillo",
+   "sector": "Fabricante (rubro por inspeccionar)",
+   "page": "https://industriassaladillo.com.ar/",
+   "files": [
+    {
+     "local": "saladillo.pdf",
+     "url": "https://industriassaladillo.com.ar/downloads/lista_de_precios.pdf"
+    }
+   ]
+  },
+  {
+   "id": "rotoplast",
+   "company": "Rotoplast (lista alojada en irp.cdn-website.com)",
+   "sector": "Tanques / sanitarios (por inspeccionar)",
+   "page": "https://irp.cdn-website.com/299b0928/files/uploaded/LISTA%20DE%20PRECIO%20ROTOPLAST.pdf",
+   "files": [
+    {
+     "local": "rotoplast.pdf",
+     "url": "https://irp.cdn-website.com/299b0928/files/uploaded/LISTA%20DE%20PRECIO%20ROTOPLAST.pdf"
+    }
+   ]
+  },
+  {
+   "id": "barbiero",
+   "company": "Barbiero",
+   "sector": "Material eléctrico (distribuidora)",
+   "page": "https://barbiero.com.ar/",
+   "files": [
+    {
+     "local": "barbiero.pdf",
+     "url": "https://barbiero.com.ar/descargaspublicas/catalogo.pdf"
+    }
+   ]
+  },
+  {
+   "id": "dipietro",
+   "company": "Distribuidora Di Pietro S.R.L.",
+   "sector": "Mayorista (rubro por inspeccionar)",
+   "page": "https://www.dipietrosrl.com.ar/",
+   "files": [
+    {
+     "local": "dipietro.pdf",
+     "url": "https://www.dipietrosrl.com.ar/lista.pdf"
+    }
+   ]
+  },
+  {
+   "id": "repomar",
+   "company": "Repuestos Omar",
+   "sector": "Autopartes (mayorista)",
+   "page": "https://repuestosomar.net/L_descargas.php",
+   "files": [
+    {
+     "local": "repomar.pdf",
+     "url": "https://repuestosomar.net/DocVer.php?Doc=RepuestosOmar-CatalogoGeneral-2026-01-14.pdf"
+    }
+   ]
+  },
+  {
+   "id": "dipel",
+   "company": "Dipel",
+   "sector": "Ferretería / corralón (mayorista)",
+   "page": "https://dipel.com.ar/",
+   "files": [
+    {
+     "local": "dipel_web.xlsx",
+     "url": "https://dipel.com.ar/docpublicar/LISTA_PAGINA_WEB.xlsx"
+    },
+    {
+     "local": "dipel_000.xlsx",
+     "url": "https://dipel.com.ar/docpublicar/LISTA_000.xlsx"
+    }
+   ]
+  },
+  {
+   "id": "fedeli",
+   "company": "Fedeli",
+   "sector": "Bulonería (mayorista)",
+   "page": "https://fedeli.com.ar/",
+   "files": [
+    {
+     "local": "fedeli.bin",
+     "url": "https://drive.google.com/uc?export=download&id=1H6QPae8OhuMD_VSNjFlmbb7IFXGc6soP"
+    }
+   ]
+  },
+  {
+   "id": "borcas",
+   "company": "Borcas",
+   "sector": "Artículos de limpieza (mayorista)",
+   "page": "https://borcas.com.ar/",
+   "files": [
+    {
+     "local": "borcas.pdf",
+     "url": "https://borcas.com.ar/wp-content/uploads/2026/09/LISTA-2026223.pdf"
+    }
+   ]
+  },
+  {
+   "id": "casaabe",
+   "company": "Casa ABE S.A.",
+   "sector": "Mayorista (rubro por inspeccionar)",
+   "page": "https://casaabe.com.ar/",
+   "files": [
+    {
+     "local": "casaabe_1.pdf",
+     "url": "https://casaabe.com.ar/pdf-lista-precios/1-1.pdf"
+    },
+    {
+     "local": "casaabe_2.pdf",
+     "url": "https://casaabe.com.ar/pdf-lista-precios/2-1.pdf"
+    }
+   ]
+  },
+  {
+   "id": "areacoco",
+   "company": "Area Coco Rosario",
+   "sector": "Distribuidor (cosmética)",
+   "page": "https://www.areacocotrosario.com.ar/",
+   "files": [
+    {
+     "local": "areacoco.xls",
+     "url": "https://www.areacocotrosario.com.ar/uploaded/Lista%208.4.xls"
+    }
+   ]
+  },
+  {
+   "id": "todofiambres",
+   "company": "Todo Fiambres",
+   "sector": "Alimentos (mayorista)",
+   "page": "https://www.todofiambres.com.ar/",
+   "files": [
+    {
+     "local": "todofiambres.pdf",
+     "url": "https://www.todofiambres.com.ar/wp-content/uploads/LISTA-DE-PRECIOS.pdf"
+    }
+   ]
+  },
+  {
+   "id": "posta",
+   "company": "POSTA S.R.L. (alojada en grupohaedoweb.com.ar)",
+   "sector": "Por inspeccionar",
+   "page": "https://grupohaedoweb.com.ar/",
+   "files": [
+    {
+     "local": "posta.pdf",
+     "url": "https://grupohaedoweb.com.ar/wp-content/uploads/2026/04/POSTA-SRL-CATALOGO-PRODUCTOS-ABRIL-2026-V01-2.pdf"
+    }
+   ]
+  },
+  {
+   "id": "distdelsur",
+   "company": "Distribuidora del Sur",
+   "sector": "Mayorista (lista web)",
+   "page": "https://www.distribuidoradelsur.com.ar/tienda/lista_precios.php",
+   "files": [
+    {
+     "local": "distdelsur.html",
+     "url": "https://www.distribuidoradelsur.com.ar/tienda/lista_precios.php"
+    }
+   ]
+  },
+  {
+   "id": "gabilucho",
+   "company": "Distribuidora GabiLucho",
+   "sector": "Mayorista (lista web)",
+   "page": "https://gabilucho.com.ar/precios/catalogo_print.php",
+   "files": [
+    {
+     "local": "gabilucho.html",
+     "url": "https://gabilucho.com.ar/precios/catalogo_print.php"
+    }
+   ]
+  },
+  {
+   "id": "aromatizar",
+   "company": "Aromatizar Mayorista",
+   "sector": "Aromatizantes (mayorista, lista web)",
+   "page": "https://aromatizarmayorista.com.ar/sistema/",
+   "files": [
+    {
+     "local": "aromatizar.html",
+     "url": "https://aromatizarmayorista.com.ar/sistema/?pagina=listaprecios"
+    }
+   ]
+  },
+  {
+   "id": "lafabrica",
+   "company": "La Fábrica",
+   "sector": "Alimentos (mayorista)",
+   "page": "https://www.lafabrica.com.ar/",
+   "files": [
+    {
+     "local": "lafabrica.pdf",
+     "url": "https://www.lafabrica.com.ar/pdfs/lista-de-precios.pdf"
+    }
+   ]
+  },
+  {
+   "id": "ellibro",
+   "company": "Cámara Argentina del Libro (lista pública)",
+   "sector": "Libros",
+   "page": "https://www.el-libro.org.ar/",
+   "files": [
+    {
+     "local": "ellibro.xls",
+     "url": "https://www.el-libro.org.ar/wp-content/uploads/2022/07/lista-de-precios-publico-actual.xls"
+    }
+   ]
+  }
+ ],
+ "accme_cluster": {
+  "page": "https://accmelec.com.ar/lista-de-precios/",
+  "note": "Manufacturer lists republished by one electrical distributor (ACCME); reported separately because they share one source and one sector.",
+  "brands": [
+   {
+    "id": "accme_atomlux",
+    "brand": "ATOMLUX",
+    "files": [
+     {
+      "local": "accme_atomlux.xlsx",
+      "url": "https://docs.google.com/spreadsheets/d/1hv_WYiut3sxwMvCkEl7g20qZD89i-dsM/export?format=xlsx"
+     }
+    ]
+   },
+   {
+    "id": "accme_cpsa",
+    "brand": "CPSA",
+    "files": [
+     {
+      "local": "accme_cpsa.xlsx",
+      "url": "https://docs.google.com/spreadsheets/d/1efrz81acCBYeQBtTo2NuAUkZgWi6f-2I/export?format=xlsx"
+     }
+    ]
+   },
+   {
+    "id": "accme_poliplas",
+    "brand": "POLIPLAS",
+    "files": [
+     {
+      "local": "accme_poliplas.xlsx",
+      "url": "https://docs.google.com/spreadsheets/d/10BzIhGglQfCWNXVz-TFQfp7JFfyGi8Pf/export?format=xlsx"
+     }
+    ]
+   },
+   {
+    "id": "accme_madeva",
+    "brand": "MADEVA",
+    "files": [
+     {
+      "local": "accme_madeva.xlsx",
+      "url": "https://docs.google.com/spreadsheets/d/12dkHxVPitLkvv9dUraa_1cz2NnkPXOo6/export?format=xlsx"
+     }
+    ]
+   },
+   {
+    "id": "accme_cleos",
+    "brand": "CLEOS",
+    "files": [
+     {
+      "local": "accme_cleos.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1TyiezxDndDCxkA-nFZZAVeG6jL-ZDmqI"
+     }
+    ]
+   },
+   {
+    "id": "accme_conextube",
+    "brand": "CONEXTUBE",
+    "files": [
+     {
+      "local": "accme_conextube.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1PibBEmUQxSGo7swWkyrD9JTnJaAURV8h"
+     }
+    ]
+   },
+   {
+    "id": "accme_einhell",
+    "brand": "EINHELL",
+    "files": [
+     {
+      "local": "accme_einhell.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1uk5RM4FVmxh2DzFBwFqm1vQteOaDo9hz"
+     }
+    ]
+   },
+   {
+    "id": "accme_emanal",
+    "brand": "EMANAL",
+    "files": [
+     {
+      "local": "accme_emanal.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1Fsn2BjzR0YhIpb9R3GtuuvhrCKS_JETd"
+     }
+    ]
+   },
+   {
+    "id": "accme_exultt",
+    "brand": "EXULTT",
+    "files": [
+     {
+      "local": "accme_exultt.bin",
+      "url": "https://drive.google.com/uc?export=download&id=12RXztxdilbVVrH1igarOL6-hypgnO1B2"
+     }
+    ]
+   },
+   {
+    "id": "accme_flexivolt",
+    "brand": "FLEXIVOLT",
+    "files": [
+     {
+      "local": "accme_flexivolt.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1eTaJBS9rpp4UcRmUxeWboqJ-ga9X7VKh"
+     }
+    ]
+   },
+   {
+    "id": "accme_lumenac",
+    "brand": "LUMENAC",
+    "files": [
+     {
+      "local": "accme_lumenac.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1O6uST0ctWto2ns1_TkPE8_86Mmf1I3qh"
+     }
+    ]
+   },
+   {
+    "id": "accme_mig",
+    "brand": "MIG",
+    "files": [
+     {
+      "local": "accme_mig.bin",
+      "url": "https://drive.google.com/uc?export=download&id=11Ku9NYESl8AeFcutTSFc1NmjDx5rEeDy"
+     }
+    ]
+   },
+   {
+    "id": "accme_mileniumled",
+    "brand": "MILENIUMLED",
+    "files": [
+     {
+      "local": "accme_mileniumled.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1lNLNxKDSxFVMD-_lF9I9yEEbMXGY6PXj"
+     }
+    ]
+   },
+   {
+    "id": "accme_prodem",
+    "brand": "PRODEM",
+    "files": [
+     {
+      "local": "accme_prodem.bin",
+      "url": "https://drive.google.com/uc?export=download&id=14sOfSyHM_vN75UtxScuxebOfAsXH2foZ"
+     }
+    ]
+   },
+   {
+    "id": "accme_sbox",
+    "brand": "S-BOX",
+    "files": [
+     {
+      "local": "accme_sbox.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1a7oUqn7mzdSFvlGJL0eCVV4psyh8iM56"
+     }
+    ]
+   },
+   {
+    "id": "accme_taad",
+    "brand": "TAAD",
+    "files": [
+     {
+      "local": "accme_taad.bin",
+      "url": "https://drive.google.com/uc?export=download&id=16fCiMK0J9ICIhEmxKinyqQD7-W1tq0Zv"
+     }
+    ]
+   },
+   {
+    "id": "accme_tacsa",
+    "brand": "TACSA",
+    "files": [
+     {
+      "local": "accme_tacsa.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1RPs4FyWNPlBIVR2qCwX9Xye5IH3IZ1oQ"
+     }
+    ]
+   },
+   {
+    "id": "accme_tbcin",
+    "brand": "TBCIN",
+    "files": [
+     {
+      "local": "accme_tbcin.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1gEC_BmKCuJQ9cldeP3UMn-O_Mch8aH-i"
+     }
+    ]
+   },
+   {
+    "id": "accme_technic",
+    "brand": "TECHNIC",
+    "files": [
+     {
+      "local": "accme_technic.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1M7PqJIiJuoAISf7Q0S7KUoEn5Met1RoB"
+     }
+    ]
+   },
+   {
+    "id": "accme_top",
+    "brand": "TOP",
+    "files": [
+     {
+      "local": "accme_top.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1hOL_Y8kBOmKvVCioeQTdKzrkyEdj3m-C"
+     }
+    ]
+   },
+   {
+    "id": "accme_trefilcon",
+    "brand": "TREFILCON",
+    "files": [
+     {
+      "local": "accme_trefilcon.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1ElRO0k7Ag5Ccbt6GafieWsZ5aDM9an1Q"
+     }
+    ]
+   },
+   {
+    "id": "accme_trefilight",
+    "brand": "TREFILIGHT",
+    "files": [
+     {
+      "local": "accme_trefilight.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1pyWKwJqg7eiaI4UoGH0evXAB1wAdtMDD"
+     }
+    ]
+   },
+   {
+    "id": "accme_viyilant",
+    "brand": "VIYILANT",
+    "files": [
+     {
+      "local": "accme_viyilant.bin",
+      "url": "https://drive.google.com/uc?export=download&id=1sAuokysGOTmr2iNO3zeedhFVFj8QTiL6"
+     }
+    ]
+   }
+  ]
+ },
+ "not_public": [
+  {
+   "company": "Transcaden SRL (transmisiones industriales)",
+   "page": "https://transcaden.com/precios/",
+   "observed": "\"No hay listas disponibles en este momento. Comunicate con nosotros para recibir las listas por email.\""
+  },
+  {
+   "company": "Rodamientos Caroya",
+   "page": "https://www.rodamientoscaroya.com.ar/precios/industria",
+   "observed": "\"Estamos actualizando nuestra lista de precios... contacte a su vendedor.\""
+  },
+  {
+   "company": "Fercor Mayorista",
+   "page": "https://www.fercormayorista.com.ar/index.html",
+   "observed": "Lists after entering user and password (search result)"
+  },
+  {
+   "company": "Dfer",
+   "page": "https://dfer.com.ar/catalogos_y_listas/",
+   "observed": "Download redirects to login (docs/20)"
+  },
+  {
+   "company": "Digilio Distribuciones",
+   "page": "https://digiliodistribuciones.com.ar/descargar-lista-excel",
+   "observed": "Dropbox link returned an HTML page (docs/20)"
+  },
+  {
+   "company": "Saniferr",
+   "page": "https://www.saniferr.com.ar/web/productos/download",
+   "observed": "Restricted to registered customers (search result)"
+  },
+  {
+   "company": "Distribuidora del Oeste",
+   "page": "https://distribuidoradeloeste.com.ar/auth",
+   "observed": "Login page"
+  },
+  {
+   "company": "Felix Torres y Cía (Colombia)",
+   "page": "https://felixtorresycia.com/listas-de-precios-y-catalogos/",
+   "observed": "Public, but Colombian and 2021–2024 files: excluded from the Argentine set"
+  }
+ ],
+ "versions": {
+  "note": "Older versions used by price_changes.py (docs/22 §7). Local names are what price_changes.py expects under <ver dir>.",
+  "neopel_daily_pdfs": {
+   "url_pattern": "https://neopel.com.ar/neopel/wp-content/uploads/<YYYY>/<MM>/<DD>-<MM>-<YYYY>.pdf",
+   "local_pattern": "neopel/<YYYY>-<MM>-<DD>.pdf",
+   "how_found": "the current list is linked from the public page under this pattern; earlier dates were requested at the same pattern. 88 answered with a PDF: one per quarter Mar–Dec 2025, one per month Jan–May 2026, every business day Jun–Sep 2026 (see dates)",
+   "dates": [
+    "2025-03-05",
+    "2025-06-02",
+    "2025-09-01",
+    "2025-12-01",
+    "2026-01-02",
+    "2026-02-02",
+    "2026-03-02",
+    "2026-04-01",
+    "2026-05-04",
+    "2026-06-01",
+    "2026-06-02",
+    "2026-06-03",
+    "2026-06-04",
+    "2026-06-05",
+    "2026-06-08",
+    "2026-06-09",
+    "2026-06-10",
+    "2026-06-11",
+    "2026-06-12",
+    "2026-06-16",
+    "2026-06-17",
+    "2026-06-18",
+    "2026-06-19",
+    "2026-06-22",
+    "2026-06-23",
+    "2026-06-24",
+    "2026-06-25",
+    "2026-06-26",
+    "2026-06-29",
+    "2026-06-30",
+    "2026-07-01",
+    "2026-07-02",
+    "2026-07-03",
+    "2026-07-06",
+    "2026-07-08",
+    "2026-07-10",
+    "2026-07-13",
+    "2026-07-14",
+    "2026-07-15",
+    "2026-07-16",
+    "2026-07-17",
+    "2026-07-20",
+    "2026-07-21",
+    "2026-07-22",
+    "2026-07-23",
+    "2026-07-24",
+    "2026-07-27",
+    "2026-07-28",
+    "2026-07-29",
+    "2026-07-30",
+    "2026-08-03",
+    "2026-08-04",
+    "2026-08-05",
+    "2026-08-06",
+    "2026-08-07",
+    "2026-08-10",
+    "2026-08-11",
+    "2026-08-12",
+    "2026-08-13",
+    "2026-08-14",
+    "2026-08-18",
+    "2026-08-19",
+    "2026-08-20",
+    "2026-08-21",
+    "2026-08-24",
+    "2026-08-25",
+    "2026-08-26",
+    "2026-08-27",
+    "2026-08-28",
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-07",
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-11",
+    "2026-09-14",
+    "2026-09-15",
+    "2026-09-16",
+    "2026-09-17",
+    "2026-09-18",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24"
+   ]
+  },
+  "files": [
+   {
+    "local": "neopel_14_202312.xls",
+    "url": "https://neopel.com.ar/neopel/wp-content/uploads/2023/12/Lista-de-Precios-con-buscador-14.xls"
+   },
+   {
+    "local": "colihue_202504.pdf",
+    "url": "https://colihue.com.ar/wp-content/uploads/Lista-de-precio-COLIHUE-04-2025.pdf",
+    "last_modified": "2026-05-26"
+   },
+   {
+    "local": "colihue_202609.csv",
+    "url": "https://colihue.com.ar/wp-content/uploads/Lista-de-precios-09-2026-COLIHUE.csv",
+    "last_modified": "2026-09-01"
+   },
+   {
+    "local": "colihue_ve_202511.csv",
+    "url": "https://colihue.com.ar/wp-content/uploads/Lista-de-precios-COLIHUE-11-2025-Venezuela.csv",
+    "last_modified": "2026-05-26"
+   },
+   {
+    "local": "colihue_ve_202609.csv",
+    "url": "https://colihue.com.ar/wp-content/uploads/Lista-de-precios-COLIHUE-09-2026-Venezuela.csv"
+   }
+  ]
+ }
+}

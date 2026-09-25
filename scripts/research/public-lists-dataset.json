@@ -1,0 +1,1577 @@
+{
+ "description": "docs/22 Experiment 2/3 dataset. One record per supplier whose price list was looked for on the public web (retrieved 2026-09-24/25). Labels were set by hand after reading the output of public_lists_inspect.py and public-lists-remarca.ts, plus the files themselves (docs/20 records come from docs/20 §3–§5). Third-party files are NOT committed; URLs are in public-lists-sources.json and real-sources.json. This is a convenience sample found by web search, NOT a representative sample of Argentine suppliers.",
+ "retrieved": "2026-09-25",
+ "recent_cutoff": "2026-03-25",
+ "legend": {
+  "group": "independent = the supplier publishes its own list; accme = manufacturer list republished on one electrical distributor's page (accmelec.com.ar), one sector, one channel",
+  "source_doc": "docs20 = already used in the docs/20 benchmark; docs22 = new in docs/22",
+  "status": "obtained | unavailable (dead link / no list) | not_public (login, email, password) | excluded",
+  "price_list": "false = a public document with codes but no prices (catalog)",
+  "spreadsheet": "at least one xls/xlsx/csv/Google Sheet with the list",
+  "code": "true / false / null (unreadable: scanned, image or font-encoded)",
+  "currency": "not_stated | ARS (explicit $ or 'pesos') | USD | mixed (ARS and USD rows in one list)",
+  "iva": "not_stated | global_net | global_included | net_and_gross_columns | per_product (rate differs by row)",
+  "date_source": "file = printed in the list or its file name; last_modified = HTTP Last-Modified; none",
+  "versioning_evidence": "explicit sign that the list is re-issued: numbered list, 'reemplaza a la lista', older versions downloadable, old/new price columns, change markers, declared increase history",
+  "remarca_auto": "what Remarcá's automatic detection does with the best file, no manual help: ok | partial | wrong (rows with wrong prices or codes) | zero (no rows, safe) | rejected (size cap / password / scanned)",
+  "hostile": "the best available file cannot be read as text by any tool we used (scanned, images, font-encoded, password) or is over Remarcá's 12 MB cap; the reason is given"
+ },
+ "suppliers": [
+  {
+   "id": "neopel",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Neopel",
+   "sector": "papelera / embalaje mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "xls",
+    "pdf"
+   ],
+   "spreadsheet": true,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "net_and_gross_columns",
+   "list_date": "2026-09-24",
+   "date_source": "file",
+   "versioning_evidence": "one PDF per business day; 88 older PDFs still downloadable (Mar-2025…Sep-2026); XLS numbered #14 (Dec-2023), #16, #17",
+   "historical_versions": true,
+   "difficulties": [
+    "discount notes as rows with price 0 in the XLS"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "XLS 3,087 rows incl. note rows; PDF 2,790 rows",
+   "hostile": null
+  },
+  {
+   "id": "dosos",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Dosos",
+   "sector": "sanitarios (fusión, riego, roscado)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "google_sheets"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": false,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": null,
+   "date_source": "none",
+   "versioning_evidence": "'Aumento' sheet lists the increase applied to each numbered list (18→34)",
+   "historical_versions": false,
+   "difficulties": [
+    "side-by-side blocks (Código | Medida | Precio repeated)",
+    "no description column (only size)"
+   ],
+   "remarca_auto": "partial",
+   "remarca_note": "4 of 7 sheets produce rows, one block per sheet; descriptions empty",
+   "hostile": null
+  },
+  {
+   "id": "martini",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Martini S.A.",
+   "sector": "autopartes / accesorios (faros LED)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xls",
+    "pdf"
+   ],
+   "spreadsheet": true,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-09-24",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "PDF: 2 products per line"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "XLS 10,636 rows OK; the PDF gives neighbour prices (LED-001E gets LED-001's price): wrong",
+   "hostile": null
+  },
+  {
+   "id": "fatima",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Distribuidora Fátima",
+   "sector": "alimentos mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": false,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "global_included",
+   "list_date": "2026-09-08",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "no product code"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no code column",
+   "hostile": null
+  },
+  {
+   "id": "colihue",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Ediciones Colihue",
+   "sector": "editorial (B2B a librerías)",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "xlsx",
+    "csv",
+    "pdf"
+   ],
+   "spreadsheet": true,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-09-01",
+   "date_source": "file",
+   "versioning_evidence": "older lists downloadable (AR Apr-2025 PDF; Venezuela Nov-2025 CSV)",
+   "historical_versions": true,
+   "difficulties": [
+    "three code columns (internal, ISBN, barcode)"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "XLSX 1,970 rows, code = barcode; PDF 0 rows",
+   "hostile": null
+  },
+  {
+   "id": "comsa",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "COMSA Sanitarios",
+   "sector": "distribuidora sanitarios / ferretería / corralón",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-09-18",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "catalog layout, 2 products per line",
+    "bulto column"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "76 pages, no rows",
+   "hostile": null
+  },
+  {
+   "id": "saladillo",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Industrias Saladillo",
+   "sector": "accesorios / válvulas (sanitarios, gas)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "global_included",
+   "list_date": "2026-09-08",
+   "date_source": "last_modified",
+   "versioning_evidence": "per-product change markers (N/P/M) declared in the legend",
+   "historical_versions": false,
+   "difficulties": [
+    "18 MB (over the 12 MB cap)",
+    "2 products per line",
+    "list = suggested retail price with IVA; purchase price = list minus the buyer's discounts"
+   ],
+   "remarca_auto": "rejected",
+   "remarca_note": "size cap",
+   "hostile": "over the 12 MB cap"
+  },
+  {
+   "id": "rotoplast",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Rotoplast (list hosted on a reseller site)",
+   "sector": "tanques de agua",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "net_and_gross_columns",
+   "list_date": "2021-10",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "stale (Oct-2021)"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "barbiero",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Barbiero",
+   "sector": "material eléctrico (distribuidora)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "global_net",
+   "list_date": "2026-09",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "206 pages"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "4,692 rows (header 'PRECIO SIN IVA')",
+   "hostile": null
+  },
+  {
+   "id": "dipietro",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Di Pietro S.R.L.",
+   "sector": "aislantes eléctricos (pertinax, etc.)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "net_and_gross_columns",
+   "list_date": "2026-09-17",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "hierarchical codes",
+    "currency column (all $)"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "109 pages, no rows",
+   "hostile": null
+  },
+  {
+   "id": "repomar",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Repuestos Omar",
+   "sector": "autopartes",
+   "target_sector": true,
+   "price_list": false,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": false,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-01-14",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "catalog without prices",
+    "61 MB"
+   ],
+   "remarca_auto": "rejected",
+   "remarca_note": "size cap; it is not a price list anyway",
+   "hostile": "over the 12 MB cap"
+  },
+  {
+   "id": "dipel",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Dipel",
+   "sector": "ferretería / corralón mayorista",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-09-23",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "two price columns (PRECIO LISTA, PRECIO VENTA)",
+    "a second XLSX is password-encrypted"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "4,633 rows, picks PRECIO LISTA",
+   "hostile": null
+  },
+  {
+   "id": "fedeli",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Fedeli",
+   "sector": "bulonería mayorista",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": null,
+   "description": null,
+   "price": null,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2025-09-15",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "password-protected PDF (file name says PASSWORD)"
+   ],
+   "remarca_auto": "rejected",
+   "remarca_note": "password",
+   "hostile": "password-protected"
+  },
+  {
+   "id": "borcas",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Borcas",
+   "sector": "artículos de limpieza mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "global_net",
+   "list_date": "2026-09-21",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "units-per-bulto column next to the price"
+   ],
+   "remarca_auto": "wrong",
+   "remarca_note": "1,295 rows with the pack quantity taken as the price",
+   "hostile": null
+  },
+  {
+   "id": "casaabe",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Casa ABE S.A.",
+   "sector": "juguetería / librería mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "global_included",
+   "list_date": "2026-09-18",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "369 pages",
+    "two lists (mayorista, minorista)"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "13,561 and 14,986 rows",
+   "hostile": null
+  },
+  {
+   "id": "todofiambres",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Todo Fiambres",
+   "sector": "alimentos mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-09-24",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "2 products per line"
+   ],
+   "remarca_auto": "wrong",
+   "remarca_note": "83 rows whose code is a price and price is 0 (visible, unusable)",
+   "hostile": null
+  },
+  {
+   "id": "posta",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "POSTA S.R.L.",
+   "sector": "muebles de exterior (catálogo)",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": false,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "global_net",
+   "list_date": "2026-04",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "catalog with few prices"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "distdelsur",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Distribuidora del Sur",
+   "sector": "alimentos mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "html"
+   ],
+   "spreadsheet": false,
+   "pdf": false,
+   "code": false,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-09-25",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "web page only, no file"
+   ],
+   "remarca_auto": "n/a",
+   "remarca_note": "Remarcá does not read web pages",
+   "hostile": null
+  },
+  {
+   "id": "lafabrica",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "La Fábrica",
+   "sector": "alimentos mayorista",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": false,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-09",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "promotional layout"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "ellibro",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Cámara Argentina del Libro (public list)",
+   "sector": "libros",
+   "target_sector": false,
+   "price_list": true,
+   "formats": [
+    "xls"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2023",
+   "date_source": "last_modified",
+   "versioning_evidence": "old and new price columns (PVP ANT, PVP NVO) in the same file",
+   "historical_versions": false,
+   "difficulties": [
+    "stale (2023)"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "2,656 rows, picks PVP NVO",
+   "hostile": null
+  },
+  {
+   "id": "camba",
+   "group": "independent",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "Bulonera Camba",
+   "sector": "bulonería",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx (in zip)",
+    "pdf (in zip)"
+   ],
+   "spreadsheet": true,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-08-30",
+   "date_source": "file",
+   "versioning_evidence": "'Codigos Viejos' sheet maps old codes to current ones",
+   "historical_versions": false,
+   "difficulties": [
+    "ZIP",
+    "legacy-ID column taken as code",
+    "PDFs as matrices / side-by-side blocks"
+   ],
+   "remarca_auto": "partial",
+   "remarca_note": "spreadsheet correct after a manual column choice; PDFs fail (docs/20 §5)",
+   "hostile": null
+  },
+  {
+   "id": "as",
+   "group": "independent",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "AS Electricidad",
+   "sector": "electricidad (distribuidora)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xls"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "per_product",
+   "list_date": "2026-09-22",
+   "date_source": "last_modified",
+   "versioning_evidence": "status column ('Nuevo', 'Baja $')",
+   "historical_versions": false,
+   "difficulties": [
+    "9.3 MB XLS"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "11,008/11,010",
+   "hostile": null
+  },
+  {
+   "id": "jb",
+   "group": "independent",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "Electricidad Juan B. Justo",
+   "sector": "electricidad",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xls",
+    "pdf"
+   ],
+   "spreadsheet": true,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "mixed",
+   "iva": "per_product",
+   "list_date": "2026-09-20",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "$ / U$S / U$SB per row",
+    "10 MB XLS (80% of cap)",
+    "printed-layout sheet"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "21,884/21,884 imported; USD rows held by the currency guard (docs/20 §6)",
+   "hostile": null
+  },
+  {
+   "id": "alma",
+   "group": "independent",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "ALMA Repuestos",
+   "sector": "autopartes",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx",
+    "xls",
+    "pdf"
+   ],
+   "spreadsheet": true,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "global_net",
+   "list_date": "2026-09-04",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "two price columns in MODELO sheet"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "CORRELATIVA 2,273/2,273; Peugeot 2,246/2,246; PDF 429/429",
+   "hostile": null
+  },
+  {
+   "id": "cambre",
+   "group": "accme",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "Cambre",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "google_sheets"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "per_product",
+   "list_date": null,
+   "date_source": "none",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "unlabeled pack column"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "395/395 and 113/113",
+   "hostile": null
+  },
+  {
+   "id": "jeluz",
+   "group": "accme",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "Jeluz",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": null,
+   "date_source": "none",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "catalog pages",
+    "colour in its own column"
+   ],
+   "remarca_auto": "partial",
+   "remarca_note": "16/20 sample rows correct (docs/20 §5)",
+   "hostile": null
+  },
+  {
+   "id": "roker",
+   "group": "accme",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "Roker",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": null,
+   "date_source": "none",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "catalog pages"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "refused, asks for columns",
+   "hostile": null
+  },
+  {
+   "id": "strada",
+   "group": "accme",
+   "source_doc": "docs20",
+   "status": "obtained",
+   "company": "Strada",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": null,
+   "date_source": "none",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "price per metre, sold by roll",
+    "side notes next to prices"
+   ],
+   "remarca_auto": "partial",
+   "remarca_note": "48/52",
+   "hostile": null
+  },
+  {
+   "id": "atomlux",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Atomlux",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2025-01",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "code column headed 'Modelo'",
+    "per-product 'Bonificación' column",
+    "stale"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "code column not detected",
+   "hostile": null
+  },
+  {
+   "id": "cleos",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Cleos",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "USD",
+   "iva": "global_net",
+   "list_date": "2026-09-18",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "prices in U$S",
+    "'sumarle el 10,5%' of IVA"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "conextube",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Conextube",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "global_net",
+   "list_date": "2026-09-07",
+   "date_source": "file",
+   "versioning_evidence": "'26041 EN VIGENCIA DESDE 7/9/2026 - REEMPLAZA A LA LISTA 26031'",
+   "historical_versions": false,
+   "difficulties": [
+    "62 MB, 79 pages"
+   ],
+   "remarca_auto": "rejected",
+   "remarca_note": "size cap",
+   "hostile": "over the 12 MB cap"
+  },
+  {
+   "id": "emanal",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Emanal",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "global_net",
+   "list_date": "2026-08",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [],
+   "remarca_auto": "zero",
+   "remarca_note": "price header found, code not; no rows",
+   "hostile": null
+  },
+  {
+   "id": "exultt",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Exultt",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": null,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-04-29",
+   "date_source": "last_modified",
+   "versioning_evidence": "numbered catalog (N°48)",
+   "historical_versions": false,
+   "difficulties": [
+    "font-encoded text, partly unreadable"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": "font-encoded text"
+  },
+  {
+   "id": "flexivolt",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Flexivolt",
+   "sector": "cables (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": false,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2023-11",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "no codes (cable sections)",
+    "stale"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "lumenac",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Lumenac",
+   "sector": "iluminación (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-09-23",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "codes with spaces ('GALAXY 50/850')",
+    "section titles between blocks"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "price column found ('PRECIO EN PESOS'), code column not detected",
+   "hostile": null
+  },
+  {
+   "id": "mig",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "MIG",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2025-07-31",
+   "date_source": "last_modified",
+   "versioning_evidence": "'#37 vigente desde …'",
+   "historical_versions": false,
+   "difficulties": [
+    "'Descuento General' cell above the table",
+    "colour column",
+    "stale"
+   ],
+   "remarca_auto": "ok",
+   "remarca_note": "80 rows",
+   "hostile": null
+  },
+  {
+   "id": "mileniumled",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Milenium Led",
+   "sector": "iluminación (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "USD",
+   "iva": "per_product",
+   "list_date": "2021",
+   "date_source": "file",
+   "versioning_evidence": "numbered list (N°21)",
+   "historical_versions": false,
+   "difficulties": [
+    "prices in USD",
+    "IVA 10,5% / 21% by row",
+    "stale"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "prodem",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Prodem",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2025-08",
+   "date_source": "file",
+   "versioning_evidence": "numbered list (Nº 739)",
+   "historical_versions": false,
+   "difficulties": [
+    "matrix layout (code by width)",
+    "stale"
+   ],
+   "remarca_auto": "wrong",
+   "remarca_note": "226 rows, codes paired with other columns' prices",
+   "hostile": null
+  },
+  {
+   "id": "sbox",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "S-BOX",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": null,
+   "description": null,
+   "price": null,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2024",
+   "date_source": "file",
+   "versioning_evidence": "numbered list (N°47)",
+   "historical_versions": false,
+   "difficulties": [
+    "font-encoded, unreadable text",
+    "stale"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": "font-encoded text"
+  },
+  {
+   "id": "taad",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "TAAD",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": null,
+   "description": null,
+   "price": null,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-07-28",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "15.5 MB",
+    "mostly images"
+   ],
+   "remarca_auto": "rejected",
+   "remarca_note": "size cap",
+   "hostile": "over the 12 MB cap, mostly images"
+  },
+  {
+   "id": "tacsa",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "TACSA",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": null,
+   "description": null,
+   "price": null,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2026-09-18",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "scanned (image-only) PDF"
+   ],
+   "remarca_auto": "rejected",
+   "remarca_note": "no selectable text",
+   "hostile": "scanned"
+  },
+  {
+   "id": "technic",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Technic",
+   "sector": "iluminación (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "xlsx"
+   ],
+   "spreadsheet": true,
+   "pdf": false,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2025-11-27",
+   "date_source": "last_modified",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "catalog layout per sheet",
+    "several price columns",
+    "coefficient 0.3266 in a cell above",
+    "unrounded formula prices",
+    "stale"
+   ],
+   "remarca_auto": "partial",
+   "remarca_note": "19 rows",
+   "hostile": null
+  },
+  {
+   "id": "top",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "TOP",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": null,
+   "description": null,
+   "price": null,
+   "currency": "not_stated",
+   "iva": "not_stated",
+   "list_date": "2025-01",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "mostly images",
+    "stale"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": "mostly images"
+  },
+  {
+   "id": "trefilcon",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Trefilcon",
+   "sector": "cables (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": false,
+   "description": true,
+   "price": true,
+   "currency": "ARS",
+   "iva": "not_stated",
+   "list_date": "2026-02",
+   "date_source": "file",
+   "versioning_evidence": null,
+   "historical_versions": false,
+   "difficulties": [
+    "no codes (cable sections)",
+    "stale"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "trefilight",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Trefilight",
+   "sector": "cables (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "mixed",
+   "iva": "global_net",
+   "list_date": "2026-08",
+   "date_source": "file",
+   "versioning_evidence": "numbered list (N°46)",
+   "historical_versions": false,
+   "difficulties": [
+    "USD and $ tokens in one list",
+    "'SIN IVA (10,5%)'"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "no rows",
+   "hostile": null
+  },
+  {
+   "id": "viyilant",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "obtained",
+   "company": "Viyilant",
+   "sector": "material eléctrico (fabricante)",
+   "target_sector": true,
+   "price_list": true,
+   "formats": [
+    "pdf"
+   ],
+   "spreadsheet": false,
+   "pdf": true,
+   "code": true,
+   "description": true,
+   "price": true,
+   "currency": "mixed",
+   "iva": "per_product",
+   "list_date": "2026-09-14",
+   "date_source": "file",
+   "versioning_evidence": "numbered list (Nº 03-2026, vigencia 14/09/2026)",
+   "historical_versions": false,
+   "difficulties": [
+    "'Precios expresados en pesos, a excepción de termocontraíbles y control de nivel TE, en dólares'",
+    "10,5% markers per product"
+   ],
+   "remarca_auto": "zero",
+   "remarca_note": "price header found; no rows",
+   "hostile": null
+  },
+  {
+   "id": "cpsa",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "CPSA",
+   "note": "HTTP 410"
+  },
+  {
+   "id": "poliplas",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "Poliplas",
+   "note": "HTTP 410"
+  },
+  {
+   "id": "madeva",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "Madeva",
+   "note": "HTTP 400"
+  },
+  {
+   "id": "einhell",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "Einhell",
+   "note": "HTTP 404"
+  },
+  {
+   "id": "tbcin",
+   "group": "accme",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "TBCIN",
+   "note": "HTTP 404"
+  },
+  {
+   "id": "areacoco",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "Area Coco Rosario",
+   "note": "the list URL returns a 404 page"
+  },
+  {
+   "id": "gabilucho",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "Distribuidora GabiLucho",
+   "note": "404"
+  },
+  {
+   "id": "aromatizar",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "unavailable",
+   "company": "Aromatizar Mayorista",
+   "note": "web page without a list"
+  },
+  {
+   "id": "italgrif",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "excluded",
+   "company": "Italgrif",
+   "note": "Peruvian (Nuevos Soles, IGV), 2020–2023 files"
+  },
+  {
+   "id": "felixtorres",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "excluded",
+   "company": "Felix Torres y Cía",
+   "note": "Colombian, 2021–2024 files"
+  },
+  {
+   "id": "transcaden",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "not_public",
+   "company": "Transcaden SRL",
+   "note": "'No hay listas disponibles en este momento. Comunicate con nosotros para recibir las listas por email.'"
+  },
+  {
+   "id": "rodamientoscaroya",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "not_public",
+   "company": "Rodamientos Caroya",
+   "note": "'Estamos actualizando nuestra lista de precios... contacte a su vendedor.'"
+  },
+  {
+   "id": "fercor",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "not_public",
+   "company": "Fercor Mayorista",
+   "note": "user and password (search result)"
+  },
+  {
+   "id": "dfer",
+   "group": "independent",
+   "source_doc": "docs20",
+   "status": "not_public",
+   "company": "Dfer",
+   "note": "download redirects to login"
+  },
+  {
+   "id": "digilio",
+   "group": "independent",
+   "source_doc": "docs20",
+   "status": "not_public",
+   "company": "Digilio Distribuciones",
+   "note": "Dropbox link returns an HTML page"
+  },
+  {
+   "id": "saniferr",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "not_public",
+   "company": "Saniferr",
+   "note": "registered customers only (search result)"
+  },
+  {
+   "id": "deloeste",
+   "group": "independent",
+   "source_doc": "docs22",
+   "status": "not_public",
+   "company": "Distribuidora del Oeste",
+   "note": "login page"
+  }
+ ]
+}
